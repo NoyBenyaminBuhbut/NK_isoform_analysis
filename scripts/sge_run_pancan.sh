@@ -6,7 +6,15 @@
 
 set -euo pipefail
 
-cd "${SGE_O_WORKDIR:?}"
+JOB_WORKDIR="${SGE_O_WORKDIR:?}"
+if [[ -f "${JOB_WORKDIR}/scripts/single_main.R" ]]; then
+  cd "${JOB_WORKDIR}"
+elif [[ -f "${JOB_WORKDIR}/../scripts/single_main.R" ]]; then
+  cd "${JOB_WORKDIR}/.."
+else
+  echo "Could not locate repo root from SGE_O_WORKDIR=${JOB_WORKDIR}" >&2
+  exit 1
+fi
 
 USE_CONDA_R=0
 
@@ -65,5 +73,15 @@ else
 fi
 export PANCAN_TRANSCRIPT_TABLE="${PANCAN_TRANSCRIPT_TABLE:-$HOME/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz}"
 export PANCAN_CLINICAL_FILE="${PANCAN_CLINICAL_FILE:-}"
+
+mkdir -p results/presto/pancan intermediate/splitted_cohorts/clin_based/pancan
+
+echo "PWD=$(pwd)"
+echo "JOB_WORKDIR=${JOB_WORKDIR}"
+echo "CONDA_PREFIX=${CONDA_PREFIX:-}"
+echo "CONDA_ENV_PATH=${CONDA_ENV_PATH:-}"
+echo "Rscript=$(command -v Rscript || true)"
+echo "PANCAN_TRANSCRIPT_TABLE=${PANCAN_TRANSCRIPT_TABLE}"
+echo "PANCAN_CLINICAL_FILE=${PANCAN_CLINICAL_FILE:-<auto>}"
 
 Rscript -e 'source("scripts/single_main.R"); run_significants_one_cohort("pancan", max_p_value=0.05)'

@@ -127,7 +127,7 @@ discover_pancan_clinical_files <- function() {
     for (cohort_dir in clinical_dirs) {
       clinical_dir <- file.path(cohort_dir, "clinical")
       if (dir.exists(clinical_dir)) {
-        files <- c(files, get_single_file_in_dir(clinical_dir))
+        files <- c(files, get_single_file_in_dir(clinical_dir, pattern = "\\.(csv|tsv|txt|gz)$"))
       }
     }
   }
@@ -196,6 +196,7 @@ load_pancan_clinical_df <- function(
   }
 
   clinical_files <- discover_pancan_clinical_files()
+  message("Auto-building pancan clinical table from ", length(clinical_files), " cohort clinical files.")
   clin_list <- vector("list", length(clinical_files))
 
   for (i in seq_along(clinical_files)) {
@@ -213,6 +214,10 @@ load_pancan_clinical_df <- function(
 
   dir.create(dirname(merged_output_file), recursive = TRUE, showWarnings = FALSE)
   utils::write.csv(merged_df, merged_output_file, row.names = FALSE)
+  message(
+    "Merged pancan clinical table has ", nrow(merged_df), " rows across ",
+    length(unique(merged_df$cohort_id)), " cohorts. Saved to: ", merged_output_file
+  )
 
   list(
     clinical_df = merged_df,
@@ -394,14 +399,17 @@ split_clinical_into_tertiles_by_cohort <- function(clin_df, cohort_col = "cohort
   high_list <- vector("list", length(split_dfs))
   names(low_list) <- names(split_dfs)
   names(high_list) <- names(split_dfs)
+  skipped_cohorts <- character(0)
 
   for (cohort_name in names(split_dfs)) {
     cohort_df <- split_dfs[[cohort_name]]
     if (nrow(cohort_df) < 3L) {
-      stop(
-        "Cohort '", cohort_name, "' has fewer than 3 clinical rows after normalization; cannot create non-overlapping T1/T3 tertiles.",
-        call. = FALSE
+      warning(
+        "Skipping cohort '", cohort_name,
+        "' because it has fewer than 3 clinical rows after normalization."
       )
+      skipped_cohorts <- c(skipped_cohorts, cohort_name)
+      next
     }
 
     tertiles <- split_clinical_into_tertiles(cohort_df)
@@ -409,10 +417,26 @@ split_clinical_into_tertiles_by_cohort <- function(clin_df, cohort_col = "cohort
     high_list[[cohort_name]] <- tertiles$high_survival_clin
   }
 
+  low_list <- low_list[!vapply(low_list, is.null, logical(1))]
+  high_list <- high_list[!vapply(high_list, is.null, logical(1))]
+
+  if (length(low_list) < 1L || length(high_list) < 1L) {
+    stop("No pancan cohorts remained after stratified tertile filtering.", call. = FALSE)
+  }
+
   low_survival_clin <- do.call(rbind, low_list)
   high_survival_clin <- do.call(rbind, high_list)
   rownames(low_survival_clin) <- NULL
   rownames(high_survival_clin) <- NULL
+
+  message(
+    "Built pancan T1/T3 splits from ", length(low_list), " cohorts",
+    if (length(skipped_cohorts) > 0L) {
+      paste0(" (skipped ", length(skipped_cohorts), " small cohorts).")
+    } else {
+      "."
+    }
+  )
 
   list(
     low_survival_clin = low_survival_clin,
@@ -520,9 +544,12 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   ensure_presto_installed()
 
   cohort_label <- if (tolower(cohort_id) == "pancan") "pancan" else toupper(as.character(cohort_id))
+  message("Running isoform analysis for cohort_id=", cohort_label)
 
   matrix_file <- resolve_matrix_file(cohort_label)
+  message("Using matrix file: ", matrix_file)
   expr_df <- read_cluster_table(matrix_file)
+  message("Expression table dimensions: ", nrow(expr_df), " features x ", max(0L, ncol(expr_df) - 1L), " samples")
 
   if (cohort_label == "pancan") {
     pancan_clin <- load_pancan_clinical_df()
@@ -535,9 +562,11 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
     clin_df <- normalize_clinical_df_for_split(clin_df)
     split_res <- split_clinical_into_tertiles(clin_df)
   }
+  message("Using clinical file: ", clinical_file)
 
   low_survival_clin <- split_res$low_survival_clin
   high_survival_clin <- split_res$high_survival_clin
+  message("T1 patient count: ", nrow(low_survival_clin), "; T3 patient count: ", nrow(high_survival_clin))
 
   split_out_dir <- file.path("intermediate", "splitted_cohorts", "clin_based", cohort_label)
   dir.create(split_out_dir, recursive = TRUE, showWarnings = FALSE)
@@ -546,15 +575,18 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
 
   T1_ids <- patient_ids_to_tier_samples(low_survival_clin$bcr_patient_barcode)
   T3_ids <- patient_ids_to_tier_samples(high_survival_clin$bcr_patient_barcode)
+  message("T1 sample count: ", length(T1_ids), "; T3 sample count: ", length(T3_ids))
   save_tier_lists(split_out_dir, cohort_label, T1_ids, T3_ids)
 
   presto_inputs <- prepare_presto_inputs(expr_df, T1_ids, T3_ids)
+  message("Matched matrix samples: ", length(presto_inputs$y), " columns for presto")
 
   presto_res <- presto::wilcoxauc(
     X = presto_inputs$X,
     y = presto_inputs$y,
     groups_use = c("T1", "T3")
   )
+  message("Presto result rows: ", nrow(presto_res))
 
   presto_sig <- presto_res[is.finite(presto_res$padj) & (presto_res$padj <= max_p_value), , drop = FALSE]
 
@@ -562,6 +594,7 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   dir.create(presto_out_dir, recursive = TRUE, showWarnings = FALSE)
   utils::write.csv(presto_res, file.path(presto_out_dir, paste0(cohort_label, "_T1_vs_T3_presto.csv")), row.names = FALSE)
   utils::write.csv(presto_sig, file.path(presto_out_dir, paste0(cohort_label, "_T1_vs_T3_presto_padj_le_", max_p_value, ".csv")), row.names = FALSE)
+  message("Wrote presto outputs to: ", presto_out_dir)
 
   invisible(list(
     cohort_id = cohort_label,
