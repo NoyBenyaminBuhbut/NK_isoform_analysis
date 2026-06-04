@@ -110,6 +110,16 @@ mirror_average_curve <- function(x_vals, y_vals, peak_x) {
   corrected_y
 }
 
+signal_tail_mask <- function(x_vals, boundary_x, x_scale) {
+  if (!is.finite(boundary_x)) {
+    return(rep(FALSE, length(x_vals)))
+  }
+  if (x_scale == "raw_p") {
+    return(x_vals <= boundary_x)
+  }
+  x_vals >= boundary_x
+}
+
 find_tail_crossing <- function(x_vals, diff_vals, peak_x, x_scale) {
   tail_keep <- if (x_scale == "raw_p") x_vals <= peak_x else x_vals >= peak_x
   tail_x <- x_vals[tail_keep]
@@ -172,6 +182,10 @@ tail_integral <- function(x_vals, diff_vals, crossing_x, x_scale) {
   sum(diff(tail_x) * (tail_diff[-length(tail_diff)] + tail_diff[-1L]) / 2)
 }
 
+tail_positive_mask <- function(x_vals, diff_vals, crossing_x, x_scale) {
+  signal_tail_mask(x_vals, crossing_x, x_scale) & is.finite(diff_vals) & (diff_vals > 0)
+}
+
 crossing_to_raw_p <- function(crossing_x, x_scale) {
   if (!is.finite(crossing_x)) {
     return(NA_real_)
@@ -182,9 +196,53 @@ crossing_to_raw_p <- function(crossing_x, x_scale) {
   10^(-crossing_x)
 }
 
-plot_curve_analysis <- function(curve, corrected_y, peak_x, crossing_x, analysis_label, x_scale, out_file) {
+raw_p_threshold_positions <- function(x_scale) {
+  p_thresholds <- c(0.05, 0.01, 0.001)
+  x_thresholds <- if (x_scale == "raw_p") p_thresholds else -log10(p_thresholds)
+  list(p = p_thresholds, x = x_thresholds)
+}
+
+shade_positive_tail_region <- function(x_vals, original_y, corrected_y, positive_mask, fill_col = "#F4A26180") {
+  idx <- which(positive_mask)
+  if (length(idx) < 2L) {
+    return(invisible(NULL))
+  }
+
+  split_groups <- split(idx, cumsum(c(1L, diff(idx) != 1L)))
+  for (group_idx in split_groups) {
+    if (length(group_idx) < 2L) {
+      next
+    }
+    xs <- x_vals[group_idx]
+    ys_top <- original_y[group_idx]
+    ys_bottom <- corrected_y[group_idx]
+    graphics::polygon(
+      x = c(xs, rev(xs)),
+      y = c(ys_top, rev(ys_bottom)),
+      border = NA,
+      col = fill_col
+    )
+  }
+
+  invisible(NULL)
+}
+
+tail_zoom_xlim <- function(curve, peak_x, crossing_x, x_scale) {
+  if (x_scale == "raw_p") {
+    upper <- min(max(curve$x), max(0.1, peak_x * 1.25, if (is.finite(crossing_x)) crossing_x * 1.25 else 0))
+    return(c(0, upper))
+  }
+
+  lower <- max(0, min(peak_x, if (is.finite(crossing_x)) crossing_x else peak_x))
+  c(lower, max(curve$x))
+}
+
+plot_curve_analysis <- function(curve, corrected_y, diff_y, peak_x, crossing_x, analysis_label, x_scale, out_prefix) {
   y_max <- max(c(curve$y, corrected_y), na.rm = TRUE)
-  grDevices::png(filename = out_file, width = 1400, height = 900, res = 150)
+  positive_mask <- tail_positive_mask(curve$x, diff_y, crossing_x, x_scale)
+  thresholds <- raw_p_threshold_positions(x_scale)
+
+  grDevices::png(filename = paste0(out_prefix, "_full.png"), width = 1400, height = 900, res = 150)
   on.exit(grDevices::dev.off(), add = TRUE)
 
   graphics::plot(
@@ -197,21 +255,111 @@ plot_curve_analysis <- function(curve, corrected_y, peak_x, crossing_x, analysis
     main = analysis_label,
     ylim = c(0, y_max * 1.05)
   )
+  shade_positive_tail_region(curve$x, curve$y, corrected_y, positive_mask)
   graphics::lines(curve$x, corrected_y, lwd = 3, col = "#D1495B")
   graphics::abline(v = peak_x, lty = 2, lwd = 2, col = "#222222")
 
   if (is.finite(crossing_x)) {
     graphics::abline(v = crossing_x, lty = 3, lwd = 2, col = "#2A9D8F")
   }
+  graphics::abline(v = thresholds$x, lty = 3, col = "#999999")
 
   graphics::legend(
     "topright",
-    legend = c("Original", "Mirrored mean", "Peak", "Tail crossing"),
-    col = c("#0B5FFF", "#D1495B", "#222222", "#2A9D8F"),
-    lty = c(1, 1, 2, 3),
-    lwd = c(3, 3, 2, 2),
+    legend = c("Original", "Mirrored mean", "Positive tail excess", "Peak", "Tail crossing", "p thresholds"),
+    col = c("#0B5FFF", "#D1495B", "#F4A261", "#222222", "#2A9D8F", "#999999"),
+    lty = c(1, 1, NA, 2, 3, 3),
+    lwd = c(3, 3, NA, 2, 2, 1),
+    pch = c(NA, NA, 15, NA, NA, NA),
     bty = "n"
   )
+  grDevices::dev.off()
+
+  xlim_zoom <- tail_zoom_xlim(curve, peak_x, crossing_x, x_scale)
+  zoom_keep <- curve$x >= xlim_zoom[[1L]] & curve$x <= xlim_zoom[[2L]]
+  zoom_y_max <- max(c(curve$y[zoom_keep], corrected_y[zoom_keep]), na.rm = TRUE)
+
+  grDevices::png(filename = paste0(out_prefix, "_zoom.png"), width = 1400, height = 900, res = 150)
+  graphics::plot(
+    curve$x, curve$y,
+    type = "l",
+    lwd = 3,
+    col = "#0B5FFF",
+    xlab = if (x_scale == "raw_p") "p-value" else expression(-log[10](p)),
+    ylab = "Frequency / density",
+    main = paste0(analysis_label, " (tail zoom)"),
+    ylim = c(0, zoom_y_max * 1.05),
+    xlim = xlim_zoom
+  )
+  shade_positive_tail_region(curve$x, curve$y, corrected_y, positive_mask)
+  graphics::lines(curve$x, corrected_y, lwd = 3, col = "#D1495B")
+  graphics::abline(v = peak_x, lty = 2, lwd = 2, col = "#222222")
+  if (is.finite(crossing_x)) {
+    graphics::abline(v = crossing_x, lty = 3, lwd = 2, col = "#2A9D8F")
+  }
+  graphics::abline(v = thresholds$x, lty = 3, col = "#999999")
+  grDevices::dev.off()
+
+  residual_ylim <- range(c(diff_y, 0), finite = TRUE)
+  grDevices::png(filename = paste0(out_prefix, "_residual.png"), width = 1400, height = 900, res = 150)
+  graphics::plot(
+    curve$x, diff_y,
+    type = "l",
+    lwd = 3,
+    col = "#264653",
+    xlab = if (x_scale == "raw_p") "p-value" else expression(-log[10](p)),
+    ylab = "Original - mirrored mean",
+    main = paste0(analysis_label, " (residual)"),
+    ylim = residual_ylim
+  )
+  graphics::abline(h = 0, lty = 1, col = "#444444")
+  if (any(positive_mask)) {
+    idx <- which(positive_mask)
+    split_groups <- split(idx, cumsum(c(1L, diff(idx) != 1L)))
+    for (group_idx in split_groups) {
+      if (length(group_idx) < 2L) {
+        next
+      }
+      xs <- curve$x[group_idx]
+      ys <- diff_y[group_idx]
+      graphics::polygon(
+        x = c(xs, rev(xs)),
+        y = c(ys, rep(0, length(ys))),
+        border = NA,
+        col = "#F4A26180"
+      )
+    }
+  }
+  if (is.finite(crossing_x)) {
+    graphics::abline(v = crossing_x, lty = 3, lwd = 2, col = "#2A9D8F")
+  }
+  graphics::abline(v = thresholds$x, lty = 3, col = "#999999")
+  grDevices::dev.off()
+}
+
+interpolate_difference_at_points <- function(curve_x, diff_y, point_x) {
+  stats::approx(curve_x, diff_y, xout = point_x, rule = 2)$y
+}
+
+build_tail_member_table <- function(df, pvals, pval_col, analysis_id, x_scale, crossing_x, diff_y, curve_x) {
+  transformed_x <- transform_pvalues(pvals, x_scale)
+  point_diff <- interpolate_difference_at_points(curve_x, diff_y, transformed_x)
+  in_signal_tail <- signal_tail_mask(transformed_x, crossing_x, x_scale)
+  member_mask <- in_signal_tail & is.finite(point_diff) & (point_diff > 0)
+
+  member_idx <- which(member_mask)
+  if (length(member_idx) < 1L) {
+    return(NULL)
+  }
+
+  out_df <- df[is.finite(suppressWarnings(as.numeric(df[[pval_col]]))) & (suppressWarnings(as.numeric(df[[pval_col]])) >= 0) & (suppressWarnings(as.numeric(df[[pval_col]])) <= 1), , drop = FALSE]
+  out_df <- out_df[member_idx, , drop = FALSE]
+  out_df$tail_analysis_id <- analysis_id
+  out_df$tail_x_value <- transformed_x[member_idx]
+  out_df$tail_diff_value <- point_diff[member_idx]
+  out_df <- out_df[order(suppressWarnings(as.numeric(out_df[[pval_col]])), na.last = TRUE), , drop = FALSE]
+  rownames(out_df) <- NULL
+  out_df
 }
 
 analyze_curve <- function(pvals, x_scale, curve_method) {
@@ -257,16 +405,35 @@ main <- function() {
   summary_df <- do.call(rbind, lapply(analyses, function(res) {
     analysis_id <- paste(res$curve_method, res$x_scale, sep = "_")
 
-    plot_file <- file.path(args$out_dir, paste0(analysis_id, ".png"))
+    plot_prefix <- file.path(args$out_dir, analysis_id)
     plot_curve_analysis(
       curve = res$curve,
       corrected_y = res$corrected_y,
+      diff_y = res$curve$y - res$corrected_y,
       peak_x = res$peak_x,
       crossing_x = res$crossing_x,
       analysis_label = paste("Tail analysis:", analysis_id),
       x_scale = res$x_scale,
-      out_file = plot_file
+      out_prefix = plot_prefix
     )
+
+    tail_member_file <- NA_character_
+    if (isTRUE(res$tail_exists)) {
+      tail_members <- build_tail_member_table(
+        df = df,
+        pvals = pvals,
+        pval_col = args$pval_col,
+        analysis_id = analysis_id,
+        x_scale = res$x_scale,
+        crossing_x = res$crossing_x,
+        diff_y = res$curve$y - res$corrected_y,
+        curve_x = res$curve$x
+      )
+      if (!is.null(tail_members)) {
+        tail_member_file <- file.path(args$out_dir, paste0(analysis_id, "_tail_members.csv"))
+        utils::write.csv(tail_members, tail_member_file, row.names = FALSE)
+      }
+    }
 
     data.frame(
       analysis_id = analysis_id,
@@ -278,7 +445,10 @@ main <- function() {
       crossing_raw_p = res$crossing_raw_p,
       tail_integral = res$tail_integral,
       tail_exists = res$tail_exists,
-      plot_file = plot_file,
+      full_plot_file = paste0(plot_prefix, "_full.png"),
+      zoom_plot_file = paste0(plot_prefix, "_zoom.png"),
+      residual_plot_file = paste0(plot_prefix, "_residual.png"),
+      tail_member_file = tail_member_file,
       stringsAsFactors = FALSE
     )
   }))
