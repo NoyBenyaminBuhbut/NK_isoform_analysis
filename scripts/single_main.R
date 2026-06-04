@@ -174,6 +174,23 @@ infer_cohort_id_from_clinical_df <- function(clin_df) {
   values
 }
 
+standardize_clinical_df_for_pancan <- function(clin_df, cohort_id) {
+  keep_cols <- c("bcr_patient_barcode", "vital_status", "days_to_last_follow_up")
+  missing_cols <- setdiff(keep_cols, names(clin_df))
+  if (length(missing_cols) > 0L) {
+    stop(
+      "Normalized clinical table is missing required pancan columns: ",
+      paste(missing_cols, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  out_df <- clin_df[, keep_cols, drop = FALSE]
+  out_df$cohort_id <- as.character(cohort_id)
+  rownames(out_df) <- NULL
+  out_df
+}
+
 load_pancan_clinical_df <- function(
     pancan_clinical_file = Sys.getenv("PANCAN_CLINICAL_FILE", unset = ""),
     merged_output_file = file.path("intermediate", "splitted_cohorts", "clin_based", "pancan", "pancan_merged_clinical.csv")
@@ -193,7 +210,7 @@ load_pancan_clinical_df <- function(
         call. = FALSE
       )
     }
-    clin_df$cohort_id <- as.character(cohort_values)
+    clin_df <- standardize_clinical_df_for_pancan(clin_df, cohort_values)
     return(list(
       clinical_df = clin_df,
       clinical_file = clinical_file,
@@ -209,7 +226,7 @@ load_pancan_clinical_df <- function(
     file_path <- clinical_files[[i]]
     clin_df <- read_cluster_table(file_path)
     clin_df <- normalize_clinical_df_for_split(clin_df)
-    clin_df$cohort_id <- basename(dirname(dirname(file_path)))
+    clin_df <- standardize_clinical_df_for_pancan(clin_df, basename(dirname(dirname(file_path))))
     clin_list[[i]] <- clin_df
   }
 
@@ -479,15 +496,6 @@ prepare_presto_inputs <- function(expr_df, T1_ids, T3_ids) {
   sample_ids_raw <- names(expr_df)[-1]
   sample_ids_canonical <- canonicalize_matrix_sample_ids(sample_ids_raw)
 
-  if (anyDuplicated(sample_ids_canonical)) {
-    dup_ids <- unique(sample_ids_canonical[duplicated(sample_ids_canonical)])
-    stop(
-      "Duplicated sample IDs after canonicalization: ",
-      paste(head(dup_ids, 10L), collapse = ", "),
-      call. = FALSE
-    )
-  }
-
   y <- rep(NA_character_, length(sample_ids_canonical))
   y[sample_ids_canonical %in% T1_ids] <- "T1"
   y[sample_ids_canonical %in% T3_ids] <- "T3"
@@ -495,6 +503,16 @@ prepare_presto_inputs <- function(expr_df, T1_ids, T3_ids) {
 
   if (sum(y == "T1", na.rm = TRUE) < 1L || sum(y == "T3", na.rm = TRUE) < 1L) {
     stop("Could not match both T1 and T3 sample IDs to matrix columns.", call. = FALSE)
+  }
+
+  kept_sample_ids <- sample_ids_canonical[keep]
+  if (anyDuplicated(kept_sample_ids)) {
+    dup_ids <- unique(kept_sample_ids[duplicated(kept_sample_ids)])
+    stop(
+      "Duplicated matched sample IDs after canonicalization: ",
+      paste(head(dup_ids, 10L), collapse = ", "),
+      call. = FALSE
+    )
   }
 
   X <- as.matrix(expr_df[, 1L + which(keep), drop = FALSE])
