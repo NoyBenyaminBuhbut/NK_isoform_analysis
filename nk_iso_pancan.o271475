@@ -1,0 +1,10 @@
+Package 'presto' not found. Attempting cluster-side installation from GitHub: immunogenomics/presto
+Package 'remotes' not found. Installing from CRAN: https://cloud.r-project.org
+Installing package into ‘/usr/lib64/R/library’
+(as ‘lib’ is unspecified)
+Warning in utils::install.packages("remotes", repos = cran_repo, quiet = FALSE) :
+  'lib = "/usr/lib64/R/library"' is not writable
+Error in utils::install.packages("remotes", repos = cran_repo, quiet = FALSE) : 
+  unable to install packages
+Calls: run_significants_one_cohort -> ensure_presto_installed -> <Anonymous>
+Execution halted

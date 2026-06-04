@@ -1,0 +1,5 @@
+Reading table: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+Error in data.table::fread(path, data.table = FALSE, check.names = FALSE,  : 
+  To read gz files directly, fread() requires 'R.utils' package which cannot be found. Please install 'R.utils' using 'install.packages('R.utils')'.
+Calls: run_significants_one_cohort ... read_cluster_table -> <Anonymous> -> stopf -> raise_condition -> signal
+Execution halted

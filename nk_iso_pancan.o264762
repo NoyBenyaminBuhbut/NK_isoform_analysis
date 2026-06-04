@@ -1,0 +1,905 @@
+Package 'presto' not found. Attempting cluster-side installation from GitHub: immunogenomics/presto
+Package 'devtools' not found. Installing from CRAN: https://cloud.r-project.org
+Installing package into ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘Rcpp’, ‘stringi’, ‘utf8’, ‘askpass’, ‘credentials’, ‘sys’, ‘zip’, ‘fastmap’, ‘httpuv’, ‘later’, ‘mime’, ‘promises’, ‘sourcetools’, ‘base64enc’, ‘jquerylib’, ‘sass’, ‘fansi’, ‘systemfonts’, ‘textshaping’, ‘tinytex’, ‘xfun’, ‘pillar’, ‘highr’, ‘diffobj’, ‘curl’, ‘gert’, ‘gh’, ‘glue’, ‘jsonlite’, ‘purrr’, ‘rappdirs’, ‘yaml’, ‘cachem’, ‘shiny’, ‘htmltools’, ‘callr’, ‘processx’, ‘bslib’, ‘downlit’, ‘fontawesome’, ‘httr2’, ‘openssl’, ‘ragg’, ‘rmarkdown’, ‘tibble’, ‘xml2’, ‘htmlwidgets’, ‘vctrs’, ‘digest’, ‘xopen’, ‘commonmark’, ‘knitr’, ‘brio’, ‘magrittr’, ‘ps’, ‘waldo’, ‘usethis’, ‘cli’, ‘desc’, ‘ellipsis’, ‘fs’, ‘lifecycle’, ‘memoise’, ‘miniUI’, ‘pak’, ‘pkgbuild’, ‘pkgdown’, ‘pkgload’, ‘profvis’, ‘rcmdcheck’, ‘rlang’, ‘roxygen2’, ‘rversions’, ‘sessioninfo’, ‘testthat’, ‘urlchecker’
+
+trying URL 'https://cloud.r-project.org/src/contrib/Rcpp_1.1.1-1.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/stringi_1.8.7.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/utf8_1.2.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/askpass_1.2.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/credentials_2.0.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/sys_3.4.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/zip_2.3.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/fastmap_1.2.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/httpuv_1.6.17.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/later_1.4.8.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/mime_0.13.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/promises_1.5.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/sourcetools_0.1.7-2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/base64enc_0.1-6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/jquerylib_0.1.4.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/sass_0.4.10.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/fansi_1.0.7.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/systemfonts_1.3.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/textshaping_1.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/tinytex_0.59.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/xfun_0.58.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pillar_1.11.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/highr_0.12.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/diffobj_0.3.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/curl_7.1.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/gert_2.3.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/gh_1.6.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/glue_1.8.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/jsonlite_2.0.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/purrr_1.2.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rappdirs_0.3.4.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/yaml_2.3.12.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/cachem_1.1.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/shiny_1.13.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/htmltools_0.5.9.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/callr_3.7.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/processx_3.9.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/bslib_0.11.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/downlit_0.4.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/fontawesome_0.5.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/httr2_1.2.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/openssl_2.4.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/ragg_1.5.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rmarkdown_2.31.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/tibble_3.3.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/xml2_1.5.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/htmlwidgets_1.6.4.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/vctrs_0.7.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/digest_0.6.39.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/xopen_1.0.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/commonmark_2.0.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/knitr_1.51.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/brio_1.1.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/magrittr_2.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/ps_1.9.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/waldo_0.6.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/usethis_3.2.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/cli_3.6.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/desc_1.4.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/ellipsis_0.3.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/fs_2.1.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/lifecycle_1.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/memoise_2.0.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/miniUI_0.1.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pak_0.9.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pkgbuild_1.4.8.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pkgdown_2.2.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pkgload_1.5.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/profvis_0.4.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rcmdcheck_1.4.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rlang_1.2.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/roxygen2_8.0.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rversions_3.0.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/sessioninfo_1.2.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/testthat_3.3.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/urlchecker_1.0.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/devtools_2.5.2.tar.gz'
+* installing *source* package ‘Rcpp’ ...
+** this is package ‘Rcpp’ version ‘1.1.1-1.1’
+** package ‘Rcpp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I../inst/include/  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c api.cpp -o api.o
+In file included from ../inst/include/RcppCommon.h:30,
+                 from ../inst/include/Rcpp.h:27,
+                 from api.cpp:26:
+../inst/include/Rcpp/r/headers.h:71:10: fatal error: R.h: No such file or directory
+   71 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: api.o] Error 1
+ERROR: compilation failed for package ‘Rcpp’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/Rcpp’
+* installing *source* package ‘stringi’ ...
+** this is package ‘stringi’ version ‘1.8.7’
+** package ‘stringi’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking for R_HOME... /usr/lib64/R
+checking for R... /usr/lib64/R/bin/R
+checking for endianness... little
+checking for cat... /bin/cat
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C++... yes
+checking whether g++ -std=gnu++20 accepts -g... yes
+checking for g++ -std=gnu++20 option to enable C++11 features... -std=gnu++11
+checking whether the C++ compiler supports the 'long long' type... yes
+checking whether the compiler implements namespaces... yes
+checking whether the compiler supports the Standard Template Library... yes
+checking whether std::map is available... yes
+checking for pkg-config... /bin/pkg-config
+checking with 'pkg-config' for the system ICU4C (icu-i18n icu-uc)... 67.1
+checking for ICU4C >= 61... yes
+checking for additional CPPFLAGS, LDFLAGS, and LIBS required... done
+checking whether an ICU4C-based project can be built... yes
+checking programmatically for sufficient U_ICU_VERSION_MAJOR_NUM... yes
+checking the capabilities of the ICU data library (ucnv, uloc, utrans)... yes
+checking the capabilities of the ICU data library (ucol)... yes
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for elf.h... yes
+configure: creating ./config.status
+config.status: creating src/Makevars
+config.status: creating src/uconfig_local.h
+config.status: creating src/install.libs.R
+
+*** stringi configure summary:
+    ICU_FOUND=1
+    STRINGI_CXXSTD=
+    STRINGI_CXXFLAGS=  -fpic
+    STRINGI_CPPFLAGS=-I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H 
+    STRINGI_LDFLAGS=  -L/usr/lib64 
+    STRINGI_LIBS=  -licui18n -licuuc -licudata 
+
+*** Compiler settings used:
+    CXX=g++ -std=gnu++20 -std=gnu++11
+    LD=g++ -std=gnu++20
+    CXXFLAGS=-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection
+    CPPFLAGS=-I/usr/local/include
+    LDFLAGS=
+    LIBS=
+
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H   -I/usr/local/include   -fpic -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c stri_brkiter.cpp -o stri_brkiter.o
+In file included from stri_stringi.h:36,
+                 from stri_brkiter.cpp:32:
+stri_external.h:68:10: fatal error: R.h: No such file or directory
+   68 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: stri_brkiter.o] Error 1
+ERROR: compilation failed for package ‘stringi’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/stringi’
+* installing *source* package ‘utf8’ ...
+** this is package ‘utf8’ version ‘1.2.6’
+** package ‘utf8’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -Iutf8lite/src -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c as_utf8.c -o as_utf8.o
+In file included from as_utf8.c:24:
+rutf8.h:22:10: fatal error: Rdefines.h: No such file or directory
+   22 | #include <Rdefines.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: as_utf8.o] Error 1
+ERROR: compilation failed for package ‘utf8’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/utf8’
+* installing *source* package ‘sys’ ...
+** this is package ‘sys’ version ‘3.4.3’
+** package ‘sys’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c exec.c -o exec.o
+exec.c:6:10: fatal error: Rinternals.h: No such file or directory
+    6 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: exec.o] Error 1
+ERROR: compilation failed for package ‘sys’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/sys’
+* installing *source* package ‘zip’ ...
+** this is package ‘zip’ version ‘2.3.3’
+** package ‘zip’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  miniz.c zip.c unixutils.c tools/cmdzip.c -o tools/cmdzip
+gcc -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  miniz.c zip.c unixutils.c tools/cmdunzip.c -o tools/cmdunzip
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+init.c:2:10: fatal error: R.h: No such file or directory
+    2 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: init.o] Error 1
+ERROR: compilation failed for package ‘zip’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/zip’
+* installing *source* package ‘fastmap’ ...
+** this is package ‘fastmap’ version ‘1.2.0’
+** package ‘fastmap’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -Ilib/  -I/usr/local/include   -DR_NO_REMAP -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c fastmap.cpp -o fastmap.o
+fastmap.cpp:1:10: fatal error: R.h: No such file or directory
+    1 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: fastmap.o] Error 1
+ERROR: compilation failed for package ‘fastmap’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/fastmap’
+* installing *source* package ‘mime’ ...
+** this is package ‘mime’ version ‘0.13’
+** package ‘mime’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+init.c:1:10: fatal error: R.h: No such file or directory
+    1 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: init.o] Error 1
+ERROR: compilation failed for package ‘mime’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/mime’
+* installing *source* package ‘sourcetools’ ...
+** this is package ‘sourcetools’ version ‘0.1.7-2’
+** package ‘sourcetools’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c Reader.cpp -o Reader.o
+In file included from ../inst/include/sourcetools/read/MemoryMappedReader.h:10,
+                 from ../inst/include/sourcetools/read/read.h:7,
+                 from Reader.cpp:3:
+../inst/include/sourcetools/r/RHeaders.h:5:10: fatal error: R.h: No such file or directory
+    5 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: Reader.o] Error 1
+ERROR: compilation failed for package ‘sourcetools’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/sourcetools’
+* installing *source* package ‘base64enc’ ...
+** this is package ‘base64enc’ version ‘0.1-6’
+** package ‘base64enc’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+base64.c:15:10: fatal error: Rinternals.h: No such file or directory
+   15 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: base64.o] Error 1
+ERROR: compilation failed for package ‘base64enc’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/base64enc’
+* installing *source* package ‘fansi’ ...
+** this is package ‘fansi’ version ‘1.0.7’
+** package ‘fansi’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c assumptions.c -o assumptions.o
+assumptions.c:20:10: fatal error: Rinternals.h: No such file or directory
+   20 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: assumptions.o] Error 1
+ERROR: compilation failed for package ‘fansi’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/fansi’
+* installing *source* package ‘xfun’ ...
+** this is package ‘xfun’ version ‘0.58’
+** package ‘xfun’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+base64.c:2:10: fatal error: R.h: No such file or directory
+    2 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: base64.o] Error 1
+ERROR: compilation failed for package ‘xfun’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/xfun’
+* installing *source* package ‘diffobj’ ...
+** this is package ‘diffobj’ version ‘0.3.6’
+** package ‘diffobj’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c diff.c -o diff.o
+In file included from diff.c:102:
+diffobj.h:22:10: fatal error: R.h: No such file or directory
+   22 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: diff.o] Error 1
+ERROR: compilation failed for package ‘diffobj’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/diffobj’
+* installing *source* package ‘curl’ ...
+** this is package ‘curl’ version ‘7.1.0’
+** package ‘curl’ successfully unpacked and MD5 sums checked
+** using staged installation
+Found pkg-config cflags and libs!
+Using PKG_CFLAGS=
+Using PKG_LIBS=-lcurl 
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c callbacks.c -o callbacks.o
+In file included from callbacks.c:1:
+curl-common.h:1:10: fatal error: Rinternals.h: No such file or directory
+    1 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: callbacks.o] Error 1
+ERROR: compilation failed for package ‘curl’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/curl’
+* installing *source* package ‘glue’ ...
+** this is package ‘glue’ version ‘1.8.1’
+** package ‘glue’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c glue.c -o glue.o
+glue.c:3:10: fatal error: Rinternals.h: No such file or directory
+    3 | #include "Rinternals.h"
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: glue.o] Error 1
+ERROR: compilation failed for package ‘glue’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/glue’
+* installing *source* package ‘jsonlite’ ...
+** this is package ‘jsonlite’ version ‘2.0.0’
+** package ‘jsonlite’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -Iyajl/api  -I/usr/local/include   -fvisibility=hidden  -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+gcc -I"/usr/include/R" -DNDEBUG -Iyajl/api  -I/usr/local/include   -fvisibility=hidden  -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c collapse_array.c -o collapse_array.o
+collapse_array.c:1:10: fatal error: Rdefines.h: No such file or directory
+    1 | #include <Rdefines.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: collapse_array.o] Error 1
+ERROR: compilation failed for package ‘jsonlite’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/jsonlite’
+* installing *source* package ‘rappdirs’ ...
+** this is package ‘rappdirs’ version ‘0.3.4’
+** package ‘rappdirs’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+init.c:1:10: fatal error: R.h: No such file or directory
+    1 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: init.o] Error 1
+ERROR: compilation failed for package ‘rappdirs’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rappdirs’
+* installing *source* package ‘yaml’ ...
+** this is package ‘yaml’ version ‘2.3.12’
+** package ‘yaml’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c api.c -o api.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c dumper.c -o dumper.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c emitter.c -o emitter.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c implicit.c -o implicit.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c loader.c -o loader.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c parser.c -o parser.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c r_emit.c -o r_emit.o
+In file included from r_emit.c:1:
+r_ext.h:13:10: fatal error: R.h: No such file or directory
+   13 | #include "R.h"
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: r_emit.o] Error 1
+ERROR: compilation failed for package ‘yaml’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/yaml’
+* installing *source* package ‘digest’ ...
+** this is package ‘digest’ version ‘0.6.39’
+** package ‘digest’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c SpookyV2.cpp -o SpookyV2.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c aes.c -o aes.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3.c -o blake3.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3_dispatch.c -o blake3_dispatch.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3_portable.c -o blake3_portable.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c crc32.c -o crc32.o
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c crc32c.cpp -o crc32c.o
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c crc32c_portable.cpp -o crc32c_portable.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c digest.c -o digest.o
+digest.c:29:10: fatal error: Rdefines.h: No such file or directory
+   29 | #include <Rdefines.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: digest.o] Error 1
+ERROR: compilation failed for package ‘digest’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/digest’
+* installing *source* package ‘commonmark’ ...
+** this is package ‘commonmark’ version ‘2.0.0’
+** package ‘commonmark’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -Icmark -I. -DCMARK_GFM_STATIC_DEFINE -DCMARK_GFM_EXTENSIONS_STATIC_DEFINE -DR_NO_REMAP -DSTRICT_R_HEADERS  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c extensions.c -o extensions.o
+extensions.c:1:10: fatal error: Rinternals.h: No such file or directory
+    1 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: extensions.o] Error 1
+ERROR: compilation failed for package ‘commonmark’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/commonmark’
+* installing *source* package ‘brio’ ...
+** this is package ‘brio’ version ‘1.1.5’
+** package ‘brio’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c brio.c -o brio.o
+In file included from brio.c:1:
+brio.h:3:10: fatal error: Rinternals.h: No such file or directory
+    3 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: brio.o] Error 1
+ERROR: compilation failed for package ‘brio’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/brio’
+* installing *source* package ‘magrittr’ ...
+** this is package ‘magrittr’ version ‘2.0.5’
+** package ‘magrittr’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c pipe.c -o pipe.o
+pipe.c:3:10: fatal error: Rinternals.h: No such file or directory
+    3 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: pipe.o] Error 1
+ERROR: compilation failed for package ‘magrittr’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/magrittr’
+* installing *source* package ‘ps’ ...
+** this is package ‘ps’ version ‘1.9.3’
+** package ‘ps’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -Wall px.c -o px
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+In file included from ps-internal.h:6,
+                 from init.c:8:
+ps.h:6:10: fatal error: Rinternals.h: No such file or directory
+    6 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: init.o] Error 1
+ERROR: compilation failed for package ‘ps’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/ps’
+* installing *source* package ‘cli’ ...
+** this is package ‘cli’ version ‘3.6.6’
+** package ‘cli’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c ansi.c -o ansi.o
+In file included from ansi.c:2:
+cli.h:7:10: fatal error: R.h: No such file or directory
+    7 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: ansi.o] Error 1
+ERROR: compilation failed for package ‘cli’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/cli’
+* installing *source* package ‘fs’ ...
+** this is package ‘fs’ version ‘2.1.0’
+** package ‘fs’ successfully unpacked and MD5 sums checked
+** using staged installation
+Package libuv was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libuv.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'libuv', required by 'virtual:world', not found
+Building static libuv
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+tar xf ../tools/libuv-v1.52.0.tar.gz && \
+CC="gcc" CFLAGS="-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fpic" CPPFLAGS="-I/usr/local/include" AR="ar" RANLIB="ranlib" LDFLAGS="-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 " cmake -S libuv-v1.52.0 -B libuv-v1.52.0 -DLIBUV_BUILD_SHARED=OFF && cmake --build libuv-v1.52.0 && \
+cp -f libuv-v1.52.0/libuv.a libuv && \
+cp -Rf libuv-v1.52.0/include/* . &&\
+rm -Rf libuv-v1.52.0
+-- The C compiler identification is GNU 11.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test UV_LINT_W4
+-- Performing Test UV_LINT_W4 - Failed
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC - Failed
+-- Performing Test UV_LINT_NO_HIDES_LOCAL
+-- Performing Test UV_LINT_NO_HIDES_LOCAL - Failed
+-- Performing Test UV_LINT_NO_HIDES_PARAM
+-- Performing Test UV_LINT_NO_HIDES_PARAM - Failed
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC - Failed
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC - Failed
+-- Performing Test UV_LINT_WALL
+-- Performing Test UV_LINT_WALL - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER - Success
+-- Performing Test UV_LINT_STRICT_PROTOTYPES
+-- Performing Test UV_LINT_STRICT_PROTOTYPES - Success
+-- Performing Test UV_LINT_EXTRA
+-- Performing Test UV_LINT_EXTRA - Success
+-- Performing Test UV_LINT_UTF8_MSVC
+-- Performing Test UV_LINT_UTF8_MSVC - Failed
+-- Performing Test UV_F_STRICT_ALIASING
+-- Performing Test UV_F_STRICT_ALIASING - Success
+-- summary of build options:
+    Install prefix:  /usr/local
+    Target system:   Linux
+    Compiler:
+      C compiler:    /bin/gcc (GNU)
+      CFLAGS:         -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fpic
+
+-- Configuring done (1.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0
+gmake[1]: Entering directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+make[2]: Entering directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+make[3]: Entering directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+make[3]: Leaving directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+make[3]: Entering directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+[  2%] Building C object CMakeFiles/uv_a.dir/src/fs-poll.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/idna.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/inet.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/random.c.o
+[ 13%] Building C object CMakeFiles/uv_a.dir/src/strscpy.c.o
+[ 16%] Building C object CMakeFiles/uv_a.dir/src/strtok.c.o
+[ 19%] Building C object CMakeFiles/uv_a.dir/src/thread-common.c.o
+[ 22%] Building C object CMakeFiles/uv_a.dir/src/threadpool.c.o
+[ 25%] Building C object CMakeFiles/uv_a.dir/src/timer.c.o
+[ 27%] Building C object CMakeFiles/uv_a.dir/src/uv-common.c.o
+[ 30%] Building C object CMakeFiles/uv_a.dir/src/uv-data-getter-setters.c.o
+[ 33%] Building C object CMakeFiles/uv_a.dir/src/version.c.o
+[ 36%] Building C object CMakeFiles/uv_a.dir/src/unix/async.c.o
+[ 38%] Building C object CMakeFiles/uv_a.dir/src/unix/core.c.o
+[ 41%] Building C object CMakeFiles/uv_a.dir/src/unix/dl.c.o
+[ 44%] Building C object CMakeFiles/uv_a.dir/src/unix/fs.c.o
+[ 47%] Building C object CMakeFiles/uv_a.dir/src/unix/getaddrinfo.c.o
+[ 50%] Building C object CMakeFiles/uv_a.dir/src/unix/getnameinfo.c.o
+[ 52%] Building C object CMakeFiles/uv_a.dir/src/unix/loop-watcher.c.o
+[ 55%] Building C object CMakeFiles/uv_a.dir/src/unix/loop.c.o
+[ 58%] Building C object CMakeFiles/uv_a.dir/src/unix/pipe.c.o
+[ 61%] Building C object CMakeFiles/uv_a.dir/src/unix/poll.c.o
+[ 63%] Building C object CMakeFiles/uv_a.dir/src/unix/process.c.o
+[ 66%] Building C object CMakeFiles/uv_a.dir/src/unix/random-devurandom.c.o
+[ 69%] Building C object CMakeFiles/uv_a.dir/src/unix/signal.c.o
+[ 72%] Building C object CMakeFiles/uv_a.dir/src/unix/stream.c.o
+[ 75%] Building C object CMakeFiles/uv_a.dir/src/unix/tcp.c.o
+[ 77%] Building C object CMakeFiles/uv_a.dir/src/unix/thread.c.o
+[ 80%] Building C object CMakeFiles/uv_a.dir/src/unix/tty.c.o
+[ 83%] Building C object CMakeFiles/uv_a.dir/src/unix/udp.c.o
+[ 86%] Building C object CMakeFiles/uv_a.dir/src/unix/proctitle.c.o
+[ 88%] Building C object CMakeFiles/uv_a.dir/src/unix/linux.c.o
+[ 91%] Building C object CMakeFiles/uv_a.dir/src/unix/procfs-exepath.c.o
+[ 94%] Building C object CMakeFiles/uv_a.dir/src/unix/random-getrandom.c.o
+[ 97%] Building C object CMakeFiles/uv_a.dir/src/unix/random-sysctl-linux.c.o
+[100%] Linking C static library libuv.a
+make[3]: Leaving directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+[100%] Built target uv_a
+make[2]: Leaving directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+gmake[1]: Leaving directory '/tmp/264762.1.fairshare.q/RtmpAZUbJ1/R.INSTALL22e7ef9f6670c/fs/src/libuv-v1.52.0'
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.//include -I. -pthread  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c dir.cc -o dir.o
+In file included from dir.cc:6:
+getmode.h:4:10: fatal error: R.h: No such file or directory
+    4 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:197: dir.o] Error 1
+ERROR: compilation failed for package ‘fs’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/fs’
+* installing *source* package ‘pak’ ...
+** this is package ‘pak’ version ‘0.9.5’
+** package ‘pak’ successfully unpacked and MD5 sums checked
+** using staged installation
+** Running ./configure
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+Current platform: x86_64-redhat-linux-gnu 
+Build platform:   
+Target platform:   
+
+Compiling R6 
+
+Compiling cli 
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+make[1]: Entering directory '/tmp/264762.1.fairshare.q/RtmpU7R6Oe/R.INSTALL22ec302138ffb3/pak/src/library/cli/src'
+gcc -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c ansi.c -o ansi.o
+In file included from ansi.c:2:
+cli.h:7:10: fatal error: R.h: No such file or directory
+    7 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make[1]: *** [/usr/lib64/R/etc/Makeconf:190: ansi.o] Error 1
+make[1]: Leaving directory '/tmp/264762.1.fairshare.q/RtmpU7R6Oe/R.INSTALL22ec302138ffb3/pak/src/library/cli/src'
+ERROR: compilation failed for package ‘cli’
+Error in install_one(pkg, lib = lib) : FAILED
+Calls: install_embedded_main -> install_all -> install_one
+Execution halted
+installing via 'install.libs.R' to /gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/00LOCK-pak/00new/pak
+Error in eval(ei, envir) : Compilation failed.
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pak’
+* installing *source* package ‘rlang’ ...
+** this is package ‘rlang’ version ‘1.2.0’
+** package ‘rlang’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -I./rlang/  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c capture.c -o capture.o
+In file included from capture.c:4:
+./rlang/rlang.h:25:10: fatal error: Rinternals.h: No such file or directory
+   25 | #include <Rinternals.h> // IWYU pragma: export
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: capture.o] Error 1
+ERROR: compilation failed for package ‘rlang’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rlang’
+ERROR: dependency ‘sys’ is not available for package ‘askpass’
+Perhaps try a variation of:
+install.packages('sys')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/askpass’
+ERROR: dependencies ‘Rcpp’, ‘rlang’ are not available for package ‘later’
+Perhaps try a variation of:
+install.packages(c('Rcpp', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/later’
+ERROR: dependency ‘xfun’ is not available for package ‘tinytex’
+Perhaps try a variation of:
+install.packages('xfun')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/tinytex’
+ERROR: dependency ‘xfun’ is not available for package ‘highr’
+Perhaps try a variation of:
+install.packages('xfun')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/highr’
+ERROR: dependencies ‘rlang’, ‘fastmap’ are not available for package ‘cachem’
+Perhaps try a variation of:
+install.packages(c('rlang', 'fastmap'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/cachem’
+ERROR: dependencies ‘base64enc’, ‘digest’, ‘fastmap’, ‘rlang’ are not available for package ‘htmltools’
+Perhaps try a variation of:
+install.packages(c('base64enc', 'digest', 'fastmap', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/htmltools’
+ERROR: dependency ‘ps’ is not available for package ‘processx’
+Perhaps try a variation of:
+install.packages('ps')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/processx’
+ERROR: dependencies ‘cli’, ‘rlang’ are not available for package ‘xml2’
+Perhaps try a variation of:
+install.packages(c('cli', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/xml2’
+ERROR: dependencies ‘cli’, ‘diffobj’, ‘glue’, ‘rlang’ are not available for package ‘waldo’
+Perhaps try a variation of:
+install.packages(c('cli', 'diffobj', 'glue', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/waldo’
+ERROR: dependency ‘cli’ is not available for package ‘desc’
+Perhaps try a variation of:
+install.packages('cli')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/desc’
+ERROR: dependency ‘rlang’ is not available for package ‘ellipsis’
+Perhaps try a variation of:
+install.packages('rlang')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/ellipsis’
+ERROR: dependencies ‘cli’, ‘rlang’ are not available for package ‘lifecycle’
+Perhaps try a variation of:
+install.packages(c('cli', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/lifecycle’
+ERROR: dependency ‘curl’ is not available for package ‘rversions’
+Perhaps try a variation of:
+install.packages('curl')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rversions’
+ERROR: dependency ‘cli’ is not available for package ‘sessioninfo’
+Perhaps try a variation of:
+install.packages('cli')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/sessioninfo’
+ERROR: dependencies ‘fastmap’, ‘later’, ‘lifecycle’, ‘magrittr’, ‘rlang’ are not available for package ‘promises’
+Perhaps try a variation of:
+install.packages(c('fastmap', 'later', 'lifecycle', 'magrittr', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/promises’
+ERROR: dependency ‘htmltools’ is not available for package ‘jquerylib’
+Perhaps try a variation of:
+install.packages('htmltools')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/jquerylib’
+ERROR: dependencies ‘fs’, ‘rlang’, ‘htmltools’, ‘rappdirs’ are not available for package ‘sass’
+Perhaps try a variation of:
+install.packages(c('fs', 'rlang', 'htmltools', 'rappdirs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/sass’
+ERROR: dependencies ‘base64enc’, ‘jsonlite’, ‘lifecycle’ are not available for package ‘systemfonts’
+Perhaps try a variation of:
+install.packages(c('base64enc', 'jsonlite', 'lifecycle'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/systemfonts’
+ERROR: dependency ‘processx’ is not available for package ‘callr’
+Perhaps try a variation of:
+install.packages('processx')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/callr’
+ERROR: dependencies ‘rlang’, ‘htmltools’ are not available for package ‘fontawesome’
+Perhaps try a variation of:
+install.packages(c('rlang', 'htmltools'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/fontawesome’
+ERROR: dependency ‘askpass’ is not available for package ‘openssl’
+Perhaps try a variation of:
+install.packages('askpass')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/openssl’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’ are not available for package ‘vctrs’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/vctrs’
+ERROR: dependency ‘processx’ is not available for package ‘xopen’
+Perhaps try a variation of:
+install.packages('processx')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/xopen’
+ERROR: dependencies ‘highr’, ‘xfun’, ‘yaml’ are not available for package ‘knitr’
+Perhaps try a variation of:
+install.packages(c('highr', 'xfun', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/knitr’
+ERROR: dependencies ‘rlang’, ‘cachem’ are not available for package ‘memoise’
+Perhaps try a variation of:
+install.packages(c('rlang', 'cachem'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/memoise’
+ERROR: dependencies ‘cli’, ‘curl’, ‘xml2’ are not available for package ‘urlchecker’
+Perhaps try a variation of:
+install.packages(c('cli', 'curl', 'xml2'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/urlchecker’
+ERROR: dependencies ‘openssl’, ‘sys’, ‘curl’, ‘jsonlite’, ‘askpass’ are not available for package ‘credentials’
+Perhaps try a variation of:
+install.packages(c('openssl', 'sys', 'curl', 'jsonlite', 'askpass'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/credentials’
+ERROR: dependencies ‘later’, ‘promises’, ‘Rcpp’ are not available for package ‘httpuv’
+Perhaps try a variation of:
+install.packages(c('later', 'promises', 'Rcpp'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/httpuv’
+ERROR: dependencies ‘lifecycle’, ‘stringi’, ‘systemfonts’ are not available for package ‘textshaping’
+Perhaps try a variation of:
+install.packages(c('lifecycle', 'stringi', 'systemfonts'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/textshaping’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’, ‘utf8’, ‘vctrs’ are not available for package ‘pillar’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'rlang', 'utf8', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pillar’
+ERROR: dependencies ‘cli’, ‘lifecycle’, ‘magrittr’, ‘rlang’, ‘vctrs’ are not available for package ‘purrr’
+Perhaps try a variation of:
+install.packages(c('cli', 'lifecycle', 'magrittr', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/purrr’
+ERROR: dependencies ‘base64enc’, ‘cachem’, ‘fastmap’, ‘htmltools’, ‘jquerylib’, ‘jsonlite’, ‘lifecycle’, ‘memoise’, ‘mime’, ‘rlang’, ‘sass’ are not available for package ‘bslib’
+Perhaps try a variation of:
+install.packages(c('base64enc', 'cachem', 'fastmap', 'htmltools', 'jquerylib', 'jsonlite', 'lifecycle', 'memoise', 'mime', 'rlang', 'sass'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/bslib’
+ERROR: dependencies ‘brio’, ‘desc’, ‘digest’, ‘fansi’, ‘memoise’, ‘rlang’, ‘vctrs’, ‘yaml’ are not available for package ‘downlit’
+Perhaps try a variation of:
+install.packages(c('brio', 'desc', 'digest', 'fansi', 'memoise', 'rlang', 'vctrs', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/downlit’
+ERROR: dependencies ‘cli’, ‘curl’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘openssl’, ‘rappdirs’, ‘rlang’, ‘vctrs’ are not available for package ‘httr2’
+Perhaps try a variation of:
+install.packages(c('cli', 'curl', 'glue', 'lifecycle', 'magrittr', 'openssl', 'rappdirs', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/httr2’
+ERROR: dependencies ‘callr’, ‘cli’, ‘desc’, ‘processx’ are not available for package ‘pkgbuild’
+Perhaps try a variation of:
+install.packages(c('callr', 'cli', 'desc', 'processx'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pkgbuild’
+ERROR: dependencies ‘askpass’, ‘credentials’, ‘openssl’, ‘sys’, ‘zip’ are not available for package ‘gert’
+Perhaps try a variation of:
+install.packages(c('askpass', 'credentials', 'openssl', 'sys', 'zip'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/gert’
+ERROR: dependencies ‘cli’, ‘glue’, ‘httr2’, ‘jsonlite’, ‘lifecycle’, ‘rlang’ are not available for package ‘gh’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'httr2', 'jsonlite', 'lifecycle', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/gh’
+ERROR: dependencies ‘bslib’, ‘cachem’, ‘cli’, ‘commonmark’, ‘fastmap’, ‘fontawesome’, ‘glue’, ‘htmltools’, ‘httpuv’, ‘jsonlite’, ‘later’, ‘lifecycle’, ‘mime’, ‘promises’, ‘rlang’, ‘sourcetools’ are not available for package ‘shiny’
+Perhaps try a variation of:
+install.packages(c('bslib', 'cachem', 'cli', 'commonmark', 'fastmap', 'fontawesome', 'glue', 'htmltools', 'httpuv', 'jsonlite', 'later', 'lifecycle', 'mime', 'promises', 'rlang', 'sourcetools'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/shiny’
+ERROR: dependencies ‘systemfonts’, ‘textshaping’ are not available for package ‘ragg’
+Perhaps try a variation of:
+install.packages(c('systemfonts', 'textshaping'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/ragg’
+ERROR: dependencies ‘bslib’, ‘fontawesome’, ‘htmltools’, ‘jquerylib’, ‘jsonlite’, ‘knitr’, ‘tinytex’, ‘xfun’, ‘yaml’ are not available for package ‘rmarkdown’
+Perhaps try a variation of:
+install.packages(c('bslib', 'fontawesome', 'htmltools', 'jquerylib', 'jsonlite', 'knitr', 'tinytex', 'xfun', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rmarkdown’
+ERROR: dependencies ‘cli’, ‘lifecycle’, ‘magrittr’, ‘pillar’, ‘rlang’, ‘vctrs’ are not available for package ‘tibble’
+Perhaps try a variation of:
+install.packages(c('cli', 'lifecycle', 'magrittr', 'pillar', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/tibble’
+ERROR: dependencies ‘cli’, ‘desc’, ‘fs’, ‘glue’, ‘lifecycle’, ‘pkgbuild’, ‘processx’, ‘rlang’ are not available for package ‘pkgload’
+Perhaps try a variation of:
+install.packages(c('cli', 'desc', 'fs', 'glue', 'lifecycle', 'pkgbuild', 'processx', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pkgload’
+ERROR: dependencies ‘callr’, ‘cli’, ‘curl’, ‘desc’, ‘digest’, ‘pkgbuild’, ‘sessioninfo’, ‘xopen’ are not available for package ‘rcmdcheck’
+Perhaps try a variation of:
+install.packages(c('callr', 'cli', 'curl', 'desc', 'digest', 'pkgbuild', 'sessioninfo', 'xopen'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rcmdcheck’
+ERROR: dependencies ‘htmltools’, ‘jsonlite’, ‘knitr’, ‘rmarkdown’, ‘yaml’ are not available for package ‘htmlwidgets’
+Perhaps try a variation of:
+install.packages(c('htmltools', 'jsonlite', 'knitr', 'rmarkdown', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/htmlwidgets’
+ERROR: dependencies ‘cli’, ‘curl’, ‘desc’, ‘fs’, ‘gert’, ‘gh’, ‘glue’, ‘jsonlite’, ‘lifecycle’, ‘purrr’, ‘rappdirs’, ‘rlang’, ‘yaml’ are not available for package ‘usethis’
+Perhaps try a variation of:
+install.packages(c('cli', 'curl', 'desc', 'fs', 'gert', 'gh', 'glue', 'jsonlite', 'lifecycle', 'purrr', 'rappdirs', 'rlang', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/usethis’
+ERROR: dependencies ‘shiny’, ‘htmltools’ are not available for package ‘miniUI’
+Perhaps try a variation of:
+install.packages(c('shiny', 'htmltools'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/miniUI’
+ERROR: dependencies ‘bslib’, ‘callr’, ‘cli’, ‘desc’, ‘downlit’, ‘fontawesome’, ‘fs’, ‘httr2’, ‘jsonlite’, ‘lifecycle’, ‘openssl’, ‘purrr’, ‘ragg’, ‘rlang’, ‘rmarkdown’, ‘tibble’, ‘xml2’, ‘yaml’ are not available for package ‘pkgdown’
+Perhaps try a variation of:
+install.packages(c('bslib', 'callr', 'cli', 'desc', 'downlit', 'fontawesome', 'fs', 'httr2', 'jsonlite', 'lifecycle', 'openssl', 'purrr', 'ragg', 'rlang', 'rmarkdown', 'tibble', 'xml2', 'yaml'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pkgdown’
+ERROR: dependencies ‘cli’, ‘commonmark’, ‘desc’, ‘knitr’, ‘lifecycle’, ‘pkgload’, ‘rlang’, ‘xml2’ are not available for package ‘roxygen2’
+Perhaps try a variation of:
+install.packages(c('cli', 'commonmark', 'desc', 'knitr', 'lifecycle', 'pkgload', 'rlang', 'xml2'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/roxygen2’
+ERROR: dependencies ‘brio’, ‘callr’, ‘cli’, ‘desc’, ‘jsonlite’, ‘lifecycle’, ‘magrittr’, ‘pkgload’, ‘processx’, ‘ps’, ‘rlang’, ‘waldo’ are not available for package ‘testthat’
+Perhaps try a variation of:
+install.packages(c('brio', 'callr', 'cli', 'desc', 'jsonlite', 'lifecycle', 'magrittr', 'pkgload', 'processx', 'ps', 'rlang', 'waldo'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/testthat’
+ERROR: dependencies ‘htmlwidgets’, ‘rlang’, ‘vctrs’ are not available for package ‘profvis’
+Perhaps try a variation of:
+install.packages(c('htmlwidgets', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/profvis’
+ERROR: dependencies ‘usethis’, ‘cli’, ‘desc’, ‘ellipsis’, ‘fs’, ‘lifecycle’, ‘memoise’, ‘miniUI’, ‘pak’, ‘pkgbuild’, ‘pkgdown’, ‘pkgload’, ‘profvis’, ‘rcmdcheck’, ‘rlang’, ‘roxygen2’, ‘rversions’, ‘sessioninfo’, ‘testthat’, ‘urlchecker’ are not available for package ‘devtools’
+Perhaps try a variation of:
+install.packages(c('usethis', 'cli', 'desc', 'ellipsis', 'fs', 'lifecycle', 'memoise', 'miniUI', 'pak', 'pkgbuild', 'pkgdown', 'pkgload', 'profvis', 'rcmdcheck', 'rlang', 'roxygen2', 'rversions', 'sessioninfo', 'testthat', 'urlchecker'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/devtools’
+
+The downloaded source packages are in
+	‘/tmp/264762.1.fairshare.q/Rtmp019524/downloaded_packages’
+Error in loadNamespace(x) : there is no package called ‘devtools’
+Calls: run_significants_one_cohort ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+In addition: There were 50 or more warnings (use warnings() to see the first 50)
+Execution halted

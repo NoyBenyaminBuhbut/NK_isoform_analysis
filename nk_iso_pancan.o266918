@@ -1,0 +1,272 @@
+Package 'presto' not found. Attempting cluster-side installation from GitHub: immunogenomics/presto
+Installing required CRAN dependencies for presto: Rcpp, data.table, dplyr, tidyr, purrr, tibble, rlang, RcppArmadillo
+Installing packages into ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘utf8’, ‘stringi’, ‘cli’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘pillar’, ‘tidyselect’, ‘vctrs’, ‘stringr’
+
+trying URL 'https://cloud.r-project.org/src/contrib/utf8_1.2.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/stringi_1.8.7.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/cli_3.6.6.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/glue_1.8.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/lifecycle_1.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/magrittr_2.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pillar_1.11.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/tidyselect_1.2.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/vctrs_0.7.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/stringr_1.6.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/Rcpp_1.1.1-1.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/data.table_1.18.4.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/dplyr_1.2.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/tidyr_1.3.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/purrr_1.2.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/tibble_3.3.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rlang_1.2.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/RcppArmadillo_15.2.7-1.tar.gz'
+* installing *source* package ‘utf8’ ...
+** this is package ‘utf8’ version ‘1.2.6’
+** package ‘utf8’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -Iutf8lite/src -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c as_utf8.c -o as_utf8.o
+In file included from as_utf8.c:24:
+rutf8.h:22:10: fatal error: Rdefines.h: No such file or directory
+   22 | #include <Rdefines.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: as_utf8.o] Error 1
+ERROR: compilation failed for package ‘utf8’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/utf8’
+* installing *source* package ‘stringi’ ...
+** this is package ‘stringi’ version ‘1.8.7’
+** package ‘stringi’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking for R_HOME... /usr/lib64/R
+checking for R... /usr/lib64/R/bin/R
+checking for endianness... little
+checking for cat... /bin/cat
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C++... yes
+checking whether g++ -std=gnu++20 accepts -g... yes
+checking for g++ -std=gnu++20 option to enable C++11 features... -std=gnu++11
+checking whether the C++ compiler supports the 'long long' type... yes
+checking whether the compiler implements namespaces... yes
+checking whether the compiler supports the Standard Template Library... yes
+checking whether std::map is available... yes
+checking for pkg-config... /bin/pkg-config
+checking with 'pkg-config' for the system ICU4C (icu-i18n icu-uc)... 67.1
+checking for ICU4C >= 61... yes
+checking for additional CPPFLAGS, LDFLAGS, and LIBS required... done
+checking whether an ICU4C-based project can be built... yes
+checking programmatically for sufficient U_ICU_VERSION_MAJOR_NUM... yes
+checking the capabilities of the ICU data library (ucnv, uloc, utrans)... yes
+checking the capabilities of the ICU data library (ucol)... yes
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for elf.h... yes
+configure: creating ./config.status
+config.status: creating src/Makevars
+config.status: creating src/uconfig_local.h
+config.status: creating src/install.libs.R
+
+*** stringi configure summary:
+    ICU_FOUND=1
+    STRINGI_CXXSTD=
+    STRINGI_CXXFLAGS=  -fpic
+    STRINGI_CPPFLAGS=-I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H 
+    STRINGI_LDFLAGS=  -L/usr/lib64 
+    STRINGI_LIBS=  -licui18n -licuuc -licudata 
+
+*** Compiler settings used:
+    CXX=g++ -std=gnu++20 -std=gnu++11
+    LD=g++ -std=gnu++20
+    CXXFLAGS=-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection
+    CPPFLAGS=-I/usr/local/include
+    LDFLAGS=
+    LIBS=
+
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H   -I/usr/local/include   -fpic -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c stri_brkiter.cpp -o stri_brkiter.o
+In file included from stri_stringi.h:36,
+                 from stri_brkiter.cpp:32:
+stri_external.h:68:10: fatal error: R.h: No such file or directory
+   68 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: stri_brkiter.o] Error 1
+ERROR: compilation failed for package ‘stringi’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/stringi’
+* installing *source* package ‘cli’ ...
+** this is package ‘cli’ version ‘3.6.6’
+** package ‘cli’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c ansi.c -o ansi.o
+In file included from ansi.c:2:
+cli.h:7:10: fatal error: R.h: No such file or directory
+    7 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: ansi.o] Error 1
+ERROR: compilation failed for package ‘cli’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/cli’
+* installing *source* package ‘glue’ ...
+** this is package ‘glue’ version ‘1.8.1’
+** package ‘glue’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c glue.c -o glue.o
+glue.c:3:10: fatal error: Rinternals.h: No such file or directory
+    3 | #include "Rinternals.h"
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: glue.o] Error 1
+ERROR: compilation failed for package ‘glue’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/glue’
+* installing *source* package ‘magrittr’ ...
+** this is package ‘magrittr’ version ‘2.0.5’
+** package ‘magrittr’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c pipe.c -o pipe.o
+pipe.c:3:10: fatal error: Rinternals.h: No such file or directory
+    3 | #include <Rinternals.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: pipe.o] Error 1
+ERROR: compilation failed for package ‘magrittr’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/magrittr’
+* installing *source* package ‘Rcpp’ ...
+** this is package ‘Rcpp’ version ‘1.1.1-1.1’
+** package ‘Rcpp’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C++ compiler: ‘g++ (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I../inst/include/  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c api.cpp -o api.o
+In file included from ../inst/include/RcppCommon.h:30,
+                 from ../inst/include/Rcpp.h:27,
+                 from api.cpp:26:
+../inst/include/Rcpp/r/headers.h:71:10: fatal error: R.h: No such file or directory
+   71 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:199: api.o] Error 1
+ERROR: compilation failed for package ‘Rcpp’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/Rcpp’
+* installing *source* package ‘data.table’ ...
+** this is package ‘data.table’ version ‘1.18.4’
+** package ‘data.table’ successfully unpacked and MD5 sums checked
+** using staged installation
+gcc 11.5.0
+zlib 1.2.11 is available ok
+* checking if R installation supports OpenMP without any extra hints... yes
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden  -fopenmp  -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c assign.c -o assign.o
+In file included from assign.c:1:
+data.table.h:3:10: fatal error: R.h: No such file or directory
+    3 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: assign.o] Error 1
+ERROR: compilation failed for package ‘data.table’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/data.table’
+* installing *source* package ‘rlang’ ...
+** this is package ‘rlang’ version ‘1.2.0’
+** package ‘rlang’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+gcc -I"/usr/include/R" -DNDEBUG -I./rlang/  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c capture.c -o capture.o
+In file included from capture.c:4:
+./rlang/rlang.h:25:10: fatal error: Rinternals.h: No such file or directory
+   25 | #include <Rinternals.h> // IWYU pragma: export
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/usr/lib64/R/etc/Makeconf:190: capture.o] Error 1
+ERROR: compilation failed for package ‘rlang’
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/rlang’
+ERROR: dependencies ‘cli’, ‘rlang’ are not available for package ‘lifecycle’
+Perhaps try a variation of:
+install.packages(c('cli', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/lifecycle’
+ERROR: dependency ‘Rcpp’ is not available for package ‘RcppArmadillo’
+Perhaps try a variation of:
+install.packages('Rcpp')
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/RcppArmadillo’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’ are not available for package ‘vctrs’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'rlang'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/vctrs’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’, ‘utf8’, ‘vctrs’ are not available for package ‘pillar’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'rlang', 'utf8', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/pillar’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘rlang’, ‘vctrs’ are not available for package ‘tidyselect’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/tidyselect’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘rlang’, ‘stringi’, ‘vctrs’ are not available for package ‘stringr’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'magrittr', 'rlang', 'stringi', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/stringr’
+ERROR: dependencies ‘cli’, ‘lifecycle’, ‘magrittr’, ‘rlang’, ‘vctrs’ are not available for package ‘purrr’
+Perhaps try a variation of:
+install.packages(c('cli', 'lifecycle', 'magrittr', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/purrr’
+ERROR: dependencies ‘cli’, ‘lifecycle’, ‘magrittr’, ‘pillar’, ‘rlang’, ‘vctrs’ are not available for package ‘tibble’
+Perhaps try a variation of:
+install.packages(c('cli', 'lifecycle', 'magrittr', 'pillar', 'rlang', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/tibble’
+ERROR: dependencies ‘cli’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘pillar’, ‘rlang’, ‘tibble’, ‘tidyselect’, ‘vctrs’ are not available for package ‘dplyr’
+Perhaps try a variation of:
+install.packages(c('cli', 'glue', 'lifecycle', 'magrittr', 'pillar', 'rlang', 'tibble', 'tidyselect', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/dplyr’
+ERROR: dependencies ‘cli’, ‘dplyr’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘purrr’, ‘rlang’, ‘stringr’, ‘tibble’, ‘tidyselect’, ‘vctrs’ are not available for package ‘tidyr’
+Perhaps try a variation of:
+install.packages(c('cli', 'dplyr', 'glue', 'lifecycle', 'magrittr', 'purrr', 'rlang', 'stringr', 'tibble', 'tidyselect', 'vctrs'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/tidyr’
+
+The downloaded source packages are in
+	‘/tmp/266918.1.fairshare.q/Rtmpffy38X/downloaded_packages’
+Downloading GitHub repo immunogenomics/presto@HEAD
+Running `R CMD build`...
+* checking for file ‘/tmp/266918.1.fairshare.q/Rtmpffy38X/remotes24018f5540c02f/immunogenomics-presto-a24772a/DESCRIPTION’ ... OK
+* preparing ‘presto’:
+* checking DESCRIPTION meta-information ... OK
+* cleaning src
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+* building ‘presto_1.0.0.tar.gz’
+Installing package into ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6’
+(as ‘lib’ is unspecified)
+ERROR: dependencies ‘Rcpp’, ‘data.table’, ‘dplyr’, ‘tidyr’, ‘purrr’, ‘tibble’, ‘rlang’, ‘RcppArmadillo’ are not available for package ‘presto’
+Perhaps try a variation of:
+install.packages(c('Rcpp', 'data.table', 'dplyr', 'tidyr', 'purrr', 'tibble', 'rlang', 'RcppArmadillo'))
+* removing ‘/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.6/presto’
+Error: Automatic installation of 'presto' failed. Tried remotes::install_github('immunogenomics/presto').
+In addition: There were 19 warnings (use warnings() to see them)
+Execution halted

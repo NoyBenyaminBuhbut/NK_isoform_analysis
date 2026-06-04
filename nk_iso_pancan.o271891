@@ -1,0 +1,43 @@
+Package 'presto' not found. Attempting cluster-side installation from GitHub: immunogenomics/presto
+Downloading GitHub repo immunogenomics/presto@HEAD
+Running `R CMD build`...
+* checking for file ‘/tmp/271891.1.fairshare.q/Rtmp8t47N2/remotes31257756b80e62/immunogenomics-presto-a24772a/DESCRIPTION’ ... OK
+* preparing ‘presto’:
+* checking DESCRIPTION meta-information ... OK
+* cleaning src
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+* building ‘presto_1.0.0.tar.gz’
+* installing *source* package ‘presto’ ...
+** this is package ‘presto’ version ‘1.0.0’
+** using staged installation
+** libs
+using C++ compiler: ‘x86_64-conda-linux-gnu-c++ (conda-forge gcc 15.2.0-19) 15.2.0’
+using C++14
+x86_64-conda-linux-gnu-c++ -std=gnu++14 -I"/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/include" -DNDEBUG  -I'/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library/Rcpp/include' -I'/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library/RcppArmadillo/include' -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -I/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -Wl,-rpath-link,/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1773745610701/work=/usr/local/src/conda/r-base-4.5.3 -fdebug-prefix-map=/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45=/usr/local/src/conda-prefix   -c RcppExports.cpp -o RcppExports.o
+x86_64-conda-linux-gnu-c++ -std=gnu++14 -I"/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/include" -DNDEBUG  -I'/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library/Rcpp/include' -I'/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library/RcppArmadillo/include' -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -I/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -Wl,-rpath-link,/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib    -fpic  -fvisibility-inlines-hidden  -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1773745610701/work=/usr/local/src/conda/r-base-4.5.3 -fdebug-prefix-map=/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45=/usr/local/src/conda-prefix   -c fast_wilcox.cpp -o fast_wilcox.o
+x86_64-conda-linux-gnu-c++ -std=gnu++14 -shared -L/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/lib -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib -Wl,-rpath-link,/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib -L/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib -o presto.so RcppExports.o fast_wilcox.o -L/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/lib -lR
+installing to /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library/00LOCK-presto/00new/presto/libs
+** R
+** data
+*** moving datasets to lazyload DB
+Warning: namespace ‘SummarizedExperiment’ is not available and has been replaced
+by .GlobalEnv when processing object ‘object_sce’
+Warning: namespace ‘SummarizedExperiment’ is not available and has been replaced
+by .GlobalEnv when processing object ‘object_sce’
+Warning: namespace ‘Seurat’ is not available and has been replaced
+by .GlobalEnv when processing object ‘object_seurat’
+Warning: namespace ‘Seurat’ is not available and has been replaced
+by .GlobalEnv when processing object ‘object_seurat’
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (presto)
+Error: PANCAN_CLINICAL_FILE does not exist: /gpfs0/erubin/users/noybenya/tcga_transcripts/pancan_clinical.csv
+Execution halted

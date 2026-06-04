@@ -1,0 +1,405 @@
+Wrote report to: intermediate/pancan_debug/cluster_pancan_diagnostics.txt 
+[1] TRUE
+oybenya/my_research_projects/NK_isoform_analysis 
+
+===== SESSION =====
+R.version.string: R version 4.5.3 (2026-03-11) 
+CONDA_PREFIX: /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45 
+CONDA_ENV_PATH: /gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45 
+PANCAN_TRANSCRIPT_TABLE:  
+PANCAN_CLINICAL_FILE:  
+[1] "/gpfs0/erubin/users/noybenya/R/x86_64-redhat-linux-gnu-library/4.5"
+[2] "/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/lib/R/library" 
+
+===== PACKAGES =====
+presto : TRUE 
+data.table : TRUE 
+R.utils : TRUE 
+Matrix : TRUE 
+
+===== MATRIX FILE =====
+[1] "/gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz"
+
+===== MATRIX HEADER =====
+sample columns in matrix: 19131 
+unique canonical sample ids: 18252 
+duplicated canonical sample ids: 879 
+example duplicated canonical ids:
+ [1] "GTEX-N7MS-2526-" "GTEX-X4EP-0011-" "GTEX-QCQG-1926-" "GTEX-X261-0011-"
+ [5] "GTEX-NPJ8-0007-" "GTEX-12WS9-0011" "GTEX-13NYB-0011" "GTEX-NPJ8-0011-"
+ [9] "GTEX-RNOR-0011-" "GTEX-13QJC-0011" "GTEX-12ZZX-0011" "GTEX-Q2AG-0011-"
+[13] "GTEX-145MI-0011" "GTEX-ZVZQ-0011-" "GTEX-11WQC-0011" "GTEX-11ONC-0011"
+[17] "GTEX-ZUA1-0011-" "GTEX-RTLS-0626-" "GTEX-145MH-0011" "GTEX-S33H-0526-"
+
+===== CLINICAL DISCOVERY =====
+ [1] "/gpfs0/erubin/users/noybenya/data/cohorts/ACC/clinical/ACC_clinical.csv"  
+ [2] "/gpfs0/erubin/users/noybenya/data/cohorts/BLCA/clinical/BLCA_clinical.csv"
+ [3] "/gpfs0/erubin/users/noybenya/data/cohorts/BRCA/clinical/BRCA_clinical.csv"
+ [4] "/gpfs0/erubin/users/noybenya/data/cohorts/CESC/clinical/CESC_clinical.csv"
+ [5] "/gpfs0/erubin/users/noybenya/data/cohorts/CHOL/clinical/CHOL_clinical.csv"
+ [6] "/gpfs0/erubin/users/noybenya/data/cohorts/COAD/clinical/COAD_clinical.csv"
+ [7] "/gpfs0/erubin/users/noybenya/data/cohorts/DLBC/clinical/DLBC_clinical.csv"
+ [8] "/gpfs0/erubin/users/noybenya/data/cohorts/ESCA/clinical/ESCA_clinical.csv"
+ [9] "/gpfs0/erubin/users/noybenya/data/cohorts/GBM/clinical/GBM_clinical.csv"  
+[10] "/gpfs0/erubin/users/noybenya/data/cohorts/HNSC/clinical/HNSC_clinical.csv"
+[11] "/gpfs0/erubin/users/noybenya/data/cohorts/KICH/clinical/KICH_clinical.csv"
+[12] "/gpfs0/erubin/users/noybenya/data/cohorts/KIRC/clinical/KIRC_clinical.csv"
+[13] "/gpfs0/erubin/users/noybenya/data/cohorts/KIRP/clinical/KIRP_clinical.csv"
+[14] "/gpfs0/erubin/users/noybenya/data/cohorts/LAML/clinical/LAML_clinical.csv"
+[15] "/gpfs0/erubin/users/noybenya/data/cohorts/LGG/clinical/LGG_clinical.csv"  
+[16] "/gpfs0/erubin/users/noybenya/data/cohorts/LIHC/clinical/LIHC_clinical.csv"
+[17] "/gpfs0/erubin/users/noybenya/data/cohorts/LUAD/clinical/LUAD_clinical.csv"
+[18] "/gpfs0/erubin/users/noybenya/data/cohorts/LUSC/clinical/LUSC_clinical.csv"
+[19] "/gpfs0/erubin/users/noybenya/data/cohorts/MESO/clinical/MESO_clinical.csv"
+[20] "/gpfs0/erubin/users/noybenya/data/cohorts/OV/clinical/OV_clinical.csv"    
+[21] "/gpfs0/erubin/users/noybenya/data/cohorts/PAAD/clinical/PAAD_clinical.csv"
+[22] "/gpfs0/erubin/users/noybenya/data/cohorts/PCPG/clinical/PCPG_clinical.csv"
+[23] "/gpfs0/erubin/users/noybenya/data/cohorts/PRAD/clinical/PRAD_clinical.csv"
+[24] "/gpfs0/erubin/users/noybenya/data/cohorts/READ/clinical/READ_clinical.csv"
+[25] "/gpfs0/erubin/users/noybenya/data/cohorts/SARC/clinical/SARC_clinical.csv"
+[26] "/gpfs0/erubin/users/noybenya/data/cohorts/SKCM/clinical/SKCM_clinical.csv"
+[27] "/gpfs0/erubin/users/noybenya/data/cohorts/STAD/clinical/STAD_clinical.csv"
+[28] "/gpfs0/erubin/users/noybenya/data/cohorts/TGCT/clinical/TGCT_clinical.csv"
+[29] "/gpfs0/erubin/users/noybenya/data/cohorts/THCA/clinical/THCA_clinical.csv"
+[30] "/gpfs0/erubin/users/noybenya/data/cohorts/THYM/clinical/THYM_clinical.csv"
+[31] "/gpfs0/erubin/users/noybenya/data/cohorts/UCEC/clinical/UCEC_clinical.csv"
+[32] "/gpfs0/erubin/users/noybenya/data/cohorts/UCS/clinical/UCS_clinical.csv"  
+[33] "/gpfs0/erubin/users/noybenya/data/cohorts/UVM/clinical/UVM_clinical.csv"  
+
+===== CLINICAL NORMALIZATION BY FILE =====
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/ACC/clinical/ACC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/ACC/clinical/ACC_clinical.csv
+raw rows: 92  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 92 
+unique patients: 92 
+cohort_id: ACC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/BLCA/clinical/BLCA_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/BLCA/clinical/BLCA_clinical.csv
+raw rows: 411  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 411 
+unique patients: 411 
+cohort_id: BLCA 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/BRCA/clinical/BRCA_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/BRCA/clinical/BRCA_clinical.csv
+raw rows: 1096  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 1096 
+unique patients: 1096 
+cohort_id: BRCA 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/CESC/clinical/CESC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/CESC/clinical/CESC_clinical.csv
+raw rows: 307  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 307 
+unique patients: 307 
+cohort_id: CESC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/CHOL/clinical/CHOL_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/CHOL/clinical/CHOL_clinical.csv
+raw rows: 48  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 48 
+unique patients: 48 
+cohort_id: CHOL 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/COAD/clinical/COAD_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/COAD/clinical/COAD_clinical.csv
+raw rows: 457  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 457 
+unique patients: 457 
+cohort_id: COAD 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/DLBC/clinical/DLBC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/DLBC/clinical/DLBC_clinical.csv
+raw rows: 48  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 48 
+unique patients: 48 
+cohort_id: DLBC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/ESCA/clinical/ESCA_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/ESCA/clinical/ESCA_clinical.csv
+raw rows: 185  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 185 
+unique patients: 185 
+cohort_id: ESCA 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/GBM/clinical/GBM_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/GBM/clinical/GBM_clinical.csv
+raw rows: 596  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 596 
+unique patients: 596 
+cohort_id: GBM 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/HNSC/clinical/HNSC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/HNSC/clinical/HNSC_clinical.csv
+raw rows: 527  raw cols: 6 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up" "OS_time"                "OS_event"              
+normalized rows: 527 
+unique patients: 527 
+cohort_id: HNSC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/KICH/clinical/KICH_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KICH/clinical/KICH_clinical.csv
+raw rows: 112  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 112 
+unique patients: 112 
+cohort_id: KICH 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/KIRC/clinical/KIRC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KIRC/clinical/KIRC_clinical.csv
+raw rows: 537  raw cols: 6 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up" "OS_time"                "OS_event"              
+normalized rows: 537 
+unique patients: 537 
+cohort_id: KIRC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/KIRP/clinical/KIRP_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KIRP/clinical/KIRP_clinical.csv
+raw rows: 290  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 290 
+unique patients: 290 
+cohort_id: KIRP 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/LAML/clinical/LAML_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LAML/clinical/LAML_clinical.csv
+raw rows: 120  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 120 
+unique patients: 120 
+cohort_id: LAML 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/LGG/clinical/LGG_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LGG/clinical/LGG_clinical.csv
+raw rows: 515  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 515 
+unique patients: 515 
+cohort_id: LGG 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/LIHC/clinical/LIHC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LIHC/clinical/LIHC_clinical.csv
+raw rows: 376  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 376 
+unique patients: 376 
+cohort_id: LIHC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/LUAD/clinical/LUAD_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LUAD/clinical/LUAD_clinical.csv
+raw rows: 513  raw cols: 6 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up" "OS_time"                "OS_event"              
+normalized rows: 513 
+unique patients: 513 
+cohort_id: LUAD 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/LUSC/clinical/LUSC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LUSC/clinical/LUSC_clinical.csv
+raw rows: 504  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "days_to_death"          "days_to_last_follow_up"
+[4] "vital_status"          
+normalized rows: 499 
+unique patients: 499 
+cohort_id: LUSC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/MESO/clinical/MESO_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/MESO/clinical/MESO_clinical.csv
+raw rows: 86  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 86 
+unique patients: 86 
+cohort_id: MESO 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/OV/clinical/OV_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/OV/clinical/OV_clinical.csv
+raw rows: 584  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 584 
+unique patients: 584 
+cohort_id: OV 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/PAAD/clinical/PAAD_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PAAD/clinical/PAAD_clinical.csv
+raw rows: 185  raw cols: 6 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up" "OS_time"                "OS_event"              
+normalized rows: 185 
+unique patients: 185 
+cohort_id: PAAD 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/PCPG/clinical/PCPG_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PCPG/clinical/PCPG_clinical.csv
+raw rows: 179  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 179 
+unique patients: 179 
+cohort_id: PCPG 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/PRAD/clinical/PRAD_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PRAD/clinical/PRAD_clinical.csv
+raw rows: 500  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 500 
+unique patients: 500 
+cohort_id: PRAD 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/READ/clinical/READ_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/READ/clinical/READ_clinical.csv
+raw rows: 170  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 170 
+unique patients: 170 
+cohort_id: READ 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/SARC/clinical/SARC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/SARC/clinical/SARC_clinical.csv
+raw rows: 261  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 261 
+unique patients: 261 
+cohort_id: SARC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/SKCM/clinical/SKCM_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/SKCM/clinical/SKCM_clinical.csv
+raw rows: 462  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 462 
+unique patients: 462 
+cohort_id: SKCM 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/STAD/clinical/STAD_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/STAD/clinical/STAD_clinical.csv
+raw rows: 440  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 440 
+unique patients: 440 
+cohort_id: STAD 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/TGCT/clinical/TGCT_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/TGCT/clinical/TGCT_clinical.csv
+raw rows: 247  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 247 
+unique patients: 247 
+cohort_id: TGCT 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/THCA/clinical/THCA_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/THCA/clinical/THCA_clinical.csv
+raw rows: 507  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 507 
+unique patients: 507 
+cohort_id: THCA 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/THYM/clinical/THYM_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/THYM/clinical/THYM_clinical.csv
+raw rows: 123  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 123 
+unique patients: 123 
+cohort_id: THYM 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/UCEC/clinical/UCEC_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UCEC/clinical/UCEC_clinical.csv
+raw rows: 547  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 547 
+unique patients: 547 
+cohort_id: UCEC 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/UCS/clinical/UCS_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UCS/clinical/UCS_clinical.csv
+raw rows: 57  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 57 
+unique patients: 57 
+cohort_id: UCS 
+
+-- FILE: /gpfs0/erubin/users/noybenya/data/cohorts/UVM/clinical/UVM_clinical.csv 
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UVM/clinical/UVM_clinical.csv
+raw rows: 80  raw cols: 4 
+columns:
+[1] "bcr_patient_barcode"    "vital_status"           "days_to_death"         
+[4] "days_to_last_follow_up"
+normalized rows: 80 
+unique patients: 80 
+cohort_id: UVM 
+
+===== BAD CLINICAL FILES =====
+count: 0 
+
+===== MERGED CLINICAL =====
+TOP LEVEL ERROR:
+numbers of columns of arguments do not match 

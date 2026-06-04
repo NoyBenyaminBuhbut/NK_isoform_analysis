@@ -1,0 +1,2356 @@
+checking for R_HOME... /usr/lib64/R
+checking for R... /usr/lib64/R/bin/R
+checking for endianness... little
+checking for cat... /bin/cat
+checking whether the C++ compiler works... yes
+checking for C++ compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C++... yes
+checking whether g++ -std=gnu++20 accepts -g... yes
+checking for g++ -std=gnu++20 option to enable C++11 features... -std=gnu++11
+checking whether the C++ compiler supports the 'long long' type... yes
+checking whether the compiler implements namespaces... yes
+checking whether the compiler supports the Standard Template Library... yes
+checking whether std::map is available... yes
+checking for pkg-config... /bin/pkg-config
+checking with 'pkg-config' for the system ICU4C (icu-i18n icu-uc)... 67.1
+checking for ICU4C >= 61... yes
+checking for additional CPPFLAGS, LDFLAGS, and LIBS required... done
+checking whether an ICU4C-based project can be built... yes
+checking programmatically for sufficient U_ICU_VERSION_MAJOR_NUM... yes
+checking the capabilities of the ICU data library (ucnv, uloc, utrans)... yes
+checking the capabilities of the ICU data library (ucol)... yes
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for elf.h... yes
+configure: creating ./config.status
+config.status: creating src/Makevars
+config.status: creating src/uconfig_local.h
+config.status: creating src/install.libs.R
+
+*** stringi configure summary:
+    ICU_FOUND=1
+    STRINGI_CXXSTD=
+    STRINGI_CXXFLAGS=  -fpic
+    STRINGI_CPPFLAGS=-I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H 
+    STRINGI_LDFLAGS=  -L/usr/lib64 
+    STRINGI_LIBS=  -licui18n -licuuc -licudata 
+
+*** Compiler settings used:
+    CXX=g++ -std=gnu++20 -std=gnu++11
+    LD=g++ -std=gnu++20
+    CXXFLAGS=-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection
+    CPPFLAGS=-I/usr/local/include
+    LDFLAGS=
+    LIBS=
+
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.   -UDEBUG -DNDEBUG -DU_HAVE_ELF_H   -I/usr/local/include   -fpic -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c stri_brkiter.cpp -o stri_brkiter.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -Iutf8lite/src -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c as_utf8.c -o as_utf8.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c exec.c -o exec.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘gitcreds’
+    gitcreds-api                            html  
+    gitcreds-package                        html  
+    gitcreds_cache_envvar                   html  
+    gitcreds_get                            html  
+    gitcreds_list                           html  
+    gitcreds_parse_output                   html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘ini’
+    read.ini                                html  
+    write.ini                               html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -Ilib/  -I/usr/local/include   -DR_NO_REMAP -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c fastmap.cpp -o fastmap.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘otel’
+    as_attributes                           html  
+    counter_add                             html  
+    default_tracer_name                     html  
+    end_span                                html  
+    environmentvariables                    html  
+    extract_http_context                    html  
+    gauge_record                            html  
+    get_active_span                         html  
+    get_active_span_context                 html  
+    get_default_logger_provider             html  
+    get_default_meter_provider              html  
+    get_default_tracer_provider             html  
+    get_logger                              html  
+    get_meter                               html  
+    get_tracer                              html  
+    gettingstarted                          html  
+    histogram_record                        html  
+    is_logging_enabled                      html  
+    is_measuring_enabled                    html  
+    is_tracing_enabled                      html  
+    local_active_span                       html  
+    log                                     html  
+    log_severity_levels                     html  
+    logger_provider_noop                    html  
+    meter_provider_noop                     html  
+    otel_counter                            html  
+    otel_gauge                              html  
+    otel_histogram                          html  
+    otel_logger                             html  
+    otel_logger_provider                    html  
+    otel_meter                              html  
+    otel_meter_provider                     html  
+    otel_span                               html  
+    otel_span_context                       html  
+    otel_tracer                             html  
+    otel_tracer_provider                    html  
+    otel_up_down_counter                    html  
+    pack_http_context                       html  
+    start_local_active_span                 html  
+    start_span                              html  
+    tracer_provider_noop                    html  
+    tracing-constants                       html  
+    up_down_counter_add                     html  
+    with_active_span                        html  
+    zci                                     html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c Reader.cpp -o Reader.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘xtable’
+    autoformat                              html  
+    print.xtable                            html  
+    print.xtableMatharray                   html  
+    sanitize                                html  
+    string                                  html  
+    table.attributes                        html  
+    tli                                     html  
+    toLatex                                 html  
+    xtable-internal                         html  
+    xtable                                  html  
+    xtableFtable                            html  
+    xtableList                              html  
+    xtableMatharray                         html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c assumptions.c -o assumptions.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c diff.c -o diff.o
+Found pkg-config cflags and libs!
+Using PKG_CFLAGS=
+Using PKG_LIBS=-lcurl 
+gcc -I"/usr/include/R" -DNDEBUG -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c callbacks.c -o callbacks.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c glue.c -o glue.o
+gcc -I"/usr/include/R" -DNDEBUG -Iyajl/api  -I/usr/local/include   -fvisibility=hidden  -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c base64.c -o base64.o
+gcc -I"/usr/include/R" -DNDEBUG -Iyajl/api  -I/usr/local/include   -fvisibility=hidden  -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c collapse_array.c -o collapse_array.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘rprojroot’
+    criteria                                html  
+    deprecated                              html  
+    find_root                               html  
+    find_root_file                          html  
+    root_criterion                          html  
+    rprojroot-package                       html  
+    thisfile                                html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘whisker’
+    delimit                                 html  
+    isFalsey                                html  
+    iteratelist                             html  
+    rowSplit                                html  
+    rxsplit                                 html  
+    tag2delim                               html  
+    whisker-package                         html  
+    whisker.escape                          html  
+    whisker.render                          html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c api.c -o api.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c dumper.c -o dumper.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c emitter.c -o emitter.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c implicit.c -o implicit.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c loader.c -o loader.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c parser.c -o parser.o
+gcc -I"/usr/include/R" -DNDEBUG -I. -DNDEBUG  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c r_emit.c -o r_emit.o
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c SpookyV2.cpp -o SpookyV2.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c aes.c -o aes.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3.c -o blake3.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3_dispatch.c -o blake3_dispatch.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c blake3_portable.c -o blake3_portable.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c crc32.c -o crc32.o
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c crc32c.cpp -o crc32c.o
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c crc32c_portable.cpp -o crc32c_portable.o
+gcc -I"/usr/include/R" -DNDEBUG -I.  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c digest.c -o digest.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘brew’
+    brew                                    html  
+    brewCache                               html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+gcc -I"/usr/include/R" -DNDEBUG -Icmark -I. -DCMARK_GFM_STATIC_DEFINE -DCMARK_GFM_EXTENSIONS_STATIC_DEFINE -DR_NO_REMAP -DSTRICT_R_HEADERS  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c extensions.c -o extensions.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c brio.c -o brio.o
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c pipe.c -o pipe.o
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+  converting help for package ‘praise’
+    praise                                  html  
+    praise_parts                            html  
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+gcc -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -Wall px.c -o px
+gcc -I"/usr/include/R" -DNDEBUG   -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c init.c -o init.o
+gcc -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c ansi.c -o ansi.o
+tar xf ../tools/libuv-v1.52.0.tar.gz && \
+CC="gcc" CFLAGS="-O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fpic" CPPFLAGS="-I/usr/local/include" AR="ar" RANLIB="ranlib" LDFLAGS="-Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 " cmake -S libuv-v1.52.0 -B libuv-v1.52.0 -DLIBUV_BUILD_SHARED=OFF && cmake --build libuv-v1.52.0 && \
+cp -f libuv-v1.52.0/libuv.a libuv && \
+cp -Rf libuv-v1.52.0/include/* . &&\
+rm -Rf libuv-v1.52.0
+-- The C compiler identification is GNU 11.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test UV_LINT_W4
+-- Performing Test UV_LINT_W4 - Failed
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC - Failed
+-- Performing Test UV_LINT_NO_HIDES_LOCAL
+-- Performing Test UV_LINT_NO_HIDES_LOCAL - Failed
+-- Performing Test UV_LINT_NO_HIDES_PARAM
+-- Performing Test UV_LINT_NO_HIDES_PARAM - Failed
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC - Failed
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC - Failed
+-- Performing Test UV_LINT_WALL
+-- Performing Test UV_LINT_WALL - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER - Success
+-- Performing Test UV_LINT_STRICT_PROTOTYPES
+-- Performing Test UV_LINT_STRICT_PROTOTYPES - Success
+-- Performing Test UV_LINT_EXTRA
+-- Performing Test UV_LINT_EXTRA - Success
+-- Performing Test UV_LINT_UTF8_MSVC
+-- Performing Test UV_LINT_UTF8_MSVC - Failed
+-- Performing Test UV_F_STRICT_ALIASING
+-- Performing Test UV_F_STRICT_ALIASING - Success
+-- summary of build options:
+    Install prefix:  /usr/local
+    Target system:   Linux
+    Compiler:
+      C compiler:    /bin/gcc (GNU)
+      CFLAGS:         -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -fpic
+
+-- Configuring done (2.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0
+gmake[1]: Entering directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+make[2]: Entering directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+make[3]: Entering directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+make[3]: Leaving directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+make[3]: Entering directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+[  2%] Building C object CMakeFiles/uv_a.dir/src/fs-poll.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/idna.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/inet.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/random.c.o
+[ 13%] Building C object CMakeFiles/uv_a.dir/src/strscpy.c.o
+[ 16%] Building C object CMakeFiles/uv_a.dir/src/strtok.c.o
+[ 19%] Building C object CMakeFiles/uv_a.dir/src/thread-common.c.o
+[ 22%] Building C object CMakeFiles/uv_a.dir/src/threadpool.c.o
+[ 25%] Building C object CMakeFiles/uv_a.dir/src/timer.c.o
+[ 27%] Building C object CMakeFiles/uv_a.dir/src/uv-common.c.o
+[ 30%] Building C object CMakeFiles/uv_a.dir/src/uv-data-getter-setters.c.o
+[ 33%] Building C object CMakeFiles/uv_a.dir/src/version.c.o
+[ 36%] Building C object CMakeFiles/uv_a.dir/src/unix/async.c.o
+[ 38%] Building C object CMakeFiles/uv_a.dir/src/unix/core.c.o
+[ 41%] Building C object CMakeFiles/uv_a.dir/src/unix/dl.c.o
+[ 44%] Building C object CMakeFiles/uv_a.dir/src/unix/fs.c.o
+[ 47%] Building C object CMakeFiles/uv_a.dir/src/unix/getaddrinfo.c.o
+[ 50%] Building C object CMakeFiles/uv_a.dir/src/unix/getnameinfo.c.o
+[ 52%] Building C object CMakeFiles/uv_a.dir/src/unix/loop-watcher.c.o
+[ 55%] Building C object CMakeFiles/uv_a.dir/src/unix/loop.c.o
+[ 58%] Building C object CMakeFiles/uv_a.dir/src/unix/pipe.c.o
+[ 61%] Building C object CMakeFiles/uv_a.dir/src/unix/poll.c.o
+[ 63%] Building C object CMakeFiles/uv_a.dir/src/unix/process.c.o
+[ 66%] Building C object CMakeFiles/uv_a.dir/src/unix/random-devurandom.c.o
+[ 69%] Building C object CMakeFiles/uv_a.dir/src/unix/signal.c.o
+[ 72%] Building C object CMakeFiles/uv_a.dir/src/unix/stream.c.o
+[ 75%] Building C object CMakeFiles/uv_a.dir/src/unix/tcp.c.o
+[ 77%] Building C object CMakeFiles/uv_a.dir/src/unix/thread.c.o
+[ 80%] Building C object CMakeFiles/uv_a.dir/src/unix/tty.c.o
+[ 83%] Building C object CMakeFiles/uv_a.dir/src/unix/udp.c.o
+[ 86%] Building C object CMakeFiles/uv_a.dir/src/unix/proctitle.c.o
+[ 88%] Building C object CMakeFiles/uv_a.dir/src/unix/linux.c.o
+[ 91%] Building C object CMakeFiles/uv_a.dir/src/unix/procfs-exepath.c.o
+[ 94%] Building C object CMakeFiles/uv_a.dir/src/unix/random-getrandom.c.o
+[ 97%] Building C object CMakeFiles/uv_a.dir/src/unix/random-sysctl-linux.c.o
+[100%] Linking C static library libuv.a
+make[3]: Leaving directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+[100%] Built target uv_a
+make[2]: Leaving directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+gmake[1]: Leaving directory '/tmp/262891.1.fairshare.q/Rtmpz8AnYs/R.INSTALL2dba074a3b6b75/fs/src/libuv-v1.52.0'
+g++ -std=gnu++20 -I"/usr/include/R" -DNDEBUG -I.//include -I. -pthread  -I/usr/local/include    -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection   -c dir.cc -o dir.o
+** Running ./configure
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+Current platform: x86_64-redhat-linux-gnu 
+Build platform:   
+Target platform:   
+
+Compiling R6 
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+
+Compiling cli 
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+Warning: R include directory is empty -- perhaps need to install R-devel.rpm or similar
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+using C compiler: ‘gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11.0.2)’
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+make[1]: Entering directory '/tmp/262891.1.fairshare.q/RtmpmUG2Eq/R.INSTALL2dbe7713cbc5ca/pak/src/library/cli/src'
+gcc -I"/usr/include/R" -DNDEBUG -I../inst/include  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c ansi.c -o ansi.o
+/bin/sh: scl: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `scl'
+/bin/sh: which: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `which'
+/bin/sh: module: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `module'
+/bin/sh: ml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `ml'
+/bin/sh: switchml: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `switchml'
+/bin/sh: _module_raw: line 1: syntax error: unexpected end of file
+/bin/sh: error importing function definition for `_module_raw'
+In file included from ansi.c:2:
+cli.h:7:10: fatal error: R.h: No such file or directory
+    7 | #include <R.h>
+      |          ^~~~~
+compilation terminated.
+make[1]: *** [/usr/lib64/R/etc/Makeconf:190: ansi.o] Error 1
+make[1]: Leaving directory '/tmp/262891.1.fairshare.q/RtmpmUG2Eq/R.INSTALL2dbe7713cbc5ca/pak/src/library/cli/src'
+ERROR: compilation failed for package ‘cli’
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+Error in install_one(pkg, lib = lib) : FAILED
+Calls: install_embedded_main -> install_all -> install_one
+Execution halted
+sh: switchml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `switchml'
+sh: module: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `module'
+sh: scl: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `scl'
+sh: ml: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `ml'
+sh: _module_raw: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `_module_raw'
+sh: which: line 1: syntax error: unexpected end of file
+sh: error importing function definition for `which'
+gcc -I"/usr/include/R" -DNDEBUG -I./rlang/  -I/usr/local/include   -fvisibility=hidden -fpic  -O2 -flto=auto -ffat-lto-objects -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -m64 -march=x86-64-v2 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection  -c capture.c -o capture.o
