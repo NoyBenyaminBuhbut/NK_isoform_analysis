@@ -12,16 +12,16 @@ ensure_presto_installed <- function(
 
   message("Package 'presto' not found. Attempting cluster-side installation from GitHub: ", github_repo)
 
-  if (!requireNamespace("devtools", quietly = TRUE)) {
-    message("Package 'devtools' not found. Installing from CRAN: ", cran_repo)
-    utils::install.packages("devtools", repos = cran_repo, quiet = FALSE)
+  if (!requireNamespace("remotes", quietly = TRUE)) {
+    message("Package 'remotes' not found. Installing from CRAN: ", cran_repo)
+    utils::install.packages("remotes", repos = cran_repo, quiet = FALSE)
   }
 
-  devtools::install_github(github_repo, upgrade = "never", dependencies = TRUE, quiet = FALSE)
+  remotes::install_github(github_repo, upgrade = "never", dependencies = TRUE, quiet = FALSE)
 
   if (!requireNamespace("presto", quietly = TRUE)) {
     stop(
-      "Automatic installation of 'presto' failed. Tried devtools::install_github('",
+      "Automatic installation of 'presto' failed. Tried remotes::install_github('",
       github_repo,
       "').",
       call. = FALSE
