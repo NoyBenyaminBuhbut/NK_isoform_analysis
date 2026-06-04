@@ -17,7 +17,7 @@ ensure_presto_installed <- function(
     utils::install.packages("remotes", repos = cran_repo, quiet = FALSE)
   }
 
-  remotes::install_github(github_repo, upgrade = "never", dependencies = TRUE, quiet = FALSE)
+  remotes::install_github(github_repo, upgrade = "never", dependencies = NA, quiet = FALSE)
 
   if (!requireNamespace("presto", quietly = TRUE)) {
     stop(
