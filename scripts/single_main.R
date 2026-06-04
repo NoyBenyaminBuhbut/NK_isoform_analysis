@@ -6,6 +6,17 @@ ensure_presto_installed <- function(
     github_repo = "immunogenomics/presto",
     cran_repo = Sys.getenv("R_CRAN_MIRROR", unset = "https://cloud.r-project.org")
 ) {
+  required_cran_packages <- c(
+    "Rcpp",
+    "data.table",
+    "dplyr",
+    "tidyr",
+    "purrr",
+    "tibble",
+    "rlang",
+    "RcppArmadillo"
+  )
+
   if (requireNamespace("presto", quietly = TRUE)) {
     return(invisible(TRUE))
   }
@@ -17,7 +28,18 @@ ensure_presto_installed <- function(
     utils::install.packages("remotes", repos = cran_repo, quiet = FALSE)
   }
 
-  remotes::install_github(github_repo, upgrade = "never", dependencies = NA, quiet = FALSE)
+  missing_required <- required_cran_packages[
+    !vapply(required_cran_packages, requireNamespace, logical(1), quietly = TRUE)
+  ]
+  if (length(missing_required) > 0L) {
+    message(
+      "Installing required CRAN dependencies for presto: ",
+      paste(missing_required, collapse = ", ")
+    )
+    utils::install.packages(missing_required, repos = cran_repo, quiet = FALSE)
+  }
+
+  remotes::install_github(github_repo, upgrade = "never", dependencies = FALSE, quiet = FALSE)
 
   if (!requireNamespace("presto", quietly = TRUE)) {
     stop(
