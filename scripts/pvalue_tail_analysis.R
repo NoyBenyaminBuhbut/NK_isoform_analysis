@@ -184,7 +184,7 @@ crossing_to_raw_p <- function(crossing_x, x_scale) {
 
 plot_curve_analysis <- function(curve, corrected_y, peak_x, crossing_x, analysis_label, x_scale, out_file) {
   y_max <- max(c(curve$y, corrected_y), na.rm = TRUE)
-  graphics::png(filename = out_file, width = 1400, height = 900, res = 150)
+  grDevices::png(filename = out_file, width = 1400, height = 900, res = 150)
   on.exit(grDevices::dev.off(), add = TRUE)
 
   graphics::plot(
