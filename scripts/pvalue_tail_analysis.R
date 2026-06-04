@@ -243,7 +243,6 @@ plot_curve_analysis <- function(curve, corrected_y, diff_y, peak_x, crossing_x, 
   thresholds <- raw_p_threshold_positions(x_scale)
 
   grDevices::png(filename = paste0(out_prefix, "_full.png"), width = 1400, height = 900, res = 150)
-  on.exit(grDevices::dev.off(), add = TRUE)
 
   graphics::plot(
     curve$x, curve$y,
