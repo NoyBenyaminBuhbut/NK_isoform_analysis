@@ -102,6 +102,125 @@ read_cluster_table <- function(path) {
   df
 }
 
+discover_pancan_clinical_files <- function() {
+  candidate_roots <- c(
+    file.path("data", "cohorts"),
+    file.path("GDCdata", "cohorts"),
+    path.expand("~/data/cohorts")
+  )
+  candidate_roots <- unique(candidate_roots[dir.exists(candidate_roots)])
+
+  if (length(candidate_roots) < 1L) {
+    stop(
+      "Could not find cohort clinical roots for pancan. Tried:\n",
+      paste(c(file.path("data", "cohorts"), file.path("GDCdata", "cohorts"), path.expand("~/data/cohorts")), collapse = "\n"),
+      call. = FALSE
+    )
+  }
+
+  files <- character(0)
+  for (root_dir in candidate_roots) {
+    clinical_dirs <- list.dirs(root_dir, recursive = FALSE, full.names = TRUE)
+    if (length(clinical_dirs) < 1L) {
+      next
+    }
+    for (cohort_dir in clinical_dirs) {
+      clinical_dir <- file.path(cohort_dir, "clinical")
+      if (dir.exists(clinical_dir)) {
+        files <- c(files, get_single_file_in_dir(clinical_dir))
+      }
+    }
+  }
+
+  files <- unique(files[file.exists(files)])
+  if (length(files) < 1L) {
+    stop("No cohort clinical files were found for pancan assembly.", call. = FALSE)
+  }
+
+  files
+}
+
+infer_cohort_id_from_clinical_df <- function(clin_df) {
+  candidate_cols <- c(
+    "cohort_id",
+    "cohort",
+    "project_id",
+    "project",
+    "study",
+    "acronym",
+    "cancer_type_abbreviation"
+  )
+  present_cols <- intersect(candidate_cols, names(clin_df))
+  if (length(present_cols) < 1L) {
+    return(rep(NA_character_, nrow(clin_df)))
+  }
+
+  for (col_name in present_cols) {
+    values <- trimws(as.character(clin_df[[col_name]]))
+    values[!nzchar(values)] <- NA_character_
+    if (all(!is.na(values))) {
+      return(values)
+    }
+  }
+
+  values <- trimws(as.character(clin_df[[present_cols[[1L]]]]))
+  values[!nzchar(values)] <- NA_character_
+  values
+}
+
+load_pancan_clinical_df <- function(
+    pancan_clinical_file = Sys.getenv("PANCAN_CLINICAL_FILE", unset = ""),
+    merged_output_file = file.path("intermediate", "splitted_cohorts", "clin_based", "pancan", "pancan_merged_clinical.csv")
+) {
+  if (nzchar(pancan_clinical_file)) {
+    clinical_file <- path.expand(pancan_clinical_file)
+    if (!file.exists(clinical_file)) {
+      stop("PANCAN_CLINICAL_FILE does not exist: ", clinical_file, call. = FALSE)
+    }
+
+    clin_df <- read_cluster_table(clinical_file)
+    clin_df <- normalize_clinical_df_for_split(clin_df)
+    cohort_values <- infer_cohort_id_from_clinical_df(clin_df)
+    if (anyNA(cohort_values) || !all(nzchar(cohort_values))) {
+      stop(
+        "Pancan clinical table must contain a cohort-identifying column such as cohort_id, cohort, project_id, or acronym.",
+        call. = FALSE
+      )
+    }
+    clin_df$cohort_id <- as.character(cohort_values)
+    return(list(
+      clinical_df = clin_df,
+      clinical_file = clinical_file,
+      auto_built = FALSE
+    ))
+  }
+
+  clinical_files <- discover_pancan_clinical_files()
+  clin_list <- vector("list", length(clinical_files))
+
+  for (i in seq_along(clinical_files)) {
+    file_path <- clinical_files[[i]]
+    clin_df <- read_cluster_table(file_path)
+    clin_df <- normalize_clinical_df_for_split(clin_df)
+    clin_df$cohort_id <- basename(dirname(dirname(file_path)))
+    clin_list[[i]] <- clin_df
+  }
+
+  merged_df <- do.call(rbind, clin_list)
+  merged_df$cohort_id <- as.character(merged_df$cohort_id)
+  merged_df <- merged_df[!duplicated(merged_df$bcr_patient_barcode), , drop = FALSE]
+  rownames(merged_df) <- NULL
+
+  dir.create(dirname(merged_output_file), recursive = TRUE, showWarnings = FALSE)
+  utils::write.csv(merged_df, merged_output_file, row.names = FALSE)
+
+  list(
+    clinical_df = merged_df,
+    clinical_file = merged_output_file,
+    auto_built = TRUE
+  )
+}
+
 resolve_matrix_file <- function(
     cohort_id,
     pancan_matrix_file = Sys.getenv(
@@ -260,6 +379,47 @@ split_clinical_into_tertiles <- function(clin_df) {
   )
 }
 
+split_clinical_into_tertiles_by_cohort <- function(clin_df, cohort_col = "cohort_id") {
+  if (!(cohort_col %in% names(clin_df))) {
+    stop("Clinical table is missing cohort column '", cohort_col, "'.", call. = FALSE)
+  }
+
+  cohort_values <- trimws(as.character(clin_df[[cohort_col]]))
+  if (any(is.na(cohort_values)) || any(!nzchar(cohort_values))) {
+    stop("Clinical table contains missing cohort labels required for pancan stratified splitting.", call. = FALSE)
+  }
+
+  split_dfs <- split(clin_df, cohort_values, drop = TRUE)
+  low_list <- vector("list", length(split_dfs))
+  high_list <- vector("list", length(split_dfs))
+  names(low_list) <- names(split_dfs)
+  names(high_list) <- names(split_dfs)
+
+  for (cohort_name in names(split_dfs)) {
+    cohort_df <- split_dfs[[cohort_name]]
+    if (nrow(cohort_df) < 3L) {
+      stop(
+        "Cohort '", cohort_name, "' has fewer than 3 clinical rows after normalization; cannot create non-overlapping T1/T3 tertiles.",
+        call. = FALSE
+      )
+    }
+
+    tertiles <- split_clinical_into_tertiles(cohort_df)
+    low_list[[cohort_name]] <- tertiles$low_survival_clin
+    high_list[[cohort_name]] <- tertiles$high_survival_clin
+  }
+
+  low_survival_clin <- do.call(rbind, low_list)
+  high_survival_clin <- do.call(rbind, high_list)
+  rownames(low_survival_clin) <- NULL
+  rownames(high_survival_clin) <- NULL
+
+  list(
+    low_survival_clin = low_survival_clin,
+    high_survival_clin = high_survival_clin
+  )
+}
+
 patient_ids_to_tier_samples <- function(patient_ids) {
   patient_ids <- as.character(patient_ids)
   patient_ids <- patient_ids[!is.na(patient_ids) & nzchar(patient_ids)]
@@ -362,13 +522,20 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   cohort_label <- if (tolower(cohort_id) == "pancan") "pancan" else toupper(as.character(cohort_id))
 
   matrix_file <- resolve_matrix_file(cohort_label)
-  clinical_file <- resolve_clinical_file(cohort_label)
-
   expr_df <- read_cluster_table(matrix_file)
-  clin_df <- read_cluster_table(clinical_file)
-  clin_df <- normalize_clinical_df_for_split(clin_df)
 
-  split_res <- split_clinical_into_tertiles(clin_df)
+  if (cohort_label == "pancan") {
+    pancan_clin <- load_pancan_clinical_df()
+    clin_df <- pancan_clin$clinical_df
+    clinical_file <- pancan_clin$clinical_file
+    split_res <- split_clinical_into_tertiles_by_cohort(clin_df, cohort_col = "cohort_id")
+  } else {
+    clinical_file <- resolve_clinical_file(cohort_label)
+    clin_df <- read_cluster_table(clinical_file)
+    clin_df <- normalize_clinical_df_for_split(clin_df)
+    split_res <- split_clinical_into_tertiles(clin_df)
+  }
+
   low_survival_clin <- split_res$low_survival_clin
   high_survival_clin <- split_res$high_survival_clin
 

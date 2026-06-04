@@ -64,6 +64,6 @@ else
   mkdir -p "$R_LIBS_USER"
 fi
 export PANCAN_TRANSCRIPT_TABLE="${PANCAN_TRANSCRIPT_TABLE:-$HOME/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz}"
-export PANCAN_CLINICAL_FILE="${PANCAN_CLINICAL_FILE:-$HOME/tcga_transcripts/pancan_clinical.csv}"
+export PANCAN_CLINICAL_FILE="${PANCAN_CLINICAL_FILE:-}"
 
 Rscript -e 'source("scripts/single_main.R"); run_significants_one_cohort("pancan", max_p_value=0.05)'
