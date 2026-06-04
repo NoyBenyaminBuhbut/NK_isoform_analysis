@@ -78,9 +78,15 @@ read_cluster_table <- function(path) {
 
   message("Reading table: ", path)
 
-  if (requireNamespace("data.table", quietly = TRUE)) {
+  can_use_fread <- requireNamespace("data.table", quietly = TRUE) &&
+    (!grepl("\\.gz$", path, ignore.case = TRUE) || requireNamespace("R.utils", quietly = TRUE))
+
+  if (can_use_fread) {
     df <- data.table::fread(path, data.table = FALSE, check.names = FALSE, showProgress = FALSE)
   } else {
+    if (grepl("\\.gz$", path, ignore.case = TRUE) && requireNamespace("data.table", quietly = TRUE)) {
+      message("Falling back to base R reader for gzipped table because R.utils is not installed.")
+    }
     sep <- detect_table_sep(path)
     con <- if (grepl("\\.gz$", path, ignore.case = TRUE)) gzfile(path, open = "rt") else file(path, open = "rt")
     on.exit(close(con), add = TRUE)
