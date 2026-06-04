@@ -7,7 +7,10 @@
 
 set -euo pipefail
 
-cd "$HOME/NK_isoform_analysis"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+cd "$REPO_ROOT"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PANCAN_TRANSCRIPT_TABLE="${PANCAN_TRANSCRIPT_TABLE:-$HOME/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz}"
