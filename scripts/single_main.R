@@ -587,6 +587,11 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   if (!is.data.frame(expr_df)) {
     expr_df <- as.data.frame(expr_df, stringsAsFactors = FALSE, check.names = FALSE)
   }
+  normalization_label <- if (!is.null(normalization_gene) && nzchar(as.character(normalization_gene))) {
+    normalization_label_from_id(as.character(normalization_gene))
+  } else {
+    "unspecified"
+  }
   matrix_file <- if (!is.null(prepared_matrix_file) && nzchar(as.character(prepared_matrix_file))) {
     as.character(prepared_matrix_file)
   } else {
@@ -637,7 +642,7 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
 
   presto_sig <- presto_res[is.finite(presto_res$padj) & (presto_res$padj <= max_p_value), , drop = FALSE]
 
-  presto_out_dir <- file.path("results", "presto", cohort_label)
+  presto_out_dir <- file.path("results", "presto", normalization_label, cohort_label)
   dir.create(presto_out_dir, recursive = TRUE, showWarnings = FALSE)
   utils::write.csv(presto_res, file.path(presto_out_dir, paste0(cohort_label, "_T1_vs_T3_presto.csv")), row.names = FALSE)
   utils::write.csv(presto_sig, file.path(presto_out_dir, paste0(cohort_label, "_T1_vs_T3_presto_padj_le_", max_p_value, ".csv")), row.names = FALSE)

@@ -75,7 +75,7 @@ export PANCAN_TRANSCRIPT_TABLE="${PANCAN_TRANSCRIPT_TABLE:-$HOME/tcga_transcript
 export PANCAN_CLINICAL_FILE="${PANCAN_CLINICAL_FILE:-}"
 export NORMALIZATION_GENE="${NORMALIZATION_GENE:-asitself}"
 
-mkdir -p results/presto/pancan intermediate/splitted_cohorts/clin_based/pancan
+mkdir -p results/presto intermediate/splitted_cohorts/clin_based/pancan
 
 echo "PWD=$(pwd)"
 echo "JOB_WORKDIR=${JOB_WORKDIR}"
