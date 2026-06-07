@@ -1,9 +1,34 @@
 #!/usr/bin/env Rscript
 
-script_path_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
-script_path <- if (length(script_path_arg) > 0L) sub("^--file=", "", script_path_arg[[1L]]) else file.path("scripts", "export_biomart_hg19.R")
-script_dir <- normalizePath(dirname(script_path), winslash = "/", mustWork = FALSE)
-repo_root <- normalizePath(file.path(script_dir, ".."), winslash = "/", mustWork = TRUE)
+resolve_repo_root <- function(default_script_relpath) {
+  script_path_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+  script_path <- if (length(script_path_arg) > 0L) {
+    sub("^--file=", "", script_path_arg[[1L]])
+  } else {
+    default_script_relpath
+  }
+
+  candidate_roots <- unique(c(
+    tryCatch(normalizePath(file.path(dirname(script_path), ".."), winslash = "/", mustWork = TRUE), error = function(...) NA_character_),
+    tryCatch(normalizePath(Sys.getenv("SGE_O_WORKDIR", unset = ""), winslash = "/", mustWork = TRUE), error = function(...) NA_character_),
+    tryCatch(normalizePath(getwd(), winslash = "/", mustWork = TRUE), error = function(...) NA_character_)
+  ))
+  candidate_roots <- candidate_roots[!is.na(candidate_roots) & nzchar(candidate_roots)]
+
+  for (candidate_root in candidate_roots) {
+    if (file.exists(file.path(candidate_root, "R", "utility.R"))) {
+      return(candidate_root)
+    }
+  }
+
+  stop(
+    "Could not resolve repository root. Tried:\n",
+    paste(candidate_roots, collapse = "\n"),
+    call. = FALSE
+  )
+}
+
+repo_root <- resolve_repo_root(file.path("scripts", "export_biomart_hg19.R"))
 setwd(repo_root)
 
 source(file.path(repo_root, "R", "utility.R"))
