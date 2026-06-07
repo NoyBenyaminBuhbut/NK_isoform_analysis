@@ -1,0 +1,7 @@
+Cohort: LIHC
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.LIHC.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/LIHC/genes/LIHC_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 21.1M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  2 21.1M    2  457k    0     0   289k      0  0:01:14  0:00:01  0:01:13  289k 11 21.1M   11 2429k    0     0   972k      0  0:00:22  0:00:02  0:00:20  972k 23 21.1M   23 5014k    0     0  1445k      0  0:00:14  0:00:03  0:00:11 1445k 32 21.1M   32 7053k    0     0  1569k      0  0:00:13  0:00:04  0:00:09 1568k 41 21.1M   41 9077k    0     0  1660k      0  0:00:13  0:00:05  0:00:08 1908k 49 21.1M   49 10.4M    0     0  1651k      0  0:00:13  0:00:06  0:00:07 2088k 58 21.1M   58 12.4M    0     0  1702k      0  0:00:12  0:00:07  0:00:05 2069k 67 21.1M   67 14.1M    0     0  1709k      0  0:00:12  0:00:08  0:00:04 1891k 76 21.1M   76 16.2M    0     0  1752k      0  0:00:12  0:00:09  0:00:03 1918k 85 21.1M   85 17.9M    0     0  1754k      0  0:00:12  0:00:10  0:00:02 1858k 94 21.1M   94 19.9M    0     0  1784k      0  0:00:12  0:00:11  0:00:01 1958k100 21.1M  100 21.1M    0     0  1795k      0  0:00:12  0:00:12 --:--:-- 1946k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/LIHC/genes/LIHC_gene_expr.tsv.gz

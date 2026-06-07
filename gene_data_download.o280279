@@ -1,0 +1,7 @@
+Cohort: DLBC
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.DLBC.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/DLBC/genes/DLBC_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 2555k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 35 2555k   35  917k    0     0   485k      0  0:00:05  0:00:01  0:00:04  485k100 2555k  100 2555k    0     0  1193k      0  0:00:02  0:00:02 --:--:-- 1193k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/DLBC/genes/DLBC_gene_expr.tsv.gz

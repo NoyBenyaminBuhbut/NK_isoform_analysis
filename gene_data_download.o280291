@@ -1,0 +1,7 @@
+Cohort: READ
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.READ.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/READ/genes/READ_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  2 5605k    2  162k    0     0   139k      0  0:00:40  0:00:01  0:00:39  138k 38 5605k   38 2164k    0     0  1039k      0  0:00:05  0:00:02  0:00:03 1039k100 5605k  100 5605k    0     0  2302k      0  0:00:02  0:00:02 --:--:-- 2301k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/READ/genes/READ_gene_expr.tsv.gz

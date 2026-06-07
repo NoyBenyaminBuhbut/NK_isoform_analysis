@@ -1,0 +1,7 @@
+Cohort: LUSC
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.LUSC.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/LUSC/genes/LUSC_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  1 28.6M    1  307k    0     0   244k      0  0:02:00  0:00:01  0:01:59  244k 13 28.6M   13 4060k    0     0  1826k      0  0:00:16  0:00:02  0:00:14 1825k 31 28.6M   31 9196k    0     0  2828k      0  0:00:10  0:00:03  0:00:07 2828k 44 28.6M   44 12.7M    0     0  3100k      0  0:00:09  0:00:04  0:00:05 3099k 55 28.6M   55 15.8M    0     0  3102k      0  0:00:09  0:00:05  0:00:04 3304k 67 28.6M   67 19.2M    0     0  3178k      0  0:00:09  0:00:06  0:00:03 3925k 79 28.6M   79 22.6M    0     0  3214k      0  0:00:09  0:00:07  0:00:02 3832k 91 28.6M   91 26.2M    0     0  3281k      0  0:00:08  0:00:08 --:--:-- 3578k100 28.6M  100 28.6M    0     0  3307k      0  0:00:08  0:00:08 --:--:-- 3495k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/LUSC/genes/LUSC_gene_expr.tsv.gz

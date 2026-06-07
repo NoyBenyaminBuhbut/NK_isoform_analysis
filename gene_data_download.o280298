@@ -1,0 +1,7 @@
+Cohort: UCEC
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.UCEC.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/UCEC/genes/UCEC_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 10.4M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 12 10.4M   12 1318k    0     0   813k      0  0:00:13  0:00:01  0:00:12  813k 40 10.4M   40 4295k    0     0  1644k      0  0:00:06  0:00:02  0:00:04 1643k 70 10.4M   70 7591k    0     0  2102k      0  0:00:05  0:00:03  0:00:02 2101k 98 10.4M   98 10.3M    0     0  2291k      0  0:00:04  0:00:04 --:--:-- 2291k100 10.4M  100 10.4M    0     0  2322k      0  0:00:04  0:00:04 --:--:-- 2680k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/UCEC/genes/UCEC_gene_expr.tsv.gz

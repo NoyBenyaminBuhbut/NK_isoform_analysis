@@ -1,0 +1,54 @@
+PWD=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+JOB_WORKDIR=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+CONDA_PREFIX=/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45
+CONDA_ENV_PATH=/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45
+Rscript=/gpfs0/erubin/users/noybenya/.conda/envs/nk_iso_r45/bin/Rscript
+PANCAN_TRANSCRIPT_TABLE=/gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+PANCAN_CLINICAL_FILE=<auto>
+Running isoform analysis for cohort_id=pancan
+Using matrix file: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+Reading table: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+Falling back to base R reader for gzipped table because R.utils is not installed.
+Expression table dimensions: 198619 features x 19131 samples
+Auto-building pancan clinical table from 33 cohort clinical files.
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/ACC/clinical/ACC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/BLCA/clinical/BLCA_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/BRCA/clinical/BRCA_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/CESC/clinical/CESC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/CHOL/clinical/CHOL_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/COAD/clinical/COAD_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/DLBC/clinical/DLBC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/ESCA/clinical/ESCA_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/GBM/clinical/GBM_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/HNSC/clinical/HNSC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KICH/clinical/KICH_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KIRC/clinical/KIRC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/KIRP/clinical/KIRP_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LAML/clinical/LAML_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LGG/clinical/LGG_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LIHC/clinical/LIHC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LUAD/clinical/LUAD_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/LUSC/clinical/LUSC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/MESO/clinical/MESO_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/OV/clinical/OV_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PAAD/clinical/PAAD_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PCPG/clinical/PCPG_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/PRAD/clinical/PRAD_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/READ/clinical/READ_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/SARC/clinical/SARC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/SKCM/clinical/SKCM_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/STAD/clinical/STAD_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/TGCT/clinical/TGCT_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/THCA/clinical/THCA_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/THYM/clinical/THYM_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UCEC/clinical/UCEC_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UCS/clinical/UCS_clinical.csv
+Reading table: /gpfs0/erubin/users/noybenya/data/cohorts/UVM/clinical/UVM_clinical.csv
+Merged pancan clinical table has 11157 rows across 33 cohorts. Saved to: intermediate/splitted_cohorts/clin_based/pancan/pancan_merged_clinical.csv
+Built pancan T1/T3 splits from 33 cohorts.
+Using clinical file: intermediate/splitted_cohorts/clin_based/pancan/pancan_merged_clinical.csv
+T1 patient count: 3707; T3 patient count: 3707
+T1 sample count: 3707; T3 sample count: 3707
+Matched matrix samples: 6077 columns for presto
+Presto result rows: 397238
+Wrote presto outputs to: results/presto/pancan

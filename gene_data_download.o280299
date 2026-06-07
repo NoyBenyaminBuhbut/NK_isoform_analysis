@@ -1,0 +1,7 @@
+Cohort: UCS
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.UCS.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/UCS/genes/UCS_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  8 3153k    8  270k    0     0   192k      0  0:00:16  0:00:01  0:00:15  192k100 3153k  100 3153k    0     0  1450k      0  0:00:02  0:00:02 --:--:-- 1451k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/UCS/genes/UCS_gene_expr.tsv.gz

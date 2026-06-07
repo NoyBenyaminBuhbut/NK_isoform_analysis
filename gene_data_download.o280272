@@ -1,0 +1,7 @@
+Cohort: PAAD
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.PAAD.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/PAAD/genes/PAAD_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  3 9829k    3  355k    0     0   256k      0  0:00:38  0:00:01  0:00:37  255k 41 9829k   41 4090k    0     0  1660k      0  0:00:05  0:00:02  0:00:03 1660k 67 9829k   67 6666k    0     0  1970k      0  0:00:04  0:00:03  0:00:01 1969k 98 9829k   98 9642k    0     0  2213k      0  0:00:04  0:00:04 --:--:-- 2212k100 9829k  100 9829k    0     0  2200k      0  0:00:04  0:00:04 --:--:-- 2384k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/PAAD/genes/PAAD_gene_expr.tsv.gz

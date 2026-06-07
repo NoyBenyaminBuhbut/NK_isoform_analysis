@@ -1,0 +1,7 @@
+Cohort: ESCA
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.ESCA.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/ESCA/genes/ESCA_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 10.4M    0 50713    0     0  46826      0  0:03:53  0:00:01  0:03:52 46826 18 10.4M   18 2007k    0     0  1001k      0  0:00:10  0:00:02  0:00:08 1001k 71 10.4M   71 7639k    0     0  2534k      0  0:00:04  0:00:03  0:00:01 2534k100 10.4M  100 10.4M    0     0  2774k      0  0:00:03  0:00:03 --:--:-- 2774k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/ESCA/genes/ESCA_gene_expr.tsv.gz

@@ -1,0 +1,7 @@
+Cohort: TGCT
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.TGCT.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/TGCT/genes/TGCT_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 8606k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  9 8606k    9  780k    0     0   479k      0  0:00:17  0:00:01  0:00:16  479k 44 8606k   44 3860k    0     0  1494k      0  0:00:05  0:00:02  0:00:03 1494k 75 8606k   75 6468k    0     0  1794k      0  0:00:04  0:00:03  0:00:01 1793k100 8606k  100 8606k    0     0  2036k      0  0:00:04  0:00:04 --:--:-- 2036k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/TGCT/genes/TGCT_gene_expr.tsv.gz

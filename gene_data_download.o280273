@@ -1,0 +1,7 @@
+Cohort: ACC
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.ACC.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/ACC/genes/ACC_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 4143k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 23 4143k   23  968k    0     0   569k      0  0:00:07  0:00:01  0:00:06  569k 92 4143k   92 3831k    0     0  1438k      0  0:00:02  0:00:02 --:--:-- 1437k100 4143k  100 4143k    0     0  1492k      0  0:00:02  0:00:02 --:--:-- 1491k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/ACC/genes/ACC_gene_expr.tsv.gz

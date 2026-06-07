@@ -1,0 +1,7 @@
+Cohort: GBM
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.GBM.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/GBM/genes/GBM_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 9138k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 10 9138k   10  967k    0     0   526k      0  0:00:17  0:00:01  0:00:16  526k 68 9138k   68 6258k    0     0  2271k      0  0:00:04  0:00:02  0:00:02 2270k100 9138k  100 9138k    0     0  2487k      0  0:00:03  0:00:03 --:--:-- 2487k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/GBM/genes/GBM_gene_expr.tsv.gz

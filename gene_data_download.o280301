@@ -1,0 +1,7 @@
+Cohort: UVM
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.UVM.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/UVM/genes/UVM_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 4121k    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 14 4121k   14  578k    0     0   386k      0  0:00:10  0:00:01  0:00:09  385k 89 4121k   89 3697k    0     0  1527k      0  0:00:02  0:00:02 --:--:-- 1526k100 4121k  100 4121k    0     0  1638k      0  0:00:02  0:00:02 --:--:-- 1638k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/UVM/genes/UVM_gene_expr.tsv.gz

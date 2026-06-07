@@ -1,0 +1,7 @@
+Cohort: PRAD
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.PRAD.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/PRAD/genes/PRAD_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 27.9M    0  168k    0     0   125k      0  0:03:49  0:00:01  0:03:48  124k  8 27.9M    8 2447k    0     0  1079k      0  0:00:26  0:00:02  0:00:24 1078k 21 27.9M   21 6110k    0     0  1884k      0  0:00:15  0:00:03  0:00:12 1884k 31 27.9M   31 9134k    0     0  2154k      0  0:00:13  0:00:04  0:00:09 2154k 44 27.9M   44 12.3M    0     0  2399k      0  0:00:11  0:00:05  0:00:06 2515k 56 27.9M   56 15.8M    0     0  2604k      0  0:00:10  0:00:06  0:00:04 3288k 68 27.9M   68 19.1M    0     0  2711k      0  0:00:10  0:00:07  0:00:03 3456k 81 27.9M   81 22.7M    0     0  2828k      0  0:00:10  0:00:08  0:00:02 3439k 93 27.9M   93 26.2M    0     0  2897k      0  0:00:09  0:00:09 --:--:-- 3524k100 27.9M  100 27.9M    0     0  2942k      0  0:00:09  0:00:09 --:--:-- 3580k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/PRAD/genes/PRAD_gene_expr.tsv.gz

@@ -1,0 +1,7 @@
+Cohort: OV
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.OV.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/OV/genes/OV_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 16.1M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  5 16.1M    5  933k    0     0   542k      0  0:00:30  0:00:01  0:00:29  542k 28 16.1M   28 4739k    0     0  1804k      0  0:00:09  0:00:02  0:00:07 1804k 50 16.1M   50 8355k    0     0  2298k      0  0:00:07  0:00:03  0:00:04 2297k 70 16.1M   70 11.3M    0     0  2524k      0  0:00:06  0:00:04  0:00:02 2523k 94 16.1M   94 15.2M    0     0  2776k      0  0:00:05  0:00:05 --:--:-- 3131k100 16.1M  100 16.1M    0     0  2820k      0  0:00:05  0:00:05 --:--:-- 3770k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/OV/genes/OV_gene_expr.tsv.gz

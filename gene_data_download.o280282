@@ -1,0 +1,7 @@
+Cohort: KICH
+URL: https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.KICH.sampleMap%2FHiSeqV2.gz
+Destination: /gpfs0/erubin/users/noybenya/data/cohorts/KICH/genes/KICH_gene_expr.tsv.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 4868k    0 33328    0     0  36867      0  0:02:15 --:--:--  0:02:15 36826 19 4868k   19  950k    0     0   519k      0  0:00:09  0:00:01  0:00:08  519k100 4868k  100 4868k    0     0  1838k      0  0:00:02  0:00:02 --:--:-- 1838k
+Download completed: /gpfs0/erubin/users/noybenya/data/cohorts/KICH/genes/KICH_gene_expr.tsv.gz
