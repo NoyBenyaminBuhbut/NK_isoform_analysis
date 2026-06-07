@@ -1,0 +1,255 @@
+suppressPackageStartupMessages({
+  library(biomaRt)
+})
+
+pick_attr <- function(mart, candidates) {
+  attrs <- listAttributes(mart)$name
+  hit <- candidates[candidates %in% attrs]
+  if (length(hit) == 0) stop("Missing attribute(s): ", paste(candidates, collapse = ", "), call. = FALSE)
+  hit[[1]]
+}
+
+pick_filter <- function(mart, candidates) {
+  flt <- listFilters(mart)$name
+  hit <- candidates[candidates %in% flt]
+  if (length(hit) == 0) stop("Missing filter(s): ", paste(candidates, collapse = ", "), call. = FALSE)
+  hit[[1]]
+}
+
+strand_to_symbol <- function(x) {
+  ifelse(is.na(x), NA_character_, ifelse(x == 1, "+", ifelse(x == -1, "-", "*")))
+}
+
+coord_string <- function(chr, start, end, strand_sym) {
+  paste0(chr, ":", start, "-", end, ":", strand_sym)
+}
+
+overlaps <- function(a_start, a_end, b_start, b_end) {
+  !(is.na(a_start) | is.na(a_end) | is.na(b_start) | is.na(b_end)) &
+    (a_end >= b_start) & (a_start <= b_end)
+}
+
+safe_getBM <- function(tag, ...) {
+  message("getBM: ", tag)
+  out <- tryCatch(
+    getBM(...),
+    error = function(e) {
+      stop("getBM failed at [", tag, "]: ", conditionMessage(e), call. = FALSE)
+    }
+  )
+  out
+}
+
+export_biomart_tables_hg19 <- function(
+    genes_csv_path = "config/genes.csv",
+    out_dir = "intermediate/biomart"
+) {
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+  genes_df <- read.csv(genes_csv_path, stringsAsFactors = FALSE, check.names = FALSE)
+  if (!"gene_id" %in% colnames(genes_df)) {
+    stop("Expected column 'gene_id' in ", genes_csv_path, " (HGNC symbols).", call. = FALSE)
+  }
+  gene_symbols <- trimws(as.character(genes_df$gene_id))
+  gene_symbols <- unique(gene_symbols[!is.na(gene_symbols) & gene_symbols != ""])
+  if (length(gene_symbols) == 0) stop("No gene symbols found in genes.csv column gene_id.", call. = FALSE)
+
+  mart <- useMart(
+    biomart = "ensembl",
+    dataset = "hsapiens_gene_ensembl",
+    host = "https://grch37.ensembl.org"
+  )
+
+  A_SYMBOL <- pick_attr(mart, c("hgnc_symbol"))
+  F_SYMBOL <- pick_filter(mart, c("hgnc_symbol"))
+
+  A_GENE_CHR <- pick_attr(mart, c("chromosome_name"))
+  A_GENE_START <- pick_attr(mart, c("start_position"))
+  A_GENE_END <- pick_attr(mart, c("end_position"))
+  A_GENE_STRAND <- pick_attr(mart, c("strand"))
+
+  A_TX_ID <- pick_attr(mart, c("ensembl_transcript_id"))
+  F_TX_ID <- pick_filter(mart, c("ensembl_transcript_id"))
+  A_TX_CHR <- pick_attr(mart, c("chromosome_name"))
+  A_TX_START <- pick_attr(mart, c("transcript_start"))
+  A_TX_END <- pick_attr(mart, c("transcript_end"))
+  A_TX_STRAND <- pick_attr(mart, c("strand"))
+
+  A_EXON_ID <- pick_attr(mart, c("ensembl_exon_id"))
+  A_EXON_RANK <- pick_attr(mart, c("rank"))
+  A_EXON_START <- pick_attr(mart, c("exon_chrom_start", "exon_genomic_start"))
+  A_EXON_END <- pick_attr(mart, c("exon_chrom_end", "exon_genomic_end"))
+  A_EXON_CHR <- A_GENE_CHR
+  A_EXON_STRAND <- A_GENE_STRAND
+
+  A_GCOD_START <- pick_attr(mart, c("genomic_coding_start"))
+  A_GCOD_END <- pick_attr(mart, c("genomic_coding_end"))
+
+  gene_raw <- safe_getBM(
+    tag = "gene_raw",
+    attributes = c(A_SYMBOL, A_GENE_CHR, A_GENE_START, A_GENE_END, A_GENE_STRAND),
+    filters = F_SYMBOL,
+    values = gene_symbols,
+    mart = mart
+  )
+
+  gene_raw$strand_sym <- strand_to_symbol(gene_raw[[A_GENE_STRAND]])
+  gene_tbl <- data.frame(
+    gene_id = gene_raw[[A_SYMBOL]],
+    gene_coord = coord_string(gene_raw[[A_GENE_CHR]], gene_raw[[A_GENE_START]], gene_raw[[A_GENE_END]], gene_raw$strand_sym),
+    stringsAsFactors = FALSE
+  )
+  gene_tbl <- gene_tbl[!is.na(gene_tbl$gene_id) & gene_tbl$gene_id != "", , drop = FALSE]
+  gene_tbl <- gene_tbl[!duplicated(gene_tbl[, c("gene_id", "gene_coord")]), , drop = FALSE]
+
+  iso_tx_raw <- safe_getBM(
+    tag = "iso_tx_raw",
+    attributes = c(A_SYMBOL, A_TX_ID, A_TX_CHR, A_TX_START, A_TX_END, A_TX_STRAND),
+    filters = F_SYMBOL,
+    values = gene_symbols,
+    mart = mart
+  )
+
+  iso_tx_raw$strand_sym <- strand_to_symbol(iso_tx_raw[[A_TX_STRAND]])
+  iso_tx_raw$isoform_coord <- coord_string(
+    iso_tx_raw[[A_TX_CHR]],
+    iso_tx_raw[[A_TX_START]],
+    iso_tx_raw[[A_TX_END]],
+    iso_tx_raw$strand_sym
+  )
+
+  tx_ids <- unique(iso_tx_raw[[A_TX_ID]])
+  tx_ids <- tx_ids[!is.na(tx_ids) & tx_ids != ""]
+  if (length(tx_ids) == 0) stop("No transcript IDs returned from iso_tx_raw.", call. = FALSE)
+
+  map_exon_raw <- safe_getBM(
+    tag = "map_exon_raw_by_tx_with_genomic_coding",
+    attributes = c(
+      A_TX_ID,
+      A_EXON_ID, A_EXON_RANK,
+      A_EXON_CHR, A_EXON_START, A_EXON_END, A_EXON_STRAND,
+      A_GCOD_START, A_GCOD_END
+    ),
+    filters = F_TX_ID,
+    values = tx_ids,
+    mart = mart
+  )
+
+  map_exon_raw <- merge(
+    map_exon_raw,
+    iso_tx_raw[, c(A_SYMBOL, A_TX_ID, "strand_sym")],
+    by = A_TX_ID,
+    all.x = TRUE
+  )
+
+  map_exon_raw$exon_coord <- coord_string(
+    map_exon_raw[[A_EXON_CHR]],
+    map_exon_raw[[A_EXON_START]],
+    map_exon_raw[[A_EXON_END]],
+    strand_to_symbol(map_exon_raw[[A_EXON_STRAND]])
+  )
+
+  exon_overlaps_cds <- overlaps(
+    a_start = map_exon_raw[[A_EXON_START]],
+    a_end = map_exon_raw[[A_EXON_END]],
+    b_start = map_exon_raw[[A_GCOD_START]],
+    b_end = map_exon_raw[[A_GCOD_END]]
+  )
+
+  mapped_exons_to_isoforms <- data.frame(
+    gene_id = map_exon_raw[[A_SYMBOL]],
+    isoform_id = map_exon_raw[[A_TX_ID]],
+    exon_id = map_exon_raw[[A_EXON_ID]],
+    exon_rank = suppressWarnings(as.integer(map_exon_raw[[A_EXON_RANK]])),
+    exon_coord = map_exon_raw$exon_coord,
+    exon_overlaps_cds = exon_overlaps_cds,
+    stringsAsFactors = FALSE
+  )
+
+  mapped_exons_to_isoforms <- mapped_exons_to_isoforms[
+    !is.na(mapped_exons_to_isoforms$gene_id) & mapped_exons_to_isoforms$gene_id != "" &
+      !is.na(mapped_exons_to_isoforms$isoform_id) & mapped_exons_to_isoforms$isoform_id != "" &
+      !is.na(mapped_exons_to_isoforms$exon_id) & mapped_exons_to_isoforms$exon_id != "" &
+      !is.na(mapped_exons_to_isoforms$exon_coord) & mapped_exons_to_isoforms$exon_coord != "",
+    ,
+    drop = FALSE
+  ]
+
+  mapped_exons_to_isoforms <- mapped_exons_to_isoforms[
+    !duplicated(mapped_exons_to_isoforms[, c("gene_id", "isoform_id", "exon_id", "exon_rank", "exon_coord")]),
+    ,
+    drop = FALSE
+  ]
+
+  exon_tbl <- mapped_exons_to_isoforms[, c("gene_id", "exon_id", "exon_coord")]
+  exon_tbl <- exon_tbl[!duplicated(exon_tbl[, c("gene_id", "exon_coord")]), , drop = FALSE]
+
+  cds_start <- tapply(
+    map_exon_raw[[A_GCOD_START]],
+    map_exon_raw[[A_TX_ID]],
+    function(x) if (all(is.na(x))) NA_integer_ else min(x, na.rm = TRUE)
+  )
+  cds_end <- tapply(
+    map_exon_raw[[A_GCOD_END]],
+    map_exon_raw[[A_TX_ID]],
+    function(x) if (all(is.na(x))) NA_integer_ else max(x, na.rm = TRUE)
+  )
+
+  cds_span <- data.frame(
+    isoform_id = names(cds_start),
+    cds_start = as.integer(cds_start),
+    cds_end = as.integer(cds_end),
+    stringsAsFactors = FALSE
+  )
+
+  iso_raw2 <- merge(
+    iso_tx_raw,
+    cds_span,
+    by.x = A_TX_ID,
+    by.y = "isoform_id",
+    all.x = TRUE
+  )
+
+  cds_coord2 <- ifelse(
+    is.na(iso_raw2$cds_start) | is.na(iso_raw2$cds_end),
+    NA_character_,
+    coord_string(iso_raw2[[A_TX_CHR]], iso_raw2$cds_start, iso_raw2$cds_end, iso_raw2$strand_sym)
+  )
+
+  iso_tbl <- data.frame(
+    gene_id = iso_raw2[[A_SYMBOL]],
+    isoform_id = iso_raw2[[A_TX_ID]],
+    cds_coord = cds_coord2,
+    isoform_coord = iso_raw2$isoform_coord,
+    stringsAsFactors = FALSE
+  )
+
+  iso_tbl <- iso_tbl[
+    !is.na(iso_tbl$gene_id) & iso_tbl$gene_id != "" &
+      !is.na(iso_tbl$isoform_id) & iso_tbl$isoform_id != "",
+    ,
+    drop = FALSE
+  ]
+  iso_tbl <- iso_tbl[!duplicated(iso_tbl[, c("gene_id", "isoform_id", "cds_coord", "isoform_coord")]), , drop = FALSE]
+
+  returned_symbols <- unique(c(gene_tbl$gene_id, iso_tbl$gene_id, exon_tbl$gene_id))
+  missing_symbols <- setdiff(gene_symbols, returned_symbols)
+  missing_tbl <- data.frame(gene_id = missing_symbols, stringsAsFactors = FALSE)
+
+  NK_genes_info <- gene_tbl
+  NK_exons_info <- exon_tbl
+  NK_isoform_info <- iso_tbl
+
+  save(NK_genes_info, file = file.path(out_dir, "NK_genes_info.RDA"))
+  save(NK_exons_info, file = file.path(out_dir, "NK_exons_info.RDA"))
+  save(NK_isoform_info, file = file.path(out_dir, "NK_isoform_info.RDA"))
+  save(mapped_exons_to_isoforms, file = file.path(out_dir, "mapped_exons_to_isoforms.RDA"))
+
+  invisible(list(
+    gene = NK_genes_info,
+    exon = NK_exons_info,
+    isoform = NK_isoform_info,
+    exon_isoform_map = mapped_exons_to_isoforms,
+    missing = missing_tbl
+  ))
+}

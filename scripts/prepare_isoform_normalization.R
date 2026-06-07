@@ -8,6 +8,73 @@ setwd(repo_root)
 
 source(file.path(repo_root, "R", "utility.R"))
 
+ensure_biomart_annotation_available <- function(
+    genes_config = "config/genes.csv",
+    out_dir = file.path("intermediate", "biomart")
+) {
+  biomart_override <- Sys.getenv("BIOMART_ISOFORM_INFO_RDA", unset = "")
+  if (nzchar(biomart_override) && file.exists(path.expand(biomart_override))) {
+    return(path.expand(biomart_override))
+  }
+
+  expected_files <- c(
+    file.path(out_dir, "NK_genes_info.RDA"),
+    file.path(out_dir, "NK_exons_info.RDA"),
+    file.path(out_dir, "NK_isoform_info.RDA"),
+    file.path(out_dir, "mapped_exons_to_isoforms.RDA")
+  )
+
+  if (all(file.exists(expected_files))) {
+    return(expected_files)
+  }
+
+  if (!is.character(genes_config) || length(genes_config) != 1L) {
+    stop(
+      "genes_config must be a path string when biomart annotation needs to be generated locally.",
+      call. = FALSE
+    )
+  }
+  if (!file.exists(genes_config)) {
+    stop("genes_config file not found: ", genes_config, call. = FALSE)
+  }
+
+  biomart_script <- file.path(repo_root, "R", "biomart_hg19_info.R")
+  if (!file.exists(biomart_script)) {
+    stop("Biomart export script not found: ", biomart_script, call. = FALSE)
+  }
+
+  source(biomart_script)
+  if (!exists("export_biomart_tables_hg19", mode = "function")) {
+    stop("export_biomart_tables_hg19() was not loaded from: ", biomart_script, call. = FALSE)
+  }
+
+  export_biomart_tables_hg19(
+    genes_csv_path = genes_config,
+    out_dir = out_dir
+  )
+
+  if (!all(file.exists(expected_files))) {
+    stop(
+      "Biomart export completed but required annotation files are still missing from: ",
+      out_dir,
+      call. = FALSE
+    )
+  }
+
+  write_manifest_file(
+    folder_path = out_dir,
+    manifest_entries = list(
+      genes_config = normalizePath(genes_config, winslash = "/", mustWork = TRUE),
+      output_files = normalizePath(expected_files, winslash = "/", mustWork = TRUE),
+      transformation = "Exported BioMart GRCh37 gene, exon, isoform, and exon-to-isoform annotation tables for isoform-to-gene mapping.",
+      created_at = format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z")
+    ),
+    file_name = "manifest.txt"
+  )
+
+  expected_files
+}
+
 normalize_feature_core <- function(feature_ids) {
   sub("\\..*$", "", as.character(feature_ids))
 }
@@ -90,6 +157,7 @@ validate_no_duplicate_ids <- function(ids, label) {
 
 candidate_gene_matrix_from_feature_rows <- function(gene_df, needed_gene_ids) {
   gene_ids <- trimws(as.character(gene_df[[1L]]))
+  needed_gene_ids_upper <- toupper(as.character(needed_gene_ids))
   sample_ids_raw <- names(gene_df)[-1L]
   sample_ids_canonical <- canonicalize_matrix_sample_ids(sample_ids_raw)
 
@@ -105,7 +173,7 @@ candidate_gene_matrix_from_feature_rows <- function(gene_df, needed_gene_ids) {
     sample_ids_raw = sample_ids_raw,
     sample_ids_canonical = sample_ids_canonical,
     matrix = mat,
-    needed_gene_hits = sum(unique(needed_gene_ids) %in% gene_ids, na.rm = TRUE)
+    needed_gene_hits = sum(unique(needed_gene_ids_upper) %in% toupper(gene_ids), na.rm = TRUE)
   )
 }
 
@@ -115,6 +183,7 @@ candidate_gene_matrix_from_sample_rows <- function(gene_df, needed_gene_ids) {
   validate_no_duplicate_ids(sample_ids_canonical, "gene-expression sample IDs after canonicalization")
 
   gene_ids <- names(gene_df)[-1L]
+  needed_gene_ids_upper <- toupper(as.character(needed_gene_ids))
   mat <- t(as.matrix(gene_df[, -1L, drop = FALSE]))
   storage.mode(mat) <- "numeric"
   rownames(mat) <- gene_ids
@@ -126,7 +195,7 @@ candidate_gene_matrix_from_sample_rows <- function(gene_df, needed_gene_ids) {
     sample_ids_raw = sample_ids_raw,
     sample_ids_canonical = sample_ids_canonical,
     matrix = mat,
-    needed_gene_hits = sum(unique(needed_gene_ids) %in% gene_ids, na.rm = TRUE)
+    needed_gene_hits = sum(unique(needed_gene_ids_upper) %in% toupper(gene_ids), na.rm = TRUE)
   )
 }
 
@@ -164,7 +233,11 @@ standardize_gene_expression_matrix <- function(gene_file, target_sample_ids_cano
   candidate <- choose_gene_matrix_candidate(gene_df, target_sample_ids_canonical, needed_gene_ids)
 
   gene_ids <- trimws(as.character(candidate$gene_ids))
-  keep_gene_rows <- !is.na(gene_ids) & nzchar(gene_ids) & gene_ids %in% needed_gene_ids
+  gene_ids_upper <- toupper(gene_ids)
+  needed_gene_ids_chr <- as.character(needed_gene_ids)
+  needed_gene_ids_upper <- toupper(needed_gene_ids_chr)
+  needed_gene_map <- setNames(needed_gene_ids_chr, needed_gene_ids_upper)
+  keep_gene_rows <- !is.na(gene_ids) & nzchar(gene_ids) & gene_ids_upper %in% needed_gene_ids_upper
   if (!any(keep_gene_rows)) {
     return(list(
       file = gene_file,
@@ -177,7 +250,8 @@ standardize_gene_expression_matrix <- function(gene_file, target_sample_ids_cano
 
   gene_matrix <- candidate$matrix[keep_gene_rows, , drop = FALSE]
   gene_ids <- gene_ids[keep_gene_rows]
-  rownames(gene_matrix) <- gene_ids
+  gene_ids_upper <- gene_ids_upper[keep_gene_rows]
+  rownames(gene_matrix) <- unname(needed_gene_map[gene_ids_upper])
 
   validate_no_duplicate_ids(rownames(gene_matrix), paste0("gene IDs in gene-expression file ", gene_file))
 
@@ -289,6 +363,7 @@ align_gene_expression_matrix_to_isoforms <- function(gene_expr, isoform_sample_i
 }
 
 load_and_filter_isoform_expression <- function(cohort_label, genes_config = "config/genes.csv") {
+  ensure_biomart_annotation_available(genes_config = genes_config)
   isoform_matrix_file <- resolve_isoform_matrix_file(cohort_label)
   isoform_expr_df <- read_cluster_table(isoform_matrix_file)
   if (!is.data.frame(isoform_expr_df) || ncol(isoform_expr_df) < 2L) {

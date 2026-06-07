@@ -323,27 +323,37 @@ resolve_gene_matrix_file <- function(
 }
 
 resolve_biomart_isoform_info_file <- function(
-    biomart_isoform_info_file = Sys.getenv(
-      "BIOMART_ISOFORM_INFO_RDA",
-      unset = file.path("..", "NK_exon_analysis", "intermediate", "biomart", "NK_isoform_info.RDA")
-    )
+    biomart_isoform_info_file = Sys.getenv("BIOMART_ISOFORM_INFO_RDA", unset = "")
 ) {
-  resolved_path <- path.expand(biomart_isoform_info_file)
-  if (!file.exists(resolved_path)) {
-    stop(
-      "Biomart isoform info file not found: ", resolved_path,
-      "\nSet BIOMART_ISOFORM_INFO_RDA to the transcript-to-gene RDA path.",
-      call. = FALSE
-    )
+  candidates <- character(0)
+
+  if (nzchar(biomart_isoform_info_file)) {
+    candidates <- c(candidates, path.expand(biomart_isoform_info_file))
   }
-  resolved_path
+
+  candidates <- c(
+    candidates,
+    file.path("intermediate", "biomart", "NK_isoform_info.RDA"),
+    file.path("..", "NK_exon_analysis", "intermediate", "biomart", "NK_isoform_info.RDA")
+  )
+  candidates <- unique(candidates)
+
+  for (candidate in candidates) {
+    if (file.exists(candidate)) {
+      return(candidate)
+    }
+  }
+
+  stop(
+    "Biomart isoform info file not found. Tried:\n",
+    paste(candidates, collapse = "\n"),
+    "\nSet BIOMART_ISOFORM_INFO_RDA or generate local biomart annotation under intermediate/biomart.",
+    call. = FALSE
+  )
 }
 
 load_biomart_isoform_info <- function(
-    biomart_isoform_info_file = Sys.getenv(
-      "BIOMART_ISOFORM_INFO_RDA",
-      unset = file.path("..", "NK_exon_analysis", "intermediate", "biomart", "NK_isoform_info.RDA")
-    )
+    biomart_isoform_info_file = Sys.getenv("BIOMART_ISOFORM_INFO_RDA", unset = "")
 ) {
   resolved_path <- resolve_biomart_isoform_info_file(biomart_isoform_info_file)
   env <- new.env(parent = emptyenv())
