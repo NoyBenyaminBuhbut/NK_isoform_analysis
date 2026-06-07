@@ -1,0 +1,18 @@
+genes_config: /home/noyb/Desktop/bioinformatics_projects/NK_isoform_analysis/config/genes.csv
+output_files:
+  - /home/noyb/Desktop/bioinformatics_projects/NK_isoform_analysis/intermediate/biomart/NK_genes_info.RDA
+  - /home/noyb/Desktop/bioinformatics_projects/NK_isoform_analysis/intermediate/biomart/NK_exons_info.RDA
+  - /home/noyb/Desktop/bioinformatics_projects/NK_isoform_analysis/intermediate/biomart/NK_isoform_info.RDA
+  - /home/noyb/Desktop/bioinformatics_projects/NK_isoform_analysis/intermediate/biomart/mapped_exons_to_isoforms.RDA
+supplemented_gene_symbols:
+  - KIR2DL5
+  - KIR2DS3
+  - KIR3DS1
+  - SLAMF3
+  - SLAMF5
+supplemental_sources:
+  - HGNC REST search endpoints for approved-symbol resolution
+  - Current Ensembl BioMart (https://www.ensembl.org) for missing-gene transcript/exon annotation
+missing_gene_symbols: NA
+transformation: Exported BioMart GRCh37 gene, exon, isoform, and exon-to-isoform annotation tables.
+created_at: 2026-06-07 17:58:29 EEST

@@ -30,6 +30,8 @@ write_manifest_file(
   manifest_entries = list(
     genes_config = normalizePath(genes_config, winslash = "/", mustWork = TRUE),
     output_files = normalizePath(expected_files, winslash = "/", mustWork = TRUE),
+    supplemented_gene_symbols = result$supplemented$gene_id,
+    supplemental_sources = result$supplemental_sources,
     missing_gene_symbols = result$missing$gene_id,
     transformation = "Exported BioMart GRCh37 gene, exon, isoform, and exon-to-isoform annotation tables.",
     created_at = format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z")
