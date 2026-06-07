@@ -1,0 +1,69 @@
+#!/bin/bash
+#$ -cwd
+#$ -S /bin/bash
+#$ -N gene_data_download
+#$ -j y
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  bash scripts/gene_data_download <COHORT_ID>
+  COHORT_ID=PRAD qsub scripts/gene_data_download
+
+Optional environment variables:
+  OUTPUT_ROOT      Root directory for downloaded cohort data. Default: ~/data/cohorts
+  FORCE_DOWNLOAD   Set to 1 to overwrite an existing file.
+  DOWNLOAD_URL     Override the auto-generated TCGA Xena URL.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+cohort_id="${COHORT_ID:-${1:-}}"
+if [[ -z "${cohort_id}" ]]; then
+  usage >&2
+  exit 1
+fi
+
+output_root="${OUTPUT_ROOT:-$HOME/data/cohorts}"
+dest_dir="${output_root}/${cohort_id}/genes"
+dest_file="${dest_dir}/${cohort_id}_gene_expr.tsv.gz"
+download_url="${DOWNLOAD_URL:-https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.${cohort_id}.sampleMap%2FHiSeqV2.gz}"
+tmp_file="${dest_file}.part"
+
+mkdir -p "${dest_dir}"
+
+if [[ -f "${dest_file}" && "${FORCE_DOWNLOAD:-0}" != "1" ]]; then
+  echo "Gene expression file already exists. Skipping download: ${dest_file}"
+  exit 0
+fi
+
+rm -f "${tmp_file}"
+trap 'rm -f "${tmp_file}"' EXIT
+
+echo "Cohort: ${cohort_id}"
+echo "URL: ${download_url}"
+echo "Destination: ${dest_file}"
+
+if command -v curl >/dev/null 2>&1; then
+  curl -fL --retry 3 --retry-delay 5 --output "${tmp_file}" "${download_url}"
+elif command -v wget >/dev/null 2>&1; then
+  wget -O "${tmp_file}" "${download_url}"
+else
+  echo "Neither curl nor wget is available on PATH." >&2
+  exit 1
+fi
+
+if command -v gzip >/dev/null 2>&1; then
+  gzip -t "${tmp_file}"
+fi
+
+mv "${tmp_file}" "${dest_file}"
+trap - EXIT
+
+echo "Download completed: ${dest_file}"
