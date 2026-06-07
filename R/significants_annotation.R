@@ -166,17 +166,7 @@ split_results_by_gene_type <- function(
     stop(sprintf("Missing '%s' column in out_annot", gene_id_col), call. = FALSE)
   }
   
-  # ---- load genes_config if path ----
-  if (is.character(genes_config) && length(genes_config) == 1L) {
-    if (!file.exists(genes_config)) {
-      stop(sprintf("genes_config file not found: %s", genes_config), call. = FALSE)
-    }
-    genes_df <- read.csv(genes_config, stringsAsFactors = FALSE, check.names = FALSE)
-  } else if (is.data.frame(genes_config)) {
-    genes_df <- genes_config
-  } else {
-    stop("genes_config must be either a data.frame or a single file path string", call. = FALSE)
-  }
+  genes_df <- normalize_gene_type_map(genes_config)
   
   # ---- sanity: genes_df ----
   if (!gene_id_col %in% names(genes_df)) {
@@ -190,16 +180,6 @@ split_results_by_gene_type <- function(
   out_annot[[gene_id_col]] <- as.character(out_annot[[gene_id_col]])
   genes_df[[gene_id_col]]  <- as.character(genes_df[[gene_id_col]])
   genes_df[[type_col]]     <- as.character(genes_df[[type_col]])
-  
-  # ---- allowed types ----
-  allowed_types <- c("experiment", "positive", "negative")
-  bad_types <- setdiff(unique(genes_df[[type_col]]), allowed_types)
-  if (length(bad_types) > 0L) {
-    stop(
-      sprintf("Invalid gene types in genes_config: %s", paste(bad_types, collapse = ", ")),
-      call. = FALSE
-    )
-  }
   
   # ---- map gene_id -> type ----
   type_map <- setNames(genes_df[[type_col]], genes_df[[gene_id_col]])
@@ -222,15 +202,18 @@ split_results_by_gene_type <- function(
   out_experiment <- out_annot[out_annot$type == "experiment", , drop = FALSE]
   out_positive   <- out_annot[out_annot$type == "positive",   , drop = FALSE]
   out_negative   <- out_annot[out_annot$type == "negative",   , drop = FALSE]
+  out_normalization <- out_annot[out_annot$type == "normalization", , drop = FALSE]
   
   out_experiment$type <- NULL
   out_positive$type   <- NULL
   out_negative$type   <- NULL
+  out_normalization$type <- NULL
   
   list(
     experiment = out_experiment,
     positive   = out_positive,
-    negative   = out_negative
+    negative   = out_negative,
+    normalization = out_normalization
   )
 }
 save_significants_by_type <- function(
@@ -248,7 +231,7 @@ save_significants_by_type <- function(
   }
   
   # expected types (keys of the list)
-  allowed_types <- c("experiment", "positive", "negative")
+  allowed_types <- c("experiment", "positive", "negative", "normalization")
   bad_types <- setdiff(names(split_results), allowed_types)
   if (length(bad_types) > 0L) {
     stop(

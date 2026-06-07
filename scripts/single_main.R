@@ -1,6 +1,10 @@
 # scripts/run_significants_one_cohort.R
 
 source("R/utility.R")
+old_skip_prepare_cli_opt <- getOption("nk_isoform_analysis.skip_prepare_isoform_normalization_cli", FALSE)
+options(nk_isoform_analysis.skip_prepare_isoform_normalization_cli = TRUE)
+source("scripts/prepare_isoform_normalization.R")
+options(nk_isoform_analysis.skip_prepare_isoform_normalization_cli = old_skip_prepare_cli_opt)
 
 ensure_presto_installed <- function(
     github_repo = "immunogenomics/presto",
@@ -556,6 +560,9 @@ save_tier_lists <- function(base_dir, cohort_label, T1_ids, T3_ids) {
 }
 
 run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate = 0.3,
+                                        prepared_expr_df,
+                                        prepared_matrix_file = NULL,
+                                        normalization_gene = NULL,
                                         cohorts_csv = "config/cohorts.csv",
                                         biomart_exon_df = NULL, biomart_gene_df = NULL,
                                         biomart_isoform_df = NULL, biomart_map_df = NULL) {
@@ -565,14 +572,30 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   if (missing(max_p_value) || !is.numeric(max_p_value) || length(max_p_value) != 1L || !is.finite(max_p_value)) {
     stop("max_p_value must be a single finite numeric value.", call. = FALSE)
   }
+  if (missing(prepared_expr_df) || is.null(prepared_expr_df)) {
+    stop(
+      "prepared_expr_df must be provided. Run prepare_isoform_normalization() first and pass its normalized_expr_df output.",
+      call. = FALSE
+    )
+  }
   ensure_presto_installed()
 
   cohort_label <- if (tolower(cohort_id) == "pancan") "pancan" else toupper(as.character(cohort_id))
   message("Running isoform analysis for cohort_id=", cohort_label)
 
-  matrix_file <- resolve_matrix_file(cohort_label)
-  message("Using matrix file: ", matrix_file)
-  expr_df <- read_cluster_table(matrix_file)
+  expr_df <- prepared_expr_df
+  if (!is.data.frame(expr_df)) {
+    expr_df <- as.data.frame(expr_df, stringsAsFactors = FALSE, check.names = FALSE)
+  }
+  matrix_file <- if (!is.null(prepared_matrix_file) && nzchar(as.character(prepared_matrix_file))) {
+    as.character(prepared_matrix_file)
+  } else {
+    "in_memory_prepared_expression"
+  }
+  if (!is.null(normalization_gene) && nzchar(as.character(normalization_gene))) {
+    message("Using prepared normalized matrix for normalization_gene=", as.character(normalization_gene))
+  }
+  message("Using prepared matrix source: ", matrix_file)
   message("Expression table dimensions: ", nrow(expr_df), " features x ", max(0L, ncol(expr_df) - 1L), " samples")
 
   if (cohort_label == "pancan") {
@@ -623,10 +646,38 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   invisible(list(
     cohort_id = cohort_label,
     matrix_file = matrix_file,
+    normalization_gene = normalization_gene,
     clinical_file = clinical_file,
     T1 = T1_ids,
     T3 = T3_ids,
     presto_results = presto_res,
     presto_significant = presto_sig
   ))
+}
+
+run_significants_pipeline <- function(cohort_id,
+                                      normalization_gene = Sys.getenv("NORMALIZATION_GENE", unset = "asitself"),
+                                      max_p_value,
+                                      max_error_rate = 0.3,
+                                      cohorts_csv = "config/cohorts.csv",
+                                      biomart_exon_df = NULL, biomart_gene_df = NULL,
+                                      biomart_isoform_df = NULL, biomart_map_df = NULL) {
+  prepared <- prepare_isoform_normalization(
+    cohort_id = cohort_id,
+    normalization_gene = normalization_gene
+  )
+
+  run_significants_one_cohort(
+    cohort_id = cohort_id,
+    max_p_value = max_p_value,
+    max_error_rate = max_error_rate,
+    prepared_expr_df = prepared$normalized_expr_df,
+    prepared_matrix_file = prepared$normalization_output_file,
+    normalization_gene = prepared$normalization_gene,
+    cohorts_csv = cohorts_csv,
+    biomart_exon_df = biomart_exon_df,
+    biomart_gene_df = biomart_gene_df,
+    biomart_isoform_df = biomart_isoform_df,
+    biomart_map_df = biomart_map_df
+  )
 }

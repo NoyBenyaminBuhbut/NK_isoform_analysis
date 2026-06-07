@@ -73,6 +73,7 @@ else
 fi
 export PANCAN_TRANSCRIPT_TABLE="${PANCAN_TRANSCRIPT_TABLE:-$HOME/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz}"
 export PANCAN_CLINICAL_FILE="${PANCAN_CLINICAL_FILE:-}"
+export NORMALIZATION_GENE="${NORMALIZATION_GENE:-asitself}"
 
 mkdir -p results/presto/pancan intermediate/splitted_cohorts/clin_based/pancan
 
@@ -83,5 +84,6 @@ echo "CONDA_ENV_PATH=${CONDA_ENV_PATH:-}"
 echo "Rscript=$(command -v Rscript || true)"
 echo "PANCAN_TRANSCRIPT_TABLE=${PANCAN_TRANSCRIPT_TABLE}"
 echo "PANCAN_CLINICAL_FILE=${PANCAN_CLINICAL_FILE:-<auto>}"
+echo "NORMALIZATION_GENE=${NORMALIZATION_GENE}"
 
-Rscript -e 'source("scripts/single_main.R"); run_significants_one_cohort("pancan", max_p_value=0.05)'
+Rscript -e 'source("scripts/single_main.R"); run_significants_pipeline("pancan", normalization_gene=Sys.getenv("NORMALIZATION_GENE", unset="asitself"), max_p_value=0.05)'

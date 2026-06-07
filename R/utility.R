@@ -155,6 +155,350 @@ get_single_file_in_dir <- function(dir_path, pattern = NULL) {
   files[[1]]
 }
 
+detect_table_sep <- function(path) {
+  if (!file.exists(path)) {
+    stop("Input file does not exist: ", path, call. = FALSE)
+  }
+
+  con <- if (grepl("\\.gz$", path, ignore.case = TRUE)) gzfile(path, open = "rt") else file(path, open = "rt")
+  on.exit(close(con), add = TRUE)
+
+  first_line <- readLines(con, n = 1L, warn = FALSE)
+  if (length(first_line) < 1L || !nzchar(first_line[[1]])) {
+    stop("Input table is empty: ", path, call. = FALSE)
+  }
+
+  counts <- c(
+    tab = lengths(regmatches(first_line, gregexpr("\t", first_line, fixed = TRUE))),
+    comma = lengths(regmatches(first_line, gregexpr(",", first_line, fixed = TRUE))),
+    semicolon = lengths(regmatches(first_line, gregexpr(";", first_line, fixed = TRUE)))
+  )
+
+  c(tab = "\t", comma = ",", semicolon = ";")[[names(which.max(counts))]]
+}
+
+read_cluster_table <- function(path) {
+  if (!file.exists(path)) {
+    stop("Input file does not exist: ", path, call. = FALSE)
+  }
+
+  message("Reading table: ", path)
+
+  can_use_fread <- requireNamespace("data.table", quietly = TRUE) &&
+    (!grepl("\\.gz$", path, ignore.case = TRUE) || requireNamespace("R.utils", quietly = TRUE))
+
+  if (can_use_fread) {
+    df <- data.table::fread(path, data.table = FALSE, check.names = FALSE, showProgress = FALSE)
+  } else {
+    if (grepl("\\.gz$", path, ignore.case = TRUE) && requireNamespace("data.table", quietly = TRUE)) {
+      message("Falling back to base R reader for gzipped table because R.utils is not installed.")
+    }
+    sep <- detect_table_sep(path)
+    con <- if (grepl("\\.gz$", path, ignore.case = TRUE)) gzfile(path, open = "rt") else file(path, open = "rt")
+    on.exit(close(con), add = TRUE)
+    df <- utils::read.table(
+      con,
+      sep = sep,
+      header = TRUE,
+      stringsAsFactors = FALSE,
+      check.names = FALSE,
+      comment.char = "",
+      quote = "\""
+    )
+  }
+
+  if (!is.data.frame(df)) {
+    df <- as.data.frame(df, stringsAsFactors = FALSE, check.names = FALSE)
+  }
+
+  df
+}
+
+canonicalize_matrix_sample_ids <- function(sample_ids) {
+  sample_ids <- trimws(as.character(sample_ids))
+  matched <- grepl("^(([^-]+-){3}[0-9]{2}).*$", sample_ids, perl = TRUE)
+  canonical <- sample_ids
+  canonical[matched] <- sub("^((?:[^-]+-){3}[0-9]{2}).*$", "\\1", sample_ids[matched], perl = TRUE)
+
+  fallback <- !matched & nchar(sample_ids) >= 15L
+  canonical[fallback] <- substr(sample_ids[fallback], 1L, 15L)
+  canonical
+}
+
+resolve_isoform_matrix_file <- function(
+    cohort_id,
+    pancan_matrix_file = Sys.getenv(
+      "PANCAN_TRANSCRIPT_TABLE",
+      unset = "~/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz"
+    ),
+    override_matrix_file = Sys.getenv("ISOFORM_MATRIX_FILE", unset = "")
+) {
+  cohort_id <- as.character(cohort_id)
+  if (!nzchar(cohort_id)) {
+    stop("cohort_id must be a non-empty string.", call. = FALSE)
+  }
+
+  if (nzchar(override_matrix_file)) {
+    matrix_file <- path.expand(override_matrix_file)
+    if (!file.exists(matrix_file)) {
+      stop("ISOFORM_MATRIX_FILE does not exist: ", matrix_file, call. = FALSE)
+    }
+    return(matrix_file)
+  }
+
+  if (tolower(cohort_id) == "pancan") {
+    matrix_file <- path.expand(pancan_matrix_file)
+    if (!file.exists(matrix_file)) {
+      stop(
+        "Pancan transcript table not found: ", matrix_file,
+        "\nSet PANCAN_TRANSCRIPT_TABLE to the raw transcript table path on the cluster.",
+        call. = FALSE
+      )
+    }
+    return(matrix_file)
+  }
+
+  cohort_tokens <- unique(c(cohort_id, toupper(cohort_id), tolower(cohort_id)))
+  candidate_dirs <- unique(unlist(lapply(cohort_tokens, function(tok) {
+    c(
+      file.path("data", "cohorts", tok, "isoform"),
+      file.path("data", "cohorts", tok, "isoforms"),
+      file.path("GDCdata", "cohorts", tok, "isoform"),
+      file.path("GDCdata", "cohorts", tok, "isoforms"),
+      file.path(path.expand("~/data/cohorts"), tok, "isoform"),
+      file.path(path.expand("~/data/cohorts"), tok, "isoforms")
+    )
+  })))
+
+  for (dir_path in candidate_dirs) {
+    if (dir.exists(dir_path)) {
+      return(get_single_file_in_dir(dir_path))
+    }
+  }
+
+  stop(
+    "Could not find an isoform matrix directory for cohort_id='", cohort_id, "'. Tried:\n",
+    paste(candidate_dirs, collapse = "\n"),
+    call. = FALSE
+  )
+}
+
+resolve_gene_matrix_file <- function(
+    cohort_id,
+    override_gene_matrix_file = Sys.getenv("GENE_MATRIX_FILE", unset = "")
+) {
+  cohort_id <- as.character(cohort_id)
+  if (!nzchar(cohort_id)) {
+    stop("cohort_id must be a non-empty string.", call. = FALSE)
+  }
+
+  if (nzchar(override_gene_matrix_file)) {
+    gene_matrix_file <- path.expand(override_gene_matrix_file)
+    if (!file.exists(gene_matrix_file)) {
+      stop("GENE_MATRIX_FILE does not exist: ", gene_matrix_file, call. = FALSE)
+    }
+    return(gene_matrix_file)
+  }
+
+  cohort_tokens <- unique(c(cohort_id, toupper(cohort_id), tolower(cohort_id)))
+  candidate_dirs <- unique(unlist(lapply(cohort_tokens, function(tok) {
+    c(
+      file.path("data", "cohorts", tok, "genes"),
+      file.path("GDCdata", "cohorts", tok, "genes"),
+      file.path(path.expand("~/data/cohorts"), tok, "genes")
+    )
+  })))
+
+  for (dir_path in candidate_dirs) {
+    if (dir.exists(dir_path)) {
+      return(get_single_file_in_dir(dir_path))
+    }
+  }
+
+  stop(
+    "Could not find a gene-expression directory for cohort_id='", cohort_id, "'. Tried:\n",
+    paste(candidate_dirs, collapse = "\n"),
+    call. = FALSE
+  )
+}
+
+resolve_biomart_isoform_info_file <- function(
+    biomart_isoform_info_file = Sys.getenv(
+      "BIOMART_ISOFORM_INFO_RDA",
+      unset = file.path("..", "NK_exon_analysis", "intermediate", "biomart", "NK_isoform_info.RDA")
+    )
+) {
+  resolved_path <- path.expand(biomart_isoform_info_file)
+  if (!file.exists(resolved_path)) {
+    stop(
+      "Biomart isoform info file not found: ", resolved_path,
+      "\nSet BIOMART_ISOFORM_INFO_RDA to the transcript-to-gene RDA path.",
+      call. = FALSE
+    )
+  }
+  resolved_path
+}
+
+load_biomart_isoform_info <- function(
+    biomart_isoform_info_file = Sys.getenv(
+      "BIOMART_ISOFORM_INFO_RDA",
+      unset = file.path("..", "NK_exon_analysis", "intermediate", "biomart", "NK_isoform_info.RDA")
+    )
+) {
+  resolved_path <- resolve_biomart_isoform_info_file(biomart_isoform_info_file)
+  env <- new.env(parent = emptyenv())
+  load(resolved_path, envir = env)
+
+  if (!exists("NK_isoform_info", envir = env, inherits = FALSE)) {
+    stop("Expected object 'NK_isoform_info' in: ", resolved_path, call. = FALSE)
+  }
+
+  isoform_info <- get("NK_isoform_info", envir = env, inherits = FALSE)
+  if (!is.data.frame(isoform_info)) {
+    stop("NK_isoform_info must be a data.frame in: ", resolved_path, call. = FALSE)
+  }
+
+  required_cols <- c("gene_id", "isoform_id")
+  missing_cols <- setdiff(required_cols, names(isoform_info))
+  if (length(missing_cols) > 0L) {
+    stop(
+      "NK_isoform_info is missing required columns: ",
+      paste(missing_cols, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  isoform_info$gene_id <- as.character(isoform_info$gene_id)
+  isoform_info$isoform_id <- as.character(isoform_info$isoform_id)
+  isoform_info$isoform_core <- sub("\\..*$", "", isoform_info$isoform_id)
+
+  isoform_info <- isoform_info[
+    !is.na(isoform_info$gene_id) & nzchar(isoform_info$gene_id) &
+      !is.na(isoform_info$isoform_core) & nzchar(isoform_info$isoform_core),
+    ,
+    drop = FALSE
+  ]
+
+  dup_ids <- unique(isoform_info$isoform_core[duplicated(isoform_info$isoform_core)])
+  if (length(dup_ids) > 0L) {
+    stop(
+      "Biomart isoform info has duplicated isoform identifiers: ",
+      paste(head(dup_ids, 10L), collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  isoform_info
+}
+
+read_genes_config <- function(genes_config = "config/genes.csv") {
+  if (is.character(genes_config) && length(genes_config) == 1L) {
+    if (!file.exists(genes_config)) {
+      stop("genes_config file not found: ", genes_config, call. = FALSE)
+    }
+    genes_df <- read.csv(genes_config, stringsAsFactors = FALSE, check.names = FALSE)
+  } else if (is.data.frame(genes_config)) {
+    genes_df <- genes_config
+  } else {
+    stop("genes_config must be either a data.frame or a single file path string.", call. = FALSE)
+  }
+
+  required_cols <- c("gene_id", "type")
+  missing_cols <- setdiff(required_cols, names(genes_df))
+  if (length(missing_cols) > 0L) {
+    stop(
+      "genes_config is missing required columns: ",
+      paste(missing_cols, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  genes_df$gene_id <- trimws(as.character(genes_df$gene_id))
+  genes_df$type <- trimws(as.character(genes_df$type))
+  genes_df <- genes_df[!is.na(genes_df$gene_id) & nzchar(genes_df$gene_id), , drop = FALSE]
+
+  allowed_types <- c("experiment", "positive", "negative", "normalization")
+  bad_types <- setdiff(unique(genes_df$type), allowed_types)
+  if (length(bad_types) > 0L) {
+    stop(
+      "Invalid gene types in genes_config: ",
+      paste(bad_types, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  genes_df
+}
+
+normalize_gene_type_map <- function(genes_df) {
+  genes_df <- read_genes_config(genes_df)
+  priority_map <- c(experiment = 1L, positive = 2L, negative = 3L, normalization = 4L)
+  genes_df$type_priority <- unname(priority_map[genes_df$type])
+
+  split_rows <- split(genes_df, genes_df$gene_id, drop = TRUE)
+  out_gene_id <- character(length(split_rows))
+  out_type <- character(length(split_rows))
+  idx <- 1L
+
+  for (gene_name in names(split_rows)) {
+    gene_rows <- split_rows[[gene_name]]
+    non_norm_types <- unique(gene_rows$type[gene_rows$type != "normalization"])
+    if (length(non_norm_types) > 1L) {
+      stop(
+        "Gene appears in multiple analysis categories in genes_config: ",
+        gene_name, " -> ", paste(non_norm_types, collapse = ", "),
+        call. = FALSE
+      )
+    }
+
+    gene_rows <- gene_rows[order(gene_rows$type_priority), , drop = FALSE]
+    out_gene_id[[idx]] <- gene_name
+    out_type[[idx]] <- gene_rows$type[[1L]]
+    idx <- idx + 1L
+  }
+
+  data.frame(
+    gene_id = out_gene_id,
+    type = out_type,
+    stringsAsFactors = FALSE,
+    check.names = FALSE
+  )
+}
+
+write_manifest_file <- function(folder_path, manifest_entries, file_name = "manifest.txt") {
+  if (missing(folder_path) || !nzchar(folder_path)) {
+    stop("folder_path must be a non-empty string.", call. = FALSE)
+  }
+  if (!dir.exists(folder_path)) {
+    dir.create(folder_path, recursive = TRUE, showWarnings = FALSE)
+  }
+  if (!is.list(manifest_entries) || is.null(names(manifest_entries))) {
+    stop("manifest_entries must be a named list.", call. = FALSE)
+  }
+
+  lines <- character(0)
+  for (entry_name in names(manifest_entries)) {
+    value <- manifest_entries[[entry_name]]
+    if (length(value) < 1L || all(is.na(value))) {
+      lines <- c(lines, paste0(entry_name, ": NA"))
+      next
+    }
+
+    value_chr <- as.character(value)
+    value_chr[is.na(value_chr)] <- "NA"
+    if (length(value_chr) == 1L) {
+      lines <- c(lines, paste0(entry_name, ": ", value_chr))
+    } else {
+      lines <- c(lines, paste0(entry_name, ":"))
+      lines <- c(lines, paste0("  - ", value_chr))
+    }
+  }
+
+  manifest_path <- file.path(folder_path, file_name)
+  writeLines(lines, manifest_path, useBytes = TRUE)
+  manifest_path
+}
+
 
 # Assert that required columns exist in a data.frame
 
