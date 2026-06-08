@@ -2,6 +2,20 @@
 
 source("R/utility.R")
 
+default_cohort_data_roots <- function() {
+  c(
+    file.path("data", "cohorts"),
+    file.path("GDCdata", "cohorts")
+  )
+}
+
+default_pancan_data_roots <- function() {
+  c(
+    default_cohort_data_roots(),
+    path.expand("~/data/cohorts")
+  )
+}
+
 ensure_presto_installed <- function(
     github_repo = "immunogenomics/presto",
     cran_repo = Sys.getenv("R_CRAN_MIRROR", unset = "https://cloud.r-project.org")
@@ -108,18 +122,16 @@ read_cluster_table <- function(path) {
   df
 }
 
-discover_pancan_clinical_files <- function() {
-  candidate_roots <- c(
-    file.path("data", "cohorts"),
-    file.path("GDCdata", "cohorts"),
-    path.expand("~/data/cohorts")
-  )
+discover_pancan_clinical_files <- function(
+    cohort_data_roots = default_pancan_data_roots()
+) {
+  candidate_roots <- unique(path.expand(as.character(cohort_data_roots)))
   candidate_roots <- unique(candidate_roots[dir.exists(candidate_roots)])
 
   if (length(candidate_roots) < 1L) {
     stop(
       "Could not find cohort clinical roots for pancan. Tried:\n",
-      paste(c(file.path("data", "cohorts"), file.path("GDCdata", "cohorts"), path.expand("~/data/cohorts")), collapse = "\n"),
+      paste(unique(path.expand(as.character(cohort_data_roots))), collapse = "\n"),
       call. = FALSE
     )
   }
@@ -193,6 +205,7 @@ standardize_clinical_df_for_pancan <- function(clin_df, cohort_id) {
 
 load_pancan_clinical_df <- function(
     pancan_clinical_file = Sys.getenv("PANCAN_CLINICAL_FILE", unset = ""),
+    cohort_data_roots = default_pancan_data_roots(),
     merged_output_file = file.path("intermediate", "splitted_cohorts", "clin_based", "pancan", "pancan_merged_clinical.csv")
 ) {
   if (nzchar(pancan_clinical_file)) {
@@ -218,7 +231,7 @@ load_pancan_clinical_df <- function(
     ))
   }
 
-  clinical_files <- discover_pancan_clinical_files()
+  clinical_files <- discover_pancan_clinical_files(cohort_data_roots = cohort_data_roots)
   message("Auto-building pancan clinical table from ", length(clinical_files), " cohort clinical files.")
   clin_list <- vector("list", length(clinical_files))
 
@@ -251,6 +264,7 @@ load_pancan_clinical_df <- function(
 
 resolve_matrix_file <- function(
     cohort_id,
+    cohort_data_roots = default_cohort_data_roots(),
     pancan_matrix_file = Sys.getenv(
       "PANCAN_TRANSCRIPT_TABLE",
       unset = "~/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz"
@@ -273,14 +287,15 @@ resolve_matrix_file <- function(
     return(matrix_file)
   }
 
+  cohort_data_roots <- unique(path.expand(as.character(cohort_data_roots)))
   cohort_tokens <- unique(c(cohort_id, toupper(cohort_id), tolower(cohort_id)))
   candidate_dirs <- unique(unlist(lapply(cohort_tokens, function(tok) {
-    c(
-      file.path("data", "cohorts", tok, "isoform"),
-      file.path("data", "cohorts", tok, "isoforms"),
-      file.path("GDCdata", "cohorts", tok, "isoform"),
-      file.path("GDCdata", "cohorts", tok, "isoforms")
-    )
+    unlist(lapply(cohort_data_roots, function(root_dir) {
+      c(
+        file.path(root_dir, tok, "isoform"),
+        file.path(root_dir, tok, "isoforms")
+      )
+    }), use.names = FALSE)
   })))
 
   for (dir_path in candidate_dirs) {
@@ -298,6 +313,7 @@ resolve_matrix_file <- function(
 
 resolve_clinical_file <- function(
     cohort_id,
+    cohort_data_roots = default_cohort_data_roots(),
     pancan_clinical_file = Sys.getenv("PANCAN_CLINICAL_FILE", unset = "")
 ) {
   cohort_id <- as.character(cohort_id)
@@ -313,12 +329,12 @@ resolve_clinical_file <- function(
     return(clinical_file)
   }
 
+  cohort_data_roots <- unique(path.expand(as.character(cohort_data_roots)))
   cohort_tokens <- unique(c(cohort_id, toupper(cohort_id), tolower(cohort_id)))
   candidate_dirs <- unique(unlist(lapply(cohort_tokens, function(tok) {
-    c(
-      file.path("data", "cohorts", tok, "clinical"),
-      file.path("GDCdata", "cohorts", tok, "clinical")
-    )
+    unlist(lapply(cohort_data_roots, function(root_dir) {
+      file.path(root_dir, tok, "clinical")
+    }), use.names = FALSE)
   })))
 
   for (dir_path in candidate_dirs) {
@@ -556,6 +572,13 @@ save_tier_lists <- function(base_dir, cohort_label, T1_ids, T3_ids) {
 }
 
 run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate = 0.3,
+                                        cohort_data_roots = default_cohort_data_roots(),
+                                        pancan_data_roots = default_pancan_data_roots(),
+                                        pancan_matrix_file = Sys.getenv(
+                                          "PANCAN_TRANSCRIPT_TABLE",
+                                          unset = "~/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz"
+                                        ),
+                                        pancan_clinical_file = Sys.getenv("PANCAN_CLINICAL_FILE", unset = ""),
                                         cohorts_csv = "config/cohorts.csv",
                                         biomart_exon_df = NULL, biomart_gene_df = NULL,
                                         biomart_isoform_df = NULL, biomart_map_df = NULL) {
@@ -570,18 +593,29 @@ run_significants_one_cohort <- function(cohort_id, max_p_value, max_error_rate =
   cohort_label <- if (tolower(cohort_id) == "pancan") "pancan" else toupper(as.character(cohort_id))
   message("Running isoform analysis for cohort_id=", cohort_label)
 
-  matrix_file <- resolve_matrix_file(cohort_label)
+  matrix_file <- resolve_matrix_file(
+    cohort_id = cohort_label,
+    cohort_data_roots = cohort_data_roots,
+    pancan_matrix_file = pancan_matrix_file
+  )
   message("Using matrix file: ", matrix_file)
   expr_df <- read_cluster_table(matrix_file)
   message("Expression table dimensions: ", nrow(expr_df), " features x ", max(0L, ncol(expr_df) - 1L), " samples")
 
   if (cohort_label == "pancan") {
-    pancan_clin <- load_pancan_clinical_df()
+    pancan_clin <- load_pancan_clinical_df(
+      pancan_clinical_file = pancan_clinical_file,
+      cohort_data_roots = pancan_data_roots
+    )
     clin_df <- pancan_clin$clinical_df
     clinical_file <- pancan_clin$clinical_file
     split_res <- split_clinical_into_tertiles_by_cohort(clin_df, cohort_col = "cohort_id")
   } else {
-    clinical_file <- resolve_clinical_file(cohort_label)
+    clinical_file <- resolve_clinical_file(
+      cohort_id = cohort_label,
+      cohort_data_roots = cohort_data_roots,
+      pancan_clinical_file = pancan_clinical_file
+    )
     clin_df <- read_cluster_table(clinical_file)
     clin_df <- normalize_clinical_df_for_split(clin_df)
     split_res <- split_clinical_into_tertiles(clin_df)
