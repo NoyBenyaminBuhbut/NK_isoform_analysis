@@ -382,10 +382,12 @@ normalize_isoform_by_gene <- function(
 
   missing_gene_samples <- setdiff(isoform_sample_ids, gene_sample_ids)
   if (length(missing_gene_samples) > 0L) {
-    stop(
-      "The gene expression table is missing sample(s) needed for normalization: ",
+    warning(
+      "The gene expression table is missing sample(s) needed for normalization. ",
+      "These samples will be set to NA: ",
       paste(head(missing_gene_samples, 10L), collapse = ", "),
-      call. = FALSE
+      call. = FALSE,
+      immediate. = TRUE
     )
   }
 
@@ -393,9 +395,16 @@ normalize_isoform_by_gene <- function(
   for (sample_idx in seq_along(isoform_sample_ids)) {
     sample_id <- isoform_sample_ids[[sample_idx]]
     isoform_col_idx <- sample_idx + 1L
-    gene_col_idx <- match(sample_id, gene_sample_ids) + 1L
-    denominator <- suppressWarnings(as.numeric(gene_df[[gene_col_idx]][[gene_match_idx]]))
     isoform_values <- suppressWarnings(as.numeric(isoform_tpm_df[[isoform_col_idx]]))
+    gene_match_col <- match(sample_id, gene_sample_ids)
+
+    if (is.na(gene_match_col)) {
+      normalized_df[[isoform_col_idx]] <- rep(NA_real_, length(isoform_values))
+      next
+    }
+
+    gene_col_idx <- gene_match_col + 1L
+    denominator <- suppressWarnings(as.numeric(gene_df[[gene_col_idx]][[gene_match_idx]]))
 
     if (!is.finite(denominator) || denominator <= 0) {
       normalized_df[[isoform_col_idx]] <- rep(NA_real_, length(isoform_values))
@@ -479,10 +488,12 @@ normalize_isoform_asitself <- function(
 
   missing_gene_samples <- setdiff(isoform_sample_ids, gene_sample_ids)
   if (length(missing_gene_samples) > 0L) {
-    stop(
-      "The gene expression table is missing sample(s) needed for 'asitself': ",
+    warning(
+      "The gene expression table is missing sample(s) needed for 'asitself'. ",
+      "These samples will be set to NA: ",
       paste(head(missing_gene_samples, 10L), collapse = ", "),
-      call. = FALSE
+      call. = FALSE,
+      immediate. = TRUE
     )
   }
 
@@ -490,8 +501,15 @@ normalize_isoform_asitself <- function(
   for (sample_idx in seq_along(isoform_sample_ids)) {
     sample_id <- isoform_sample_ids[[sample_idx]]
     isoform_col_idx <- sample_idx + 1L
-    gene_col_idx <- match(sample_id, gene_sample_ids) + 1L
     isoform_values <- suppressWarnings(as.numeric(isoform_tpm_df[[isoform_col_idx]]))
+    gene_match_col <- match(sample_id, gene_sample_ids)
+
+    if (is.na(gene_match_col)) {
+      normalized_df[[isoform_col_idx]] <- rep(NA_real_, length(isoform_values))
+      next
+    }
+
+    gene_col_idx <- gene_match_col + 1L
     parent_gene_values <- suppressWarnings(as.numeric(gene_df[[gene_col_idx]][gene_row_idx]))
     bad_denominator <- !is.finite(parent_gene_values) | parent_gene_values <= 0
     normalized_values <- isoform_values / parent_gene_values
