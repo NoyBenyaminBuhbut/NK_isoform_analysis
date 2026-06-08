@@ -1,0 +1,2 @@
+Error: Usage: Rscript scripts/prepare_isoform_normalization.R <cohort_id> <normalization_gene>
+Execution halted

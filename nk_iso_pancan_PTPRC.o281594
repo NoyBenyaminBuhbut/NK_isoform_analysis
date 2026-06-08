@@ -1,0 +1,9 @@
+PWD=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+JOB_WORKDIR=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+CONDA_PREFIX=
+CONDA_ENV_PATH=
+Rscript=/bin/Rscript
+PANCAN_TRANSCRIPT_TABLE=/gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+PANCAN_CLINICAL_FILE=<auto>
+NORMALIZATION_GENE=PTPRC
+Reading table: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz

@@ -1,0 +1,11 @@
+PWD=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+JOB_WORKDIR=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+CONDA_PREFIX=
+CONDA_ENV_PATH=
+Rscript=/bin/Rscript
+PANCAN_TRANSCRIPT_TABLE=/gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+PANCAN_CLINICAL_FILE=<auto>
+NORMALIZATION_GENE=CD3E
+Reading table: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+Error: Pancan isoform-expression table does not contain any TCGA primary-tumor sample columns ending in -01.
+Execution halted

@@ -1,0 +1,11 @@
+PWD=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+JOB_WORKDIR=/gpfs0/erubin/users/noybenya/my_research_projects/NK_isoform_analysis
+CONDA_PREFIX=
+CONDA_ENV_PATH=
+Rscript=/bin/Rscript
+PANCAN_TRANSCRIPT_TABLE=/gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+PANCAN_CLINICAL_FILE=<auto>
+NORMALIZATION_GENE=asitself
+Reading table: /gpfs0/erubin/users/noybenya/tcga_transcripts/TcgaTargetGtex_rsem_isoform_tpm.gz
+Error: Duplicated isoform-expression sample IDs after canonicalization: GTEX-N7MS-2526-, GTEX-X4EP-0011-, GTEX-QCQG-1926-, GTEX-X261-0011-, GTEX-NPJ8-0007-, GTEX-12WS9-0011, GTEX-13NYB-0011, GTEX-NPJ8-0011-, GTEX-RNOR-0011-, GTEX-13QJC-0011
+Execution halted
