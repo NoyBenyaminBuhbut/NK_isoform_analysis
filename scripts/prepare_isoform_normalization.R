@@ -397,10 +397,11 @@ load_and_filter_isoform_expression <- function(cohort_label, genes_config = "con
 
   if (tolower(cohort_label) == "pancan") {
     sample_ids_raw <- names(isoform_expr_df)[-1L]
-    tcga_primary_tumor_keep <- grepl("^TCGA-[^-]+-[^-]+-01", sample_ids_raw, perl = TRUE)
+    sample_ids_canonical <- canonicalize_matrix_sample_ids(sample_ids_raw)
+    tcga_primary_tumor_keep <- grepl("^TCGA-[^-]+-[^-]+-01$", sample_ids_canonical, perl = TRUE)
     if (!any(tcga_primary_tumor_keep)) {
       stop(
-        "Pancan isoform-expression table does not contain any TCGA primary-tumor sample columns with sample type code 01.",
+        "Pancan isoform-expression table does not contain any canonicalized TCGA primary-tumor sample IDs with sample type code 01.",
         call. = FALSE
       )
     }
