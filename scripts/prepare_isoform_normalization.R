@@ -30,11 +30,25 @@ run_normalization_one_cohort <- function(
     biomart_isoform_rda = file.path("intermediate", "biomart", "NK_isoform_info.RDA"),
     normalization_root = file.path("intermediate", "cohorts")
 ) {
-  tpm_df <- convert_log2_tpm_to_tpm(
+  prepared_tpm_file <- nh_get_calculated_tpm_file(
     cohort_id = cohort_id,
-    cohort_data_roots = cohort_data_roots,
     calculated_tpm_root = calculated_tpm_root
   )
+
+  if (file.exists(prepared_tpm_file)) {
+    message("Prepared TPM file already exists. Skipping TPM recalculation: ", prepared_tpm_file)
+    tpm_df <- nh_read_prepared_tpm_matrix(
+      cohort_id = cohort_id,
+      calculated_tpm_root = calculated_tpm_root
+    )
+    attr(tpm_df, "output_file") <- prepared_tpm_file
+  } else {
+    tpm_df <- convert_log2_tpm_to_tpm(
+      cohort_id = cohort_id,
+      cohort_data_roots = cohort_data_roots,
+      calculated_tpm_root = calculated_tpm_root
+    )
+  }
 
   normalized_df <- if (tolower(normalization_gene) == "asitself") {
     normalize_isoform_asitself(
