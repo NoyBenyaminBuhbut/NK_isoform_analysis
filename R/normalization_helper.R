@@ -119,7 +119,9 @@ nh_extract_isoform_core <- function(feature_ids) {
 nh_resolve_cohort_file <- function(
     cohort_id,
     subdirs,
-    cohort_data_roots = nh_default_cohort_data_roots()
+    cohort_data_roots = nh_default_cohort_data_roots(),
+    file_pattern = NULL,
+    preferred_patterns = NULL
 ) {
   cohort_id <- trimws(as.character(cohort_id))
   if (!nzchar(cohort_id)) {
@@ -136,7 +138,38 @@ nh_resolve_cohort_file <- function(
 
   for (dir_path in candidate_dirs) {
     if (dir.exists(dir_path)) {
-      return(get_single_file_in_dir(dir_path))
+      entries <- list.files(
+        path = dir_path,
+        pattern = file_pattern,
+        all.files = FALSE,
+        full.names = TRUE,
+        recursive = FALSE,
+        include.dirs = FALSE,
+        no.. = TRUE
+      )
+
+      if (length(entries) < 1L) {
+        next
+      }
+
+      if (length(entries) == 1L) {
+        return(entries[[1L]])
+      }
+
+      if (!is.null(preferred_patterns)) {
+        for (pat in preferred_patterns) {
+          preferred <- grep(pat, basename(entries), value = FALSE)
+          if (length(preferred) == 1L) {
+            return(entries[[preferred]])
+          }
+        }
+      }
+
+      stop(
+        "Expected exactly one file in directory but found ", length(entries), " files: ", dir_path, "\n",
+        paste0(" - ", basename(entries), collapse = "\n"),
+        call. = FALSE
+      )
     }
   }
 
@@ -215,7 +248,9 @@ nh_read_gene_matrix <- function(
   gene_file <- nh_resolve_cohort_file(
     cohort_id = cohort_id,
     subdirs = "genes",
-    cohort_data_roots = cohort_data_roots
+    cohort_data_roots = cohort_data_roots,
+    file_pattern = "\\.(csv|tsv|txt|gz)$",
+    preferred_patterns = c("_gene_expr\\.tsv\\.gz$", "_gene_expr\\.csv\\.gz$", "\\.tsv\\.gz$", "\\.csv\\.gz$")
   )
   gene_df <- nh_read_table(gene_file)
   list(file = gene_file, data = gene_df)
