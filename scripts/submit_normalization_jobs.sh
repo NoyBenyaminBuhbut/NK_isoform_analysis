@@ -24,8 +24,34 @@ fi
 
 exclude_cohort="${1:-LUAD}"
 
-mapfile -t cohorts < <(awk -F, -v exclude="$exclude_cohort" 'NR>1 && $25=="TRUE" && $1!=exclude {print $1}' "$cohorts_csv")
-mapfile -t norm_genes < <(awk -F, 'NR>1 && $3=="normalization" {print $1}' "$genes_csv")
+mapfile -t cohorts < <(
+  awk -F, -v exclude="$exclude_cohort" '
+    NR == 1 {
+      for (i = 1; i <= NF; i++) {
+        if ($i == "cohort_id") cohort_col = i
+        if ($i == "next_run") next_run_col = i
+      }
+      next
+    }
+    cohort_col > 0 && next_run_col > 0 && toupper($next_run_col) == "TRUE" && $cohort_col != exclude {
+      print $cohort_col
+    }
+  ' "$cohorts_csv"
+)
+mapfile -t norm_genes < <(
+  awk -F, '
+    NR == 1 {
+      for (i = 1; i <= NF; i++) {
+        if ($i == "gene_id") gene_col = i
+        if ($i == "type") type_col = i
+      }
+      next
+    }
+    gene_col > 0 && type_col > 0 && $type_col == "normalization" {
+      print $gene_col
+    }
+  ' "$genes_csv"
+)
 norm_genes+=("asitself")
 
 if [[ "${#cohorts[@]}" -lt 1 ]]; then
