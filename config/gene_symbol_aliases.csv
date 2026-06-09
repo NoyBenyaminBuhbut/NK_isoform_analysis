@@ -1,0 +1,5 @@
+query_symbol,resolved_symbol,ensembl_gene_id,assembly,source
+SLAMF3,LY9,ENSG00000122224,GRCh37,ensembl_grch37
+LY9,LY9,ENSG00000122224,GRCh37,ensembl_grch37
+SLAMF5,CD84,ENSG00000066294,GRCh37,ensembl_grch37
+CD84,CD84,ENSG00000066294,GRCh37,ensembl_grch37

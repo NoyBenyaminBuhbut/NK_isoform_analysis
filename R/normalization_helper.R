@@ -88,6 +88,104 @@ nh_read_genes_config <- function(genes_config = "config/genes.csv") {
   genes_df
 }
 
+nh_read_gene_symbol_aliases <- function(alias_csv = "config/gene_symbol_aliases.csv") {
+  if (!file.exists(alias_csv)) {
+    return(data.frame(
+      query_symbol = character(0),
+      resolved_symbol = character(0),
+      ensembl_gene_id = character(0),
+      assembly = character(0),
+      source = character(0),
+      stringsAsFactors = FALSE,
+      check.names = FALSE
+    ))
+  }
+
+  alias_df <- utils::read.csv(alias_csv, stringsAsFactors = FALSE, check.names = FALSE)
+  assert_required_columns(
+    alias_df,
+    c("query_symbol", "resolved_symbol"),
+    df_name = "gene_symbol_aliases"
+  )
+
+  alias_df$query_symbol <- trimws(as.character(alias_df$query_symbol))
+  alias_df$resolved_symbol <- trimws(as.character(alias_df$resolved_symbol))
+  if ("assembly" %in% names(alias_df)) {
+    alias_df$assembly <- trimws(as.character(alias_df$assembly))
+  } else {
+    alias_df$assembly <- NA_character_
+  }
+
+  alias_df <- alias_df[
+    nzchar(alias_df$query_symbol) & nzchar(alias_df$resolved_symbol),
+    ,
+    drop = FALSE
+  ]
+  alias_df
+}
+
+nh_resolve_gene_symbols_against_matrix <- function(
+    requested_symbols,
+    available_symbols,
+    assembly = "GRCh37",
+    alias_csv = "config/gene_symbol_aliases.csv"
+) {
+  requested_symbols <- trimws(as.character(requested_symbols))
+  available_symbols <- trimws(as.character(available_symbols))
+
+  resolved_symbols <- requested_symbols
+  used_alias <- rep(FALSE, length(requested_symbols))
+
+  alias_df <- nh_read_gene_symbol_aliases(alias_csv = alias_csv)
+  if (nrow(alias_df) < 1L) {
+    return(list(
+      resolved_symbols = resolved_symbols,
+      used_alias = used_alias
+    ))
+  }
+
+  if (!is.null(assembly) && nzchar(as.character(assembly)) && "assembly" %in% names(alias_df)) {
+    keep_assembly <- is.na(alias_df$assembly) | !nzchar(alias_df$assembly) | toupper(alias_df$assembly) == toupper(as.character(assembly))
+    alias_df <- alias_df[keep_assembly, , drop = FALSE]
+  }
+
+  if (nrow(alias_df) < 1L) {
+    return(list(
+      resolved_symbols = resolved_symbols,
+      used_alias = used_alias
+    ))
+  }
+
+  available_upper <- toupper(available_symbols)
+
+  for (idx in seq_along(requested_symbols)) {
+    req <- requested_symbols[[idx]]
+    if (!nzchar(req)) {
+      next
+    }
+    if (toupper(req) %in% available_upper) {
+      next
+    }
+
+    alias_rows <- alias_df[toupper(alias_df$query_symbol) == toupper(req), , drop = FALSE]
+    if (nrow(alias_rows) < 1L) {
+      next
+    }
+
+    candidates <- unique(alias_rows$resolved_symbol)
+    candidate_match <- candidates[toupper(candidates) %in% available_upper]
+    if (length(candidate_match) == 1L) {
+      resolved_symbols[[idx]] <- candidate_match[[1L]]
+      used_alias[[idx]] <- TRUE
+    }
+  }
+
+  list(
+    resolved_symbols = resolved_symbols,
+    used_alias = used_alias
+  )
+}
+
 nh_load_biomart_isoform_info <- function(
     biomart_isoform_rda = file.path("intermediate", "biomart", "NK_isoform_info.RDA")
 ) {
@@ -324,7 +422,8 @@ normalize_isoform_by_gene <- function(
     calculated_tpm_root = file.path("intermediate", "calculated_TPM", "cohort"),
     genes_config = "config/genes.csv",
     biomart_isoform_rda = file.path("intermediate", "biomart", "NK_isoform_info.RDA"),
-    normalization_root = file.path("intermediate", "cohorts")
+    normalization_root = file.path("intermediate", "cohorts"),
+    gene_symbol_alias_csv = "config/gene_symbol_aliases.csv"
 ) {
   cohort_id <- trimws(as.character(cohort_id))
   normalization_gene <- trimws(as.character(normalization_gene))
@@ -358,7 +457,21 @@ normalize_isoform_by_gene <- function(
   )
   gene_df <- gene_info$data
   gene_ids <- trimws(as.character(gene_df[[1L]]))
-  gene_match_idx <- which(toupper(gene_ids) == toupper(normalization_gene))
+  resolved_gene <- nh_resolve_gene_symbols_against_matrix(
+    requested_symbols = normalization_gene,
+    available_symbols = gene_ids,
+    assembly = "GRCh37",
+    alias_csv = gene_symbol_alias_csv
+  )
+  normalization_gene_resolved <- resolved_gene$resolved_symbols[[1L]]
+  if (isTRUE(resolved_gene$used_alias[[1L]])) {
+    message(
+      "Resolved normalization_gene alias: ",
+      normalization_gene, " -> ", normalization_gene_resolved
+    )
+  }
+
+  gene_match_idx <- which(toupper(gene_ids) == toupper(normalization_gene_resolved))
   if (length(gene_match_idx) < 1L) {
     stop("normalization_gene was not found in the gene expression table: ", normalization_gene, call. = FALSE)
   }
@@ -434,7 +547,8 @@ normalize_isoform_asitself <- function(
     calculated_tpm_root = file.path("intermediate", "calculated_TPM", "cohort"),
     genes_config = "config/genes.csv",
     biomart_isoform_rda = file.path("intermediate", "biomart", "NK_isoform_info.RDA"),
-    normalization_root = file.path("intermediate", "cohorts")
+    normalization_root = file.path("intermediate", "cohorts"),
+    gene_symbol_alias_csv = "config/gene_symbol_aliases.csv"
 ) {
   cohort_id <- trimws(as.character(cohort_id))
 
@@ -462,7 +576,22 @@ normalize_isoform_asitself <- function(
   )
   gene_df <- gene_info$data
   gene_ids <- trimws(as.character(gene_df[[1L]]))
-  gene_row_idx <- match(mapped_gene_ids, gene_ids)
+  resolved_gene_map <- nh_resolve_gene_symbols_against_matrix(
+    requested_symbols = mapped_gene_ids,
+    available_symbols = gene_ids,
+    assembly = "GRCh37",
+    alias_csv = gene_symbol_alias_csv
+  )
+  resolved_mapped_gene_ids <- resolved_gene_map$resolved_symbols
+  if (any(resolved_gene_map$used_alias)) {
+    alias_pairs <- unique(paste(mapped_gene_ids[resolved_gene_map$used_alias], "->", resolved_mapped_gene_ids[resolved_gene_map$used_alias]))
+    message(
+      "Resolved parent gene alias(es) for 'asitself': ",
+      paste(alias_pairs, collapse = ", ")
+    )
+  }
+
+  gene_row_idx <- match(resolved_mapped_gene_ids, gene_ids)
   missing_genes <- unique(mapped_gene_ids[is.na(gene_row_idx)])
   if (length(missing_genes) > 0L) {
     stop(
