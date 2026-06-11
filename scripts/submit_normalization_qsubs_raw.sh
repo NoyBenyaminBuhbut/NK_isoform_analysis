@@ -32,11 +32,15 @@ done
 mapfile -t cohorts < <(
   awk -F, '
     NR == 1 {
+      for (j = 1; j <= NF; j++) sub(/\r$/, "", $j)
       for (i = 1; i <= NF; i++) {
         if ($i == "cohort_id") cohort_col = i
         if ($i == "next_run") next_run_col = i
       }
       next
+    }
+    {
+      for (j = 1; j <= NF; j++) sub(/\r$/, "", $j)
     }
     cohort_col > 0 && next_run_col > 0 && toupper($next_run_col) == "TRUE" {
       print $cohort_col
