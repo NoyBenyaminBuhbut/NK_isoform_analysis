@@ -70,13 +70,24 @@ skipped_missing_matrix=0
 
 for cohort in "${cohorts[@]}"; do
   for gene in "${norm_genes[@]}"; do
-    normalized_matrix="intermediate/cohorts/${cohort}/normalization/${gene}/${cohort}_normalized_isoform_matrix.csv"
+    normalized_matrix="intermediate/cohorts/${cohort}/normalization/${gene}/${cohort}_normalized_isoform_matrix.RDA"
+    legacy_csv="intermediate/cohorts/${cohort}/normalization/${gene}/${cohort}_normalized_isoform_matrix.csv"
     result_file="results/normalized_runs/${cohort}/${gene}/presto/T1_vs_T3_presto.csv"
     job_name="nsm_${cohort}_${gene}"
     log_file="${log_dir}/${job_name}.log"
 
     if [[ ! -f "$normalized_matrix" ]]; then
-      echo "Skipping missing normalized matrix: ${normalized_matrix}"
+      if [[ -f "$legacy_csv" ]]; then
+        normalized_matrix="$legacy_csv"
+      else
+        echo "Skipping missing normalized matrix: ${normalized_matrix}"
+        skipped_missing_matrix=$((skipped_missing_matrix + 1))
+        continue
+      fi
+    fi
+
+    if [[ ! -s "$normalized_matrix" ]]; then
+      echo "Skipping empty normalized matrix: ${normalized_matrix}"
       skipped_missing_matrix=$((skipped_missing_matrix + 1))
       continue
     fi

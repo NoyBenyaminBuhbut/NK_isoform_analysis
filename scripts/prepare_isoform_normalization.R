@@ -34,9 +34,14 @@ run_normalization_one_cohort <- function(
     cohort_id = cohort_id,
     calculated_tpm_root = calculated_tpm_root
   )
+  prepared_tpm_file_legacy <- nh_get_calculated_tpm_file_legacy_csv(
+    cohort_id = cohort_id,
+    calculated_tpm_root = calculated_tpm_root
+  )
 
-  if (file.exists(prepared_tpm_file)) {
-    message("Prepared TPM file already exists. Skipping TPM recalculation: ", prepared_tpm_file)
+  if (file.exists(prepared_tpm_file) || file.exists(prepared_tpm_file_legacy)) {
+    existing_prepared_tpm <- if (file.exists(prepared_tpm_file)) prepared_tpm_file else prepared_tpm_file_legacy
+    message("Prepared TPM artifact already exists. Skipping TPM recalculation: ", existing_prepared_tpm)
     tpm_df <- nh_read_prepared_tpm_matrix(
       cohort_id = cohort_id,
       calculated_tpm_root = calculated_tpm_root

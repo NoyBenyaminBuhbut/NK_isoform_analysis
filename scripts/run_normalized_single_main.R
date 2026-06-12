@@ -37,11 +37,32 @@ normalized_matrix_file <- file.path(
   cohort_label,
   "normalization",
   normalization_gene,
-  paste0(cohort_label, "_normalized_isoform_matrix.csv")
+  paste0(cohort_label, "_normalized_isoform_matrix.RDA")
 )
 if (!file.exists(normalized_matrix_file)) {
+  legacy_csv <- file.path(
+    repo_root,
+    "intermediate",
+    "cohorts",
+    cohort_label,
+    "normalization",
+    normalization_gene,
+    paste0(cohort_label, "_normalized_isoform_matrix.csv")
+  )
+  if (file.exists(legacy_csv)) {
+    normalized_matrix_file <- legacy_csv
+  } else {
+    stop(
+      "Normalized matrix file does not exist. Tried:\n",
+      normalized_matrix_file, "\n", legacy_csv,
+      call. = FALSE
+    )
+  }
+}
+matrix_size <- file.info(normalized_matrix_file)$size
+if (is.na(matrix_size) || matrix_size <= 0) {
   stop(
-    "Normalized matrix file does not exist: ",
+    "Normalized matrix file is empty: ",
     normalized_matrix_file,
     call. = FALSE
   )
@@ -74,10 +95,7 @@ resolve_matrix_file <- function(
   normalized_matrix_file
 }
 
-cohort_data_roots <- c(
-  file.path(repo_root, "data", "cohorts"),
-  file.path(repo_root, "GDCdata", "cohorts")
-)
+cohort_data_roots <- nh_default_cohort_data_roots()
 pancan_data_roots <- c(
   cohort_data_roots,
   path.expand("~/data/cohorts")

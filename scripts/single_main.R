@@ -92,6 +92,22 @@ read_cluster_table <- function(path) {
 
   message("Reading table: ", path)
 
+  if (grepl("\\.(rda|RDA)$", path)) {
+    rda_env <- new.env(parent = emptyenv())
+    loaded_names <- load(path, envir = rda_env)
+    if (length(loaded_names) < 1L) {
+      stop("No objects found in RDA file: ", path, call. = FALSE)
+    }
+    df <- get(loaded_names[[1L]], envir = rda_env, inherits = FALSE)
+    if (is.matrix(df)) {
+      df <- as.data.frame(df, stringsAsFactors = FALSE, check.names = FALSE)
+    }
+    if (!is.data.frame(df)) {
+      stop("RDA object is not a data.frame or matrix: ", path, call. = FALSE)
+    }
+    return(df)
+  }
+
   can_use_fread <- requireNamespace("data.table", quietly = TRUE) &&
     (!grepl("\\.gz$", path, ignore.case = TRUE) || requireNamespace("R.utils", quietly = TRUE))
 

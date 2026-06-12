@@ -75,6 +75,38 @@ nh_read_table <- function(path) {
   )
 }
 
+nh_read_rda_dataframe <- function(path, object_name = NULL) {
+  if (!file.exists(path)) {
+    stop("Input RDA file does not exist: ", path, call. = FALSE)
+  }
+
+  rda_env <- new.env(parent = emptyenv())
+  loaded_names <- load(path, envir = rda_env)
+  if (length(loaded_names) < 1L) {
+    stop("No objects found in RDA file: ", path, call. = FALSE)
+  }
+
+  if (is.null(object_name)) {
+    object_name <- loaded_names[[1L]]
+  } else if (!object_name %in% loaded_names) {
+    stop(
+      "Object '", object_name, "' was not found in RDA file: ", path,
+      ". Available objects: ", paste(loaded_names, collapse = ", "),
+      call. = FALSE
+    )
+  }
+
+  df <- get(object_name, envir = rda_env, inherits = FALSE)
+  if (is.matrix(df)) {
+    df <- as.data.frame(df, stringsAsFactors = FALSE, check.names = FALSE)
+  }
+  if (!is.data.frame(df)) {
+    stop("RDA object is not a data.frame or matrix: ", path, call. = FALSE)
+  }
+
+  df
+}
+
 nh_read_genes_config <- function(genes_config = "config/genes.csv") {
   if (!file.exists(genes_config)) {
     stop("Missing genes config file: ", genes_config, call. = FALSE)
@@ -292,6 +324,16 @@ nh_get_calculated_tpm_file <- function(
 ) {
   file.path(
     nh_get_calculated_tpm_dir(cohort_id, calculated_tpm_root = calculated_tpm_root),
+    paste0(toupper(trimws(as.character(cohort_id))), "_isoform_TPM.RDA")
+  )
+}
+
+nh_get_calculated_tpm_file_legacy_csv <- function(
+    cohort_id,
+    calculated_tpm_root = file.path("intermediate", "calculated_TPM", "cohort")
+) {
+  file.path(
+    nh_get_calculated_tpm_dir(cohort_id, calculated_tpm_root = calculated_tpm_root),
     paste0(toupper(trimws(as.character(cohort_id))), "_isoform_TPM.csv")
   )
 }
@@ -301,10 +343,20 @@ nh_read_prepared_tpm_matrix <- function(
     calculated_tpm_root = file.path("intermediate", "calculated_TPM", "cohort")
 ) {
   tpm_file <- nh_get_calculated_tpm_file(cohort_id, calculated_tpm_root = calculated_tpm_root)
-  if (!file.exists(tpm_file)) {
-    stop("Prepared TPM matrix does not exist: ", tpm_file, call. = FALSE)
+  if (file.exists(tpm_file)) {
+    return(nh_read_rda_dataframe(tpm_file))
   }
-  nh_read_table(tpm_file)
+
+  legacy_csv <- nh_get_calculated_tpm_file_legacy_csv(cohort_id, calculated_tpm_root = calculated_tpm_root)
+  if (file.exists(legacy_csv)) {
+    return(nh_read_table(legacy_csv))
+  }
+
+  stop(
+    "Prepared TPM matrix does not exist. Tried:\n",
+    tpm_file, "\n", legacy_csv,
+    call. = FALSE
+  )
 }
 
 nh_filter_isoform_matrix_by_config <- function(
@@ -360,6 +412,72 @@ nh_write_csv <- function(df, path) {
   invisible(path)
 }
 
+nh_write_rda <- function(df, path, object_name = "artifact_df", compress = "xz") {
+  dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
+  stopifnot(is.character(object_name), length(object_name) == 1L, nzchar(object_name))
+  assign(object_name, df)
+  save(list = object_name, file = path, compress = compress)
+  invisible(path)
+}
+
+nh_get_normalized_matrix_file <- function(
+    cohort_id,
+    normalization_gene,
+    normalization_root = file.path("intermediate", "cohorts")
+) {
+  file.path(
+    normalization_root,
+    toupper(trimws(as.character(cohort_id))),
+    "normalization",
+    normalization_gene,
+    paste0(toupper(trimws(as.character(cohort_id))), "_normalized_isoform_matrix.RDA")
+  )
+}
+
+nh_get_normalized_matrix_file_legacy_csv <- function(
+    cohort_id,
+    normalization_gene,
+    normalization_root = file.path("intermediate", "cohorts")
+) {
+  file.path(
+    normalization_root,
+    toupper(trimws(as.character(cohort_id))),
+    "normalization",
+    normalization_gene,
+    paste0(toupper(trimws(as.character(cohort_id))), "_normalized_isoform_matrix.csv")
+  )
+}
+
+nh_read_normalized_matrix <- function(
+    cohort_id,
+    normalization_gene,
+    normalization_root = file.path("intermediate", "cohorts")
+) {
+  rda_file <- nh_get_normalized_matrix_file(
+    cohort_id = cohort_id,
+    normalization_gene = normalization_gene,
+    normalization_root = normalization_root
+  )
+  if (file.exists(rda_file)) {
+    return(nh_read_rda_dataframe(rda_file))
+  }
+
+  legacy_csv <- nh_get_normalized_matrix_file_legacy_csv(
+    cohort_id = cohort_id,
+    normalization_gene = normalization_gene,
+    normalization_root = normalization_root
+  )
+  if (file.exists(legacy_csv)) {
+    return(nh_read_table(legacy_csv))
+  }
+
+  stop(
+    "Normalized matrix file does not exist. Tried:\n",
+    rda_file, "\n", legacy_csv,
+    call. = FALSE
+  )
+}
+
 convert_log2_tpm_to_tpm <- function(
     cohort_id,
     cohort_data_roots = nh_default_cohort_data_roots(),
@@ -408,7 +526,7 @@ convert_log2_tpm_to_tpm <- function(
   }
 
   output_file <- nh_get_calculated_tpm_file(cohort_id, calculated_tpm_root = calculated_tpm_root)
-  nh_write_csv(out_df, output_file)
+  nh_write_rda(out_df, output_file, object_name = "isoform_tpm_df")
 
   attr(out_df, "isoform_file") <- isoform_file
   attr(out_df, "output_file") <- output_file
@@ -526,14 +644,12 @@ normalize_isoform_by_gene <- function(
     }
   }
 
-  output_file <- file.path(
-    normalization_root,
-    toupper(cohort_id),
-    "normalization",
-    normalization_gene,
-    paste0(toupper(cohort_id), "_normalized_isoform_matrix.csv")
+  output_file <- nh_get_normalized_matrix_file(
+    cohort_id = cohort_id,
+    normalization_gene = normalization_gene,
+    normalization_root = normalization_root
   )
-  nh_write_csv(normalized_df, output_file)
+  nh_write_rda(normalized_df, output_file, object_name = "normalized_isoform_df")
 
   attr(normalized_df, "prepared_tpm_file") <- nh_get_calculated_tpm_file(cohort_id, calculated_tpm_root = calculated_tpm_root)
   attr(normalized_df, "gene_file") <- gene_info$file
@@ -646,14 +762,12 @@ normalize_isoform_asitself <- function(
     normalized_df[[isoform_col_idx]] <- normalized_values
   }
 
-  output_file <- file.path(
-    normalization_root,
-    toupper(cohort_id),
-    "normalization",
-    "asitself",
-    paste0(toupper(cohort_id), "_normalized_isoform_matrix.csv")
+  output_file <- nh_get_normalized_matrix_file(
+    cohort_id = cohort_id,
+    normalization_gene = "asitself",
+    normalization_root = normalization_root
   )
-  nh_write_csv(normalized_df, output_file)
+  nh_write_rda(normalized_df, output_file, object_name = "normalized_isoform_df")
 
   attr(normalized_df, "prepared_tpm_file") <- nh_get_calculated_tpm_file(cohort_id, calculated_tpm_root = calculated_tpm_root)
   attr(normalized_df, "gene_file") <- gene_info$file
